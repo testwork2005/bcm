@@ -17,6 +17,14 @@ import CreditCardOutlinedIcon from '@material-ui/icons/CreditCardOutlined';
 import ArrowDropUpOutlinedIcon from '@material-ui/icons/ArrowDropUpOutlined';
 import createTypography from '@material-ui/core/styles/createTypography';
 import minegif from '../static/Mining.gif';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+import QRCode from 'qrcode.react';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -50,17 +58,6 @@ function a11yProps(index) {
   };
 }
 
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={event => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -70,14 +67,23 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 export default function NavTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const [open, setOpen] = React.useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div style={{ marginBottom: '-100px' }}>
       <AppBar
@@ -104,19 +110,42 @@ export default function NavTabs() {
             {...a11yProps(1)}
           />
           <Tab
-            label="payouts"
+            label="Withdrawals"
             icon={<CreditCardOutlinedIcon />}
             {...a11yProps(2)}
           />
           <Tab
-            label="Upgrade Plan"
+            label="Upgrade Hash Power"
             icon={<ArrowDropUpOutlinedIcon />}
             {...a11yProps(3)}
           />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <img src={minegif} alt="loading..." width="250px" />
+        <img src={minegif} alt="loading..." width="50px" />
+        <button class="btn btn--center" type="button" href="/account" onClick={handleClickOpen}>Fund Wallet</button>
+        <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"Wallet ID"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Scan this wallet Id/Copy this address and send your payments and we will approve shortly
+          </DialogContentText>
+          <QRCode value="1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ" />
+        </DialogContent>
+        <DialogActions>
+         
+          <Button onClick={handleClose} color="primary">
+            CLOSE
+          </Button>
+        </DialogActions>
+      </Dialog>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Page Two

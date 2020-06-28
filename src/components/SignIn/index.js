@@ -78,7 +78,7 @@ class SignInFormBase extends Component {
 			
       <div className="sign__content">
       <form onSubmit={this.onSubmit} className="sign__form">
-      <a href="index.html"><img className="sign__logo" src="img/logo.svg" alt=""/></a>
+      <a href="index.html"><img className="sign__logo" src={require("../../static/home-bg.png")} alt=""/></a>
         <input
           name="email"
           value={email}

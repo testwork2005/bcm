@@ -21,7 +21,7 @@ const INITIAL_STATE = {
   isAdmin: false,
   error: null,
   phone:null,
-  wallet:null,
+ 
   amount:0,
   profit:0
 };
@@ -44,7 +44,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin,phone ,wallet,amount,profit} = this.state;
+    const { username, email, passwordOne, isAdmin,phone ,amount,profit} = this.state;
     const roles = {};
 
     
@@ -59,7 +59,7 @@ class SignUpFormBase extends Component {
           phone,
          amount,
          profit,
-          wallet
+      
         });
       })
       .then(() => {
@@ -96,7 +96,7 @@ class SignUpFormBase extends Component {
       passwordTwo,
     amount,profit,  
       error,
-      phone,wallet
+      phone
     } = this.state;
 
     const isInvalid =
@@ -113,7 +113,7 @@ class SignUpFormBase extends Component {
       <div class="sign">
       <div class="sign__content">
       <form onSubmit={this.onSubmit} className="sign__form">
-      <a href="index.html"><img class="sign__logo" src="img/logo.svg" alt=""/></a>
+      <a href="index.html"><img class="sign__logo" src={require("../../static/home-bg.png")} alt=""/></a>
         <input
           name="username"
           value={username}
@@ -146,19 +146,12 @@ class SignUpFormBase extends Component {
           placeholder="Confirm Password"
           className="form__input"
         />
-        <input
-          name="wallet"
-          value={wallet}
-          onChange={this.onChange}
-          type="text"
-          placeholder="walletaddress"
-          className="form__input"
-
-        />
+       
          <PhoneInput
       placeholder="Enter phone number"
-      value={this.state.phone}
+      value={this.state.phone}  className="form__input"
       onChange={phone=>{this.setState({phone}
+        
        )
         console.log(this.state.phone);}
      

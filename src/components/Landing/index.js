@@ -32,85 +32,56 @@ const Landing = () => (
 
       <ul className="header__nav">
         <li>
-          <a href="index.html" className="a">
+          <a href="#" className="a">
             Home{' '}
           </a>
         </li>
         <li>
-          <a href="about.html" className="a">
+          <a href="/about" className="a">
             About Us
           </a>
         </li>
         <li>
-          <a href="services.html" className="a">
+          <a href="https://bitcointicker.co/transactions/" className="a">
             Live Payout
           </a>
         </li>
         <li>
-          <a href="pricing.html" className="a">
+          <a href="/pricing" className="a">
             Pricing
           </a>
         </li>
         <li>
-          <a href="blog.html" className="a">
+          <a href="/blog" className="a">
             Blog
           </a>
         </li>
         <li className="dropdown header__dropdown">
           <a
             className="dropdown-toggle a"
-            href="#"
-            role="button"
+            href="/account"
+           
             id="dropdownMenuLink2"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+           
           >
-            Pages
+           DashBoard
           </a>
 
-          <ul
-            className="dropdown-menu header__dropdown-menu ul"
-            aria-labelledby="dropdownMenuLink2"
-          >
-            <li>
-              <a href="article.html" className="a">
-                Article
-              </a>
-            </li>
-            <li>
-              <a href="knowledge.html" className="a">
-                Knowledge
-              </a>
-            </li>
-            <li>
-              <a href="faq.html" className="a">
-                Help
-              </a>
-            </li>
-            <li>
-              <a href="login.html" className="a">
-                Log In
-              </a>
-            </li>
-            <li>
-              <a href="signup.html" className="a">
-                Sign Up
-              </a>
-            </li>
-          </ul>
+          
+           
+           
         </li>
       </ul>
 
       <div className="  hyy header__btns ">
         <a
-          href="login.html"
+          href="/signin"
           className=" hyy btn btn--transparent btn--header a"
         >
           log in
         </a>
         <a
-          href="signup.html"
+          href="/signup"
           className="  hyy btn btn--white btn--header a"
         >
           sign up
@@ -284,14 +255,11 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
           <div className="col-12">
             <div className="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
            
-              <h2 className="section__title section__title--white">
-              Why Binance CryptoMining? 
+              <img  src={require("../../static/stores.png")} className="appstore"/>
+           
                 
-              </h2>
-              <p className="section__text section__text--white section__text--head">
-              We are making mining accessible to everyone. Check out our mining farm setup. To bring you the best
-                we must hire the best.
-              </p>
+            
+              
             </div>
           </div>
         </div>
@@ -427,7 +395,7 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
             <div className="footer__logo">
               <a href="index.html" className="a">
                 <img
-                  src={require('../../static/home-bg-b.png')}
+                  src={require('../../static/home-bg.png')}
                   className="img"
                   alt=""
                 />
