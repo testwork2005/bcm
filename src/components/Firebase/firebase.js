@@ -57,7 +57,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: "http://localhost:3000/account"
+      url: "https://localhost:3000/account"
     });
     recaptchaVerifier = (container) => {
       return new this.auth().authRecaptchaVerifier(container);

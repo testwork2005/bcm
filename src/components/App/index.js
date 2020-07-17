@@ -10,26 +10,45 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Dashboard';
 import PricingPage from '../pricing';
+import WhyPage from '../whymining';
+import Review from '../reviewcontainer';
+import Blogpage from '../blog';
+import AboutPage from '../about';
+import ContactPage from "../contact";
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 
-const App = () => (
-  <Router>
+const App = () => {
+ 
+  return (
     <div>
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Review />
+      <Router>
+        <div>
+          <Route
+            exact
+            path={ROUTES.LANDING}
+            component={LandingPage}
+          />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.WHYMINING} component={WhyPage} />
+          <Route path={ROUTES.CONTACTUS} component={ContactPage} />
+          <Route path={ROUTES.ABOUT} component={AboutPage} />
+          <Route path={ROUTES.BLOG} component={Blogpage} />
+          <Route
+            path={ROUTES.PASSWORD_FORGET}
+            component={PasswordForgetPage}
+          />
+          <Route path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.PRICING} component={PricingPage} />
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
 
-      <Route
-        path={ROUTES.PASSWORD_FORGET}
-        component={PasswordForgetPage}
-      />
-      <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.PRICING} component={PricingPage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
+        </div>
+      </Router>
     </div>
-  </Router>
-);
+  );
+};
 
 export default withAuthentication(App);

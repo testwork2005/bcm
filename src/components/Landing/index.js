@@ -1,27 +1,39 @@
 import React from 'react';
 import '../../components/main-color1.css';
 import Particles from 'react-particles-js';
-import Carslick from "../linkcarousel"
-const Landing = () => (
+import Carslick from '../linkcarousel';
+import SimpleSlider from '../homereview';
+function Landing  (){
+  const [btc,setbtc]=React.useState(0.000);
+  const [usd,setusd]=React.useState(0);
+  const[input,setinput]=React.useState(0);
+  const[unit,setunit]=React.useState('TH/s')
+  return (
   <div>
     <header className="header">
-    <Particles width="100px" height="70px"  style={{
-                background: `transparent`,
-            
-              }}
-              params={ {"particles":
-              {"color": {
-                "value": "#D4AF37"},
-                "line_linked": {
-                  "enable": true,
-                  "distance": 50,
-                  "color": "#ffff",
-                  "opacity": 1,
-                  "width": 1.5
-                },
-              }}}/>
+      <Particles
+        width="100px"
+        height="70px"
+        style={{
+          background: `transparent`,
+        }}
+        params={{
+          particles: {
+            color: {
+              value: '#D4AF37',
+            },
+            line_linked: {
+              enable: true,
+              distance: 50,
+              color: '#ffff',
+              opacity: 1,
+              width: 1.5,
+            },
+          },
+        }}
+      />
       <div className="header__logo">
-        <a href="/home" className="a">
+        <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
             className="img"
@@ -42,7 +54,10 @@ const Landing = () => (
           </a>
         </li>
         <li>
-          <a href="https://bitcointicker.co/transactions/" className="a">
+          <a
+            href="https://bitcointicker.co/transactions/"
+            className="a"
+          >
             Live Payout
           </a>
         </li>
@@ -52,24 +67,50 @@ const Landing = () => (
           </a>
         </li>
         <li>
-          <a href="/blog" className="a">
-            Blog
+        <a href="/contactus" className="a">
+       Contact Us
           </a>
         </li>
-        <li className="dropdown header__dropdown">
+        <li>
+          <a href="/whymining" className="a">
+            Why Mining
+          </a>
+        </li>
+        {
+          //<li className="dropdown header__dropdown">
+          //<a
+          //  className="dropdown-toggle a"
+          //  href="/account"
+          //  id="dropdownMenuLink2"
+          // >
+          //   DashBoard
+          //</li></li> </a>}
+          //  </li>
+        }
+        <li class="dropdown header__dropdown">
           <a
-            className="dropdown-toggle a"
-            href="/account"
-           
-            id="dropdownMenuLink2"
-           
+            class="dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink1"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
           >
-           DashBoard
+            Technology
           </a>
 
-          
-           
-           
+          <ul
+            class="dropdown-menu header__dropdown-menu"
+            aria-labelledby="dropdownMenuLink1"
+          >
+            <li>
+              <a href="index.html" style={{color:"black"}}>Enigma Data center</a>
+            </li>
+            <li>
+              <a href="index2.html" style={{color:"black"}}>Radiant Tech</a>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -84,7 +125,7 @@ const Landing = () => (
           href="/signup"
           className="  hyy btn btn--white btn--header a"
         >
-          sign up
+         REGISTER
         </a>
       </div>
 
@@ -115,14 +156,18 @@ const Landing = () => (
         <div className="row">
           <div className="col-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-5 offset-xl-0">
             <div className="home__content">
+              <p className="home__text" style={{fontWeight:"bold"}}>
+                Join over 2.000.000 people with the world’s leading
+                hashpower provide
+              </p>
               <h1 className="home__title">
-              Over 50000 TH/s Earned Daily!
-                Start Bitcoin mining today!
+                START BITCOIN MINING TODAY!
               </h1>
               <p className="home__text">
-                Are you looking for an Honest and Responsible Bitcoin
-                Mining Company with Excellent Mining Packages and
-                Multi-level Marketing? Start Today at QMP Mining!!
+                tt’s super simple - Your mining rigs are already set up
+                and running. As soon as you’ve set up your account,
+                you can start to mine your first coins using our
+                Bitcoin cloud mining service!
               </p>
               <a href="#" className=" hyy btn btn--shadow a">
                 get started
@@ -187,8 +232,9 @@ const Landing = () => (
           <div className="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
             <h2 className="section__title">Binance Mine </h2>
             <p className="section__text">
-            Your hardware is already running
-Don’t wrestle with rig assembly and hot, noisy miners at home. We have the fastest bitcoin mining hardware running for you already!
+              Your hardware is already running Don’t wrestle with rig
+              assembly and hot, noisy miners at home. We have the
+              fastest bitcoin mining hardware running for you already!
             </p>
           </div>
         </div>
@@ -199,8 +245,10 @@ Don’t wrestle with rig assembly and hot, noisy miners at home. We have the fas
               <i className="ti-bolt" />
               <h3 className="service__title">Instant Connection</h3>
               <p className="service__text">
-              Mine alternative cryptocurrencies
-You can mine any cryptocurrency available in our catalogue! Switch your mining power on the fly for all the coins using our bitcoin mining website.
+                Mine alternative cryptocurrencies You can mine any
+                cryptocurrency available in our catalogue! Switch your
+                mining power on the fly for all the coins using our
+                bitcoin mining website.
                 <b>alteration in some form</b>, by injected.
               </p>
             </div>
@@ -211,7 +259,9 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
               <i className="ti-wallet" />
               <h3 className="service__title">Instant Conclusion</h3>
               <p className="service__text">
-              You will get periodic mining outputs to your designated wallet. Try our Bitcoin mining platform now!
+                You will get periodic mining outputs to your
+                designated wallet. Try our Bitcoin mining platform
+                now!
               </p>
             </div>
           </div>
@@ -247,41 +297,33 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
     </section>
 
     <div
-      className="section section--bg"
-      data-bg="img/section/section-bg.jpg"
+      style={{
+        backgroundColor: 'black',
+        width: '100vw',
+        height: '450px',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
+      }}
     >
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <div className="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-           
-              <img  src={require("../../static/stores.png")} className="appstore"/>
-           
-                
-            
-              
-            </div>
-          </div>
-        </div>
+      <video
+        playsinline="playsinline"
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+        width="600"
+      >
+        <source src="img/Animated_Mockup.mp4" type="video/mp4" />
+      </video>
+      <div>
+      <div style={{minHeight:'200px'}}></div>
+      
+      <img width="150" height='200' src={require('../../static/stores.png')} />
       </div>
     </div>
 
-    <section className="section">
-      <div className="container" >
-        <div className="row">
-          <div className="col-12">
-            <a
-              href="#"
-              className=" btn btn--center btn--top50 btn--shadow a"
-            >
-              get started
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section className="section">
+    
+    <section className="section" style={{marginTop:"100px"}}>
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -298,14 +340,20 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
                     type="text"
                     className="form__input input"
                     placeholder="Hashrate"
+                    
+                    onChange={(e)=>{
+                      setinput(e.target.value)
+                    }}
                   />
                 </div>
 
                 <div className="col-12 col-sm-5 col-md-3 col-xl-3">
                   <div className="form__select-wrap">
-                    <select className="form__select select">
+                    <select className="form__select select" onInput={(e)=>{setunit(e.target.value)
+                   
+                    e.preventDefault()}}>
                       <option value="ths">TH/s</option>
-                      <option value="phs">PH/s</option>
+                      
                     </select>
                   </div>
                 </div>
@@ -314,6 +362,9 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
                   <button
                     className=" hyy btn btn--center button"
                     type="button"
+                    onClick={()=>{
+                      setusd(0.06375*input)
+                    }}
                   >
                     Calculate
                   </button>
@@ -321,7 +372,7 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
 
                 <div className="col-12">
                   <p className="calculate__text">
-                    0.000 000 00 BTC ($0) / 0.000 000 00 BCH ($0)
+                  { ` $ ${usd} `}
                     <br />
                     (will change based on mining difficulty and
                     Bitcoin price)
@@ -339,36 +390,19 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
         </div>
       </div>
     </section>
-   
 
     <section className="section">
       <div className="container">
         <div className="row">
           <div className="col-12 col-lg-6">
-            <div className="review">
-              <blockquote className="review__blockquote">
-                I love the simple, minimal design, lots of white, not
-                an overwhelming amount of features. Compared to some
-                other alternatives I have tried, it was easy to sign
-                up, bug-free, and easy to use so far.
-              </blockquote>
-              <span className="review__autor">
-                John Doe
-                <span>Entrepreneur</span>
-              </span>
-            </div>
+            <SimpleSlider />
           </div>
-
           <div className="col-12 col-lg-6">
-            <div className="get-started">
-              <h3 className="get-started__title">Create Account</h3>
-              <p className="get-started__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Molestias dicta ratione expedita blanditiis.
-              </p>
-              <a href="#" className=" hyy btn a">
-                get started
-              </a>
+            <div>
+              {' '}
+              <video playsinline="playsinline" controls width="600">
+                <source src="img/homevid.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
@@ -379,10 +413,8 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <Carslick/>
-            <div className="owl-carousel partners__slider">
-             
-            </div>
+            <Carslick />
+            <div className="owl-carousel partners__slider" />
           </div>
         </div>
       </div>
@@ -461,9 +493,7 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
               <li>
                 <a href="tel:+18002345678">+1 (800) 234-5678</a>
               </li>
-              
             </ul>
-           
           </div>
 
           <div className="col-12">
@@ -487,5 +517,6 @@ You can mine any cryptocurrency available in our catalogue! Switch your mining p
     </footer>
   </div>
 );
+ }
 
 export default Landing;
