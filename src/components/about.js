@@ -165,16 +165,12 @@ export default function about() {
               class="dropdown-menu header__dropdown-menu"
               aria-labelledby="dropdownMenuLink1"
             >
-              <li>
-                <a href="index.html" style={{ color: 'black' }}>
-                  Enigma Data center
-                </a>
-              </li>
-              <li>
-                <a href="index2.html" style={{ color: 'black' }}>
-                  Radiant Tech
-                </a>
-              </li>
+               <li>
+              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
+            </li>
+            <li>
+              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
+            </li>
             </ul>
           </li>
         </ul>
@@ -199,7 +195,11 @@ export default function about() {
           <i className="ti-close" />
         </button>
       </header>
-      <div className="bgg">
+      <div className="bgg" 
+          style={{
+            height:'60vh'}}
+      >
+        <br/>
         <h2>ONE OF THE WORLD'S LEADING</h2>
         <h1>
           <strong>HASH POWER PROVIDER</strong>
@@ -256,7 +256,8 @@ export default function about() {
           </div>
         </div>
       </Paper>
-      <div style={{ padding: '5%' }}>
+    
+      <div  style={{padding: '5%' }}>
         {' '}
         <h1>
           <strong style={{ margin: '0 auto',textAlign:'center' }}>Our mining farms</strong>
@@ -273,6 +274,15 @@ export default function about() {
         <Divider light />
         <MapChart />
       </div>
+      <Divider light />
+      <h1>
+          <strong style={{ margin: '0 auto',textAlign:'center' }}>Our Documents</strong>
+          
+        </h1>
+        <a href={require('../static/binancedoc.pdf') } target="_blank">Company Document </a>
+        <br/>
+        <br/>
+        <a href={require('../static/BCM.docx') } target="_blank">Contract Document </a>
       <Divider light />
       <div className="getstarted">
         <div>
@@ -349,7 +359,7 @@ export default function about() {
           <div className="row">
             <div className="col-12 col-sm-6 col-md-4 col-lg-3">
               <div className="footer__logo">
-                <a href="index.html" className="a">
+                <a href="/home" className="a">
                   <img
                     src={require('../static/home-bg.png')}
                     className="img"

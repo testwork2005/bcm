@@ -7,21 +7,45 @@ import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
-import AccountPage from '../Account';
+import RadPage from '../Home/radiant';
+import EnigmaPage from '../Home/enigma';
+import AccountPage from '../Account/userdash';
 import AdminPage from '../Dashboard';
 import PricingPage from '../pricing';
 import WhyPage from '../whymining';
 import Review from '../reviewcontainer';
 import Blogpage from '../blog';
 import AboutPage from '../about';
-import ContactPage from "../contact";
+import ContactPage from '../contact';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
-
+import {
+  Widget,
+  addResponseMessage,
+  addLinkSnippet,
+  addUserMessage,
+} from 'react-chat-widget';
+import Logo from '../../static/blog.svg';
+import 'react-chat-widget/lib/styles.css';
 const App = () => {
- 
+  React.useEffect(() => {
+    addResponseMessage(
+      'Welcome to bINANCE Cryptomining customer chat!',
+    );
+  }, []);
+  const handleNewUserMessage = newMessage => {
+    console.log(`New message incoming! ${newMessage}`);
+    // Now send the message throught the backend API
+    addResponseMessage('i go code am');
+  };
   return (
     <div>
+      <Widget
+        handleNewUserMessage={handleNewUserMessage}
+        profileAvatar={Logo}
+        title="Customer Rep."
+        subtitle="..."
+      />
       <Review />
       <Router>
         <div>
@@ -40,6 +64,8 @@ const App = () => {
             path={ROUTES.PASSWORD_FORGET}
             component={PasswordForgetPage}
           />
+          <Route path={ROUTES.ENIGMA} component={EnigmaPage} />
+          <Route path={ROUTES.RADIANT} component={RadPage} />
           <Route path={ROUTES.HOME} component={HomePage} />
           <Route path={ROUTES.PRICING} component={PricingPage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />

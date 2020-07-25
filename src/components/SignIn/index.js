@@ -103,11 +103,11 @@ const SignInPage = () => (
             class="dropdown-menu header__dropdown-menu"
             aria-labelledby="dropdownMenuLink1"
           >
-            <li>
-              <a href="index.html" style={{color:"black"}}>Enigma Data center</a>
+             <li>
+              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
             </li>
             <li>
-              <a href="index2.html" style={{color:"black"}}>Radiant Tech</a>
+              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
             </li>
           </ul>
         </li>
@@ -260,7 +260,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push(ROUTES.ACCOUNT);
       })
       .catch(error => {
         this.setState({ error });

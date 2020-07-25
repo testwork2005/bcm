@@ -170,16 +170,12 @@ export default function contact() {
               class="dropdown-menu header__dropdown-menu"
               aria-labelledby="dropdownMenuLink1"
             >
-              <li>
-                <a href="index.html" style={{ color: 'black' }}>
-                  Enigma Data center
-                </a>
-              </li>
-              <li>
-                <a href="index2.html" style={{ color: 'black' }}>
-                  Radiant Tech
-                </a>
-              </li>
+               <li>
+              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
+            </li>
+            <li>
+              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
+            </li>
             </ul>
           </li>
         </ul>
@@ -268,12 +264,11 @@ Please refer to section “When do I get my mining output?” for more details.
           aria-controls="panel3a-content"
           id="panel4a-header"
         >
-          <Typography className={classes.heading}>What is the mining performance? Why are you not mining yourself?</Typography>
+          <Typography className={classes.heading}>What does “100% uptime guarantee” mean?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Besides the fact that we ourselves mine with the very same hardware that we offer to our clients, our capital is limited. We believe that Bitcoin and Altcoin mining is one of the best ways to receive Cryptocurrencies, however, we do not want to “put all our eggs in one basket”.
-          </Typography>
+          It is always possible that mining hardware crashes, slows down or completely breaks. In all these cases, our algorithms ensure that other miners are allocated to the relevant pools to fully compensate for possible hashpower loss. This way our clients will not lose a second of mining time.</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion >
@@ -282,12 +277,11 @@ Please refer to section “When do I get my mining output?” for more details.
           aria-controls="panel3a-content"
           id="panel5a-header"
         >
-          <Typography className={classes.heading}>What is the mining performance? Why are you not mining yourself?</Typography>
+          <Typography className={classes.heading}>Where is your mining farm located?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Besides the fact that we ourselves mine with the very same hardware that we offer to our clients, our capital is limited. We believe that Bitcoin and Altcoin mining is one of the best ways to receive Cryptocurrencies, however, we do not want to “put all our eggs in one basket”.
-          </Typography>
+          For security reasons, we do not disclose the exact location of our mining farms. As of April 2015, we are operating several mining farms that are located in Europe, America and Asia. Electricity cost and availability of cooling are important, but not the only criteria. See our Datacenters page for more information.</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion >
@@ -296,12 +290,13 @@ Please refer to section “When do I get my mining output?” for more details.
           aria-controls="panel7a-content"
           id="panel3a-header"
         >
-          <Typography className={classes.heading}>What is the mining performance? Why are you not mining yourself?</Typography>
+          <Typography className={classes.heading}>Which pools are you using for mining?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Besides the fact that we ourselves mine with the very same hardware that we offer to our clients, our capital is limited. We believe that Bitcoin and Altcoin mining is one of the best ways to receive Cryptocurrencies, however, we do not want to “put all our eggs in one basket”.
-          </Typography>
+          We do not publish a list of pools we are using. Our main criteria for a good pool are: reliability, fee structure and reject rate. Going forward we will solo-mine a few coins (and pass the fee savings to our users!).
+
+Our internal policy is: “be a good crypto citizen”. This means, that we will at least use two different pools (in some cases we use up to four) for each coin. This is to preserve the decentralized nature of the crypto networks! If we become aware that a pool is getting close to 50% share, we will switch away from it and use a backup instead.</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion >
@@ -310,12 +305,12 @@ Please refer to section “When do I get my mining output?” for more details.
           aria-controls="panel3a-content"
           id="panel8a-header"
         >
-          <Typography className={classes.heading}>What is the mining performance? Why are you not mining yourself?</Typography>
+          <Typography className={classes.heading}>Isn’t buying the hardware cheaper?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Besides the fact that we ourselves mine with the very same hardware that we offer to our clients, our capital is limited. We believe that Bitcoin and Altcoin mining is one of the best ways to receive Cryptocurrencies, however, we do not want to “put all our eggs in one basket”.
-          </Typography>
+          On the first glance one might think that buying miner X is slightly cheaper than hosted mining. However, there are a number of “hidden” costs related to purchasing and maintaining a miner that change the economics significantly:
+          Please do not get us wrong: we do not want to discourage anyone from mining at home! We are often asked about prices and realized that many users do not know about all the hidden costs. If you compare the true costs, you will notice that our prices are very competitive. We want to provide you the best possible mining experience, so that you can focus on mining your favorite coins (and we take care of the rest).</Typography>
         </AccordionDetails>
       </Accordion>
     </div></Paper>
@@ -328,16 +323,22 @@ Please refer to section “When do I get my mining output?” for more details.
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>What is binance cryptomining</Typography>
+          <Typography className={classes.heading}>What coins can I mine with each algorithm?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-         Binance CrpytoMining is a Cryptocurrency cloud mining service that offers an easy and safe way to purchase hashpower without having to deal with complex hardware and software setup. We offer hosted cryptocurrency mining services and a variety of mining related solutions to small and large scale customers. The combination of our algorithmic trading framework, mining infrastructure, and proprietary mining farm-management software, Genesis Hive, quickly made us an industry leader.
+          You are able to mine Bitcoin and various altcoins directly via our mining allocation page*. The availability of cryptocurrencies you can mine depends on the contract you have chosen.
 
-Our team of mining experts with extensive knowledge of the digital currency sector specializes in building the most efficient and reliable mining facilities. Genesis Mining is also the founding partner of Logos Fund, the first ever Bitcoin Mining Fund, which targets professional investors looking to gain access to Bitcoin’s and various other digital assets’ potential.
+You must allocate your hashpower in order to determine the cryptocurrency received for your mining output. If no allocation has been made, the mining output will default to the following for the given blockchain algorithm:
 
-Our service was founded by the end of 2013 and with now over 2.000.000 users we are the world‘s leading multi-algorithm cloud mining service.
-          </Typography>
+SHA-256 contract - Bitcoin
+X11 contract - Dash
+Ethash contract - Ethereum
+CryptoNight contract - Monero/Monero Classic
+Scrypt - Litecoin
+Equihash - Zcash
+(*) “Genesis Mining Advanced Allocation” (special feature):
+It allows you to get mining outputs in many different coins even if they are not mined directly by a certain algorithm. For example, you can get mining outputs in BTC while mining with an X11 algorithm! That is possible by mining the DASH coin directly, which is then automatically swapped to BTC by our algorithmic framework. The Allocation function is designed for customers to receive delivery of their mining results in their preferred cryptocurrency. We call it “mining BTC the smart way”. The same technique is also used to get mining results in LTC with a SHA-256 contract, etc. </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion>

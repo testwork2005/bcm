@@ -10,6 +10,11 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Slider from 'react-slick';
 import ForwardIcon from '@material-ui/icons/Forward';
+import Img1 from '../static/logo.svg';
+import Img2 from '../static/forbes.svg';
+import Img3 from '../static/cnbc.svg';
+import Img4 from '../static/bloom.svg';
+import Img5 from '../static/tech.svg';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -167,7 +172,7 @@ export default function whymining() {
           </li>
           <li>
             <a href="/contactus" className="a">
-             Contact
+             Contact Us
             </a>
           </li>
           <li>
@@ -203,16 +208,12 @@ export default function whymining() {
               class="dropdown-menu header__dropdown-menu"
               aria-labelledby="dropdownMenuLink1"
             >
-              <li>
-                <a href="index.html" style={{ color: 'black' }}>
-                  Enigma Data center
-                </a>
-              </li>
-              <li>
-                <a href="index2.html" style={{ color: 'black' }}>
-                  Radiant Tech
-                </a>
-              </li>
+               <li>
+              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
+            </li>
+            <li>
+              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
+            </li>
             </ul>
           </li>
         </ul>
@@ -237,10 +238,10 @@ export default function whymining() {
           <i className="ti-close" />
         </button>
       </header>
-      <div className="bgg">
+      <div className="bgg" style={{height:'60vh'}}>
         <h2>Get to know</h2>
         <h1>
-          <strong>a new idea of money.</strong>
+          <strong style={{color:"#f0b90b"}}>a new idea of money.</strong>
         </h1>
         <strong>join binance CrYpto-Mining</strong>
       </div>
@@ -702,14 +703,18 @@ export default function whymining() {
         style={{
           textAlign: 'center',
           marginTop: '20px',
-          color: '#0f4470',
+          color: '#f0b90b',
           fontFamily: 'Anton',
-          letterSpacing:'4px'
+          letterSpacing:'3px'
         }}
       >
         AS SEEN ON
       </h1>
-
+      <section className="press">
+        <img src={Img1} />
+        <img src={Img2} /> <img src={Img3} /> <img src={Img4} />{' '}
+        <img src={Img5} />
+      </section>
       <footer className="footer">
         <div className="container">
           <div className="row">

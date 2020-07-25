@@ -11,3 +11,5 @@ export const ADMIN_DETAILS = '/admin/:id';
 export const BLOG="/blog";
 export const ABOUT ="/about";
 export const CONTACTUS ="/contactus"
+export const RADIANT ="/radiant-tech"
+export const ENIGMA ="/enigma"

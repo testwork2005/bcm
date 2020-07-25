@@ -44,101 +44,66 @@ export default class MultipleItems extends Component {
     };
     return (
       <div>
-        <h2 style={{ textAlign: 'center' }}> External Links </h2>
+        <h1
+        style={{
+          textAlign: 'center',
+          marginTop: '20px',
+          color: '#0f4470',
+          fontFamily: 'Anton',
+          letterSpacing:'4px'
+        }}
+      >
+        AS SEEN ON
+      </h1>
         <Slider {...settings}>
+         
+
           <div className="item">
-            <a
-              href="https://www.karatbars.com/en/"
-              target="_blank"
-              className="a"
-            >
-              <img
-                src="img/partners/karatbars.png"
+         
+              <img  className="img ims"
+                src={require("../static/logo.svg")}
                 className="img ims"
                 alt=""
               />
-            </a>
+            
           </div>
 
           <div className="item">
-            <a
-              href="https://www.hyperledger.org/"
-              target="_blank"
-              className="a"
-            >
-              <img
-                src="img/partners/hl.png"
-                className="img ims"
-                alt=""
+           
+              <img className="img ims"
+                src={require("../static/forbes.svg")}
               />
-            </a>
+          
           </div>
 
           <div className="item">
-            <a
-              href="https://blockfi.com/"
-              target="_blank"
-              className="a"
-            >
+            
               <img
-                src="img/partners/bfi.jpg"
-                className="img ims"
-                alt=""
+               className="img ims"
+              src={require("../static/cnbc.svg")}
               />
-            </a>
+      
           </div>
 
           <div className="item">
-            <a
-              href="https://www.enovos.lu/en/individuals/home"
-              target="_blank"
-              className="a"
-            >
+          
               <img
-                src="img/partners/enovos.png"
+               src={require("../static/tech.svg")}
                 className="img ims"
                 alt=""
               />
-            </a>
+          
           </div>
 
           <div className="item">
-            <a
-              href="https://bitpay.com/"
-              target="_blank"
-              className="a"
-            >
-              <img
-                src="img/partners/bitpay.png"
-                className="img ims"
-                alt=""
+        
+              <img  className="img ims"
+                src={require("../static/bloom.svg")}
               />
-            </a>
+          
           </div>
 
-          <div className="item">
-            <a
-              href="https://blockchain.com/"
-              target="_blank"
-              className="a"
-            >
-              <img
-                src="img/partners/block.png"
-                className="img ims"
-                alt=""
-              />
-            </a>
-          </div>
-
-          <div className="item">
-            <a href="https://blockchain.com/" target="_blank">
-              <img
-                src="img/partners/coinbase.png"
-                className="img ims"
-                alt=""
-              />
-            </a>
-          </div>
+          
         </Slider>
       </div>
     );

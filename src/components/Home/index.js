@@ -108,10 +108,10 @@ function HomePage (){
             aria-labelledby="dropdownMenuLink1"
           >
             <li>
-              <a href="index.html" style={{color:"black"}}>Enigma Data center</a>
+              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
             </li>
             <li>
-              <a href="index2.html" style={{color:"black"}}>Radiant Tech</a>
+              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
             </li>
           </ul>
         </li>
@@ -119,7 +119,7 @@ function HomePage (){
 
       <div className="  hyy header__btns ">
         <a
-          href="/signin"
+          href="/account"
           className=" hyy btn btn--transparent btn--header a"
         >
           log in

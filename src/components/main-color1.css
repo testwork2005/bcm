@@ -264,6 +264,7 @@ ul li {
   -webkit-transition: 0.3s ease;
   -moz-transition: 0.3s ease;
   transition: 0.3s ease;
+  max-width:100vw;
 }
 .header__logo {
   flex: 0 1 50%;
@@ -297,7 +298,7 @@ ul li {
 .header__menu--active i.ti-close {
   opacity: 1;
   font-size: 20px;
-  color: #fff;
+ 
 }
 .header__menu--active i.ti-menu {
   font-size: 0;
@@ -410,9 +411,7 @@ ul li {
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-.header--white {
-  background-color: #fff;
-}
+
 .header--active {
   background-color: rgba(255, 255, 255, 0);
   -webkit-box-shadow: 0 6px 26px 0 rgba(0, 0, 0, 0.1);
@@ -449,6 +448,10 @@ ul li {
   }
   .header__logo {
     flex: 0 1 25%;
+
+  }
+  .raditems{
+    flex-wrap: wrap-reverse;
   }
   .header__nav,
   .header__btns {
@@ -668,6 +671,9 @@ ul li {
     font-size: 17px;
     margin-bottom: 40px;
   }
+  .raditems{
+    flex-wrap: wrap-reverse;
+  }
 }
 @media (min-width: 1200px) {
   .home:before,
@@ -821,6 +827,9 @@ ul li {
   .btn--top50 {
     margin-top: 35px;
   }
+}
+.raditems{
+  flex-wrap: wrap-reverse;
 }
 /*==============================
 	Paginator
@@ -998,6 +1007,9 @@ ul li {
   .section__app a {
     margin: 25px 15px 0;
   }
+  .raditems{
+    flex-wrap: wrap-reverse;
+  }
 }
 @media (min-width: 768px) {
   .section {
@@ -1017,6 +1029,9 @@ ul li {
 @media (min-width: 992px) {
   .section {
     padding: 70px 0;
+  }
+  .raditems{
+    flex-wrap: wrap-reverse;
   }
 }
 @media (min-width: 1200px) {
@@ -3062,9 +3077,7 @@ margin-top: 20px;
     flex-direction: column;
   }
  }
- .yy{
-  background-color: black;
-}
+
 h1,h2,h3,h4{
   font-family: "Signika", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -3095,4 +3108,10 @@ margin: 5%;}
 }
 .timecontainer *{
   margin-top: 20px;
+}
+.yy{
+  background-color: black;
+}
+.inpt{
+  color:rgba(0, 0, 0, 0.575);
 }
