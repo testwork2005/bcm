@@ -1,17 +1,16 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import 'firebase/storage'
+import 'firebase/storage';
 const firebaseConfig2 = {
-  apiKey: "AIzaSyC-pC_6Il6SkTCXhWybh8PPXvH7QzYe6x8",
-  authDomain: "binancecryptomining-2322a.firebaseapp.com",
-  databaseURL: "https://binancecryptomining-2322a.firebaseio.com",
-  projectId: "binancecryptomining-2322a",
-  storageBucket: "binancecryptomining-2322a.appspot.com",
-  messagingSenderId: "268345829245",
-  appId: "1:268345829245:web:49dc20bb1f799b2954ce14"
+  apiKey: 'AIzaSyC-pC_6Il6SkTCXhWybh8PPXvH7QzYe6x8',
+  authDomain: 'binancecryptomining-2322a.firebaseapp.com',
+  databaseURL: 'https://binancecryptomining-2322a.firebaseio.com',
+  projectId: 'binancecryptomining-2322a',
+  storageBucket: 'binancecryptomining-2322a.appspot.com',
+  messagingSenderId: '268345829245',
+  appId: '1:268345829245:web:49dc20bb1f799b2954ce14',
 };
-
 
 class Firebase {
   constructor() {
@@ -57,11 +56,11 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: "www.binancecryptomining.com"
+      url: 'https://www.binancecryptomining.com/account',
     });
-    recaptchaVerifier = (container) => {
-      return new this.auth().authRecaptchaVerifier(container);
-    };
+  recaptchaVerifier = container => {
+    return new this.auth().authRecaptchaVerifier(container);
+  };
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
@@ -76,7 +75,6 @@ class Firebase {
             const dbUser = snapshot.val();
 
             // default empty roles
-           
 
             // merge auth and db user
             authUser = {
@@ -99,8 +97,8 @@ class Firebase {
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
-orders=()=>this.db.ref('orders');
-withdrawals=()=>this.db.ref('withdrawals')
+  orders = () => this.db.ref('orders');
+  withdrawals = () => this.db.ref('withdrawals');
   // *** Message API ***
 
   message = uid => this.db.ref(`messages/${uid}`);
