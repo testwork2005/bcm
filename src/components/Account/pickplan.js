@@ -1,15 +1,23 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { useState, useCallback } from 'react';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import { withAuthorization, withEmailVerification } from '../Session';
+import { withFirebase } from '../Firebase';
+import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
+import Tooltip from '@material-ui/core/Tooltip';
 const useStyles = makeStyles(theme => ({
   root: {
     width: 300,
@@ -23,26 +31,96 @@ const useStyles = makeStyles(theme => ({
   table: {
     minWidth: '400px',
   },
+  btn: {
+    backgroundColor: '#f0b90b',
+    margin: '10px auto',
+    minWidth: '100%',
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  btn2:{
+    color: 'white',
+    backgroundColor: '#f0b90b',
+    margin:'0 10px',
+    padding:'10px',
+      fontWeight: 'bold',
+  }
 }));
 
-const marks = [
-  {
-    value: 20500,
-    label: '20,500 EUR',
+const AirbnbSlider = withStyles({
+  root: {
+    color: '#f0b90b',
+    height: 3,
+    padding: '13px 0',
+  },
+  thumb: {
+    height: 27,
+    width: 27,
+    backgroundColor: '#fff',
+    border: '1px solid currentColor',
+    marginTop: -12,
+    marginLeft: -13,
+
+    '& .bar': {
+      // display: inline-block !important;
+      height: 9,
+      width: 1,
+      backgroundColor: 'currentColor',
+      marginLeft: 1,
+      marginRight: 1,
+    },
+  },
+  active: {},
+  track: {
+    height: 3,
   },
 
-  {
-    value: 50000,
-    label: '5000EUR',
+  rail: {
+    color: '#d8d8d8',
+    opacity: 1,
+    height: 3,
   },
-];
+})(Slider);
 
 function valuetext(value) {
   return `${value}°C`;
 }
+export function useForceUpdate() {
+  const [, setTick] = useState(0);
+  const update = useCallback(() => {
+    setTick(tick => tick + 1);
+  }, []);
+  return update;
+}
+const plans = {
+  btc: [
+    {
+      names: [
+        'BTC-GOLD',
+        'BTC-PLATINUM',
+        'BTC-DIAMOND',
+        'BTC-CUSTOM',
+      ],
+      hashpower: ['4TH/s', '20TH/s', '104TH/s'],
 
+      prices: ['2999', '9999', '20500'],
+    },
+  ],
+  eth: [
+    {
+      names: [
+        'ETH-GOLD',
+        'ETH-PLATINUM',
+        'ETH-DIAMOND',
+        'ETH-CUSTOM',
+      ],
+      hashpower: ['4TH/s', '20TH/s', '104TH/s'],
 
-export default function pickplan() {
+      prices: ['3999', '10999', '21500'],
+    },
+  ],
+};
+function pickplan({ onSetOrder, hn }) {
   const [btcview, setbtc] = React.useState(true);
   const [btcplan, setbtcplan] = React.useState('');
   const [ethplan, setethplan] = React.useState('');
@@ -51,8 +129,30 @@ export default function pickplan() {
   const [ethval, setethvalue] = React.useState(0);
   const [btchashval, setbtchashvalue] = React.useState(0);
   const [ethhashval, setethhashvalue] = React.useState(0);
-  const[order,setorder]=React.useState({});
- 
+  const forceUpdate = useForceUpdate();
+  function AirbnbThumbComponent(props) {
+    return (
+      <span {...props}>
+        <OfflineBoltIcon />
+      </span>
+    );
+  }
+  function ValueLabelComponent(props) {
+    const { children, open, value } = props;
+
+    return (
+      <Tooltip
+        open={open}
+        enterTouchDelay={0}
+        placement="top"
+        title={value}
+      >
+        {children}
+      </Tooltip>
+    );
+  }
+  const [order, setorder] = React.useState({});
+  var obj = {};
   const classes = useStyles();
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -61,31 +161,48 @@ export default function pickplan() {
     setbtcplan('BTC-CUSTOM');
     setbtchashvalue(`${Math.round(newValue / 192)}TH/s`);
     setbtcvalue(`${newValue}`);
+    obj['name'] = plans.btc[0].names[3];
+    obj['price'] = `${newValue}`;
+    obj['hashpower'] = `${Math.round(newValue / 192)}TH/s`;
+    onSetOrder(obj);
+
+    window.localStorage.setItem('order', JSON.stringify(obj));
+    window.localStorage.setItem('order', JSON.stringify(obj));
   };
   const handleSliderChangeeth = (event, newValue) => {
     setethplan('ETH-CUSTOM');
     setethhashvalue(`${Math.round((newValue + 1000) / 192)}TH/s`);
     setethvalue(`${newValue + 1000}`);
+    obj['name'] = plans.eth[0].names[3];
+    obj['price'] = `${newValue}`;
+    obj['hashpower'] = `${Math.round((newValue + 1000) / 192)}TH/s`;
+    onSetOrder(obj);
+    window.localStorage.setItem('order', JSON.stringify(obj));
+    window.localStorage.setItem('order', JSON.stringify(obj));
   };
   return (
     <div>
-      <div style={{ display: 'flex',justifyContent:'center' }}>
-        <button
+      <div
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        <Button 
+            className={classes.btn2}
           onClick={e => {
             e.preventDefault();
             setbtc(true);
           }}
         >
           Bitcoin Mining
-        </button>
-        <button
+        </Button>
+        <Button
+          className={classes.btn2}
           onClick={e => {
             e.preventDefault();
             setbtc(false);
           }}
         >
           Ethereum Mining
-        </button>
+        </Button>
       </div>
       <div className="planpick">
         <div className="planarea">
@@ -135,80 +252,94 @@ export default function pickplan() {
                     margin: '15px',
                   }}
                 >
-                  <div
-                    style={{
-                      padding: '10px',
-                      backgroundColor: 'black',
-                      color: '#f0b90b',
-                      margin: '0 3px',
-                      minWidth: '80px',
-                      cursor: 'pointer',
-                      textAlign: 'center',
-                    }}
-                    onClick={() => {
-                      setbtcplan('BTCGOLD');
-                      setbtchashvalue('4TH/s');
-                      setbtcvalue('2,999');
-                      window.localStorage.setItem("order")
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      display="block"
-                      gutterBottom
+                 
+                    <Button variant="contained" 
+                      className="pn-btn"
+                      onClick={() => {
+                        setbtcplan('BTCGOLD');
+                        setbtchashvalue('4TH/s');
+                        setbtcvalue('2,999');
+                        /** const plans = {
+  
+  "btc": [
+    { "names":[ "BTC-GOLD", "BTC-PLATINUM", "BTC-DIAMOND","BTC-CUSTOM" ], 
+    "hashpower":[ "4TH/s", "20TH/s", "104TH/s" ],
+  
+    "prices":[ "2999", "9999", "20500" ] },
+   
+  ],
+  "eth": [
+    { "names":[ "ETH-GOLD", "ETH-PLATINUM", "ETH-DIAMOND","ETH-CUSTOM" ], 
+    "hashpower":[ "4TH/s", "20TH/s", "104TH/s" ],
+  
+    "prices":[ "3999", "10999", "21500" ] },
+   
+  ]
+ }*/
+                        obj['name'] = plans.btc[0].names[0];
+                        obj['price'] = plans.btc[0].prices[0];
+                        obj['hashpower'] = plans.btc[0].hashpower[0];
+
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+
+                        onSetOrder(obj);
+                      }}
                     >
-                      GOLD
-                    </Typography>
-                  </div>
-                  <div
-                    style={{
-                      padding: '10px',
-                      backgroundColor: 'black',
-                      color: '#f0b90b',
-                      margin: '0 5px',
-                      minWidth: '80px',
-                      cursor: 'pointer',
-                      textAlign: 'center',
-                    }}
-                    onClick={() => {
-                      setbtcplan('BTC-PLATINUM');
-                      setbtchashvalue('20TH/s');
-                      setbtcvalue('9,999');
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      display="block"
-                      gutterBottom
+                      
+                        GOLD
+                   
+                    </Button>
+               
+               
+                    <Button variant="contained" 
+                      className="pn-btn"
+                      onClick={() => {
+                        setbtcplan('BTC-PLATINUM');
+                        setbtchashvalue('20TH/s');
+                        setbtcvalue('9,999');
+
+                        obj['name'] = plans.btc[0].names[1];
+                        obj['price'] = plans.btc[0].prices[1];
+                        obj['hashpower'] = plans.btc[0].hashpower[1];
+
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                        onSetOrder(obj);
+                      }}
                     >
-                      PLATINUM
-                    </Typography>
-                  </div>
-                  <div
-                    style={{
-                      padding: '10px',
-                      backgroundColor: 'black',
-                      color: '#f0b90b',
-                      margin: '0 5px',
-                      minWidth: '80px',
-                      cursor: 'pointer',
-                      textAlign: 'center',
-                    }}
-                    onClick={() => {
-                      setbtcplan('BTC-DIAMOND');
-                      setbtchashvalue('104TH/s');
-                      setbtcvalue('20,999');
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      display="block"
-                      gutterBottom
+                     
+                        PLATINUM
+                     
+                    </Button>
+            
+                    <Button variant="contained"  
+                      className="pn-btn"
+                      onClick={() => {
+                        setbtcplan('BTC-DIAMOND');
+                        setbtchashvalue('104TH/s');
+                        setbtcvalue('20,999');
+
+                        obj['name'] = plans.btc[0].names[2];
+                        obj['price'] = plans.btc[0].prices[2];
+                        obj['hashpower'] = plans.btc[0].hashpower[2];
+
+                        onSetOrder(obj);
+                      }}
                     >
-                      DIAMOND
-                    </Typography>
-                  </div>
+                   
+                        DIAMOND
+                     
+                   
+                   
+                    </Button>
+                
                 </div>
+
                 <Typography
                   variant="subtitle1"
                   gutterBottom
@@ -216,21 +347,26 @@ export default function pickplan() {
                 >
                   CUSTOM PLAN
                 </Typography>
+                <p
+                  style={{ textAlign: 'center', margin: '3px auto' }}
+                >{`${btchashval}`}</p>
+                <Divider />
+                <p
+                  style={{ textAlign: 'center', margin: '3px auto' }}
+                >{`${btcval}USD`}</p>
                 <div
                   style={{ marginTop: '35px', marginBottom: '13px' }}
                 >
-                  <Slider
-                    className={classes.slider}
+                  <AirbnbSlider
                     defaultValue={25000}
-                    getAriaValueText={valuetext}
-                    aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
+                    aria-labelledby="custom"
                     step={50}
-                    marks
                     min={20500}
                     max={50000}
-                    valueLabelDisplay="on"
+                    ThumbComponent={AirbnbThumbComponent}
                     onChange={handleSliderChange}
+                    valueLabelDisplay="auto"
+                    getAriaValueText={valuetext}
                   />
                 </div>
                 <Divider dark />
@@ -292,78 +428,101 @@ export default function pickplan() {
                     margin: '15px',
                   }}
                 >
-                  <div
-                    style={{
-                      padding: '10px',
-                      backgroundColor: 'black',
-                      color: '#f0b90b',
-                      margin: '0 3px',
-                      minWidth: '80px',
-                      cursor: 'pointer',
-                      textAlign: 'center',
-                    }}
-                    onClick={() => {
-                      setethplan('ETH-GOLD');
-                      setethhashvalue('4TH/s');
-                      setethvalue('3,999');
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      display="block"
-                      gutterBottom
+                  <Paper>
+                    <div
+                      className="pn-btn"
+                      onClick={() => {
+                        setethplan('ETH-GOLD');
+                        setethhashvalue('4TH/s');
+                        setethvalue('3,999');
+
+                        obj['name'] = plans.eth[0].names[0];
+                        obj['price'] = plans.eth[0].prices[0];
+                        obj['hashpower'] = plans.eth[0].hashpower[0];
+
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                        onSetOrder(obj);
+                      }}
                     >
-                      GOLD
-                    </Typography>
-                  </div>
-                  <div
-                    style={{
-                      padding: '10px',
-                      backgroundColor: 'black',
-                      color: '#f0b90b',
-                      margin: '0 5px',
-                      minWidth: '80px',
-                      cursor: 'pointer',
-                      textAlign: 'center',
-                    }}
-                    onClick={() => {
-                      setethplan('ETH-PLATINUM');
-                      setethhashvalue('20TH/s');
-                      setethvalue('10,999');
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      display="block"
-                      gutterBottom
+                      <Typography
+                        variant="button"
+                        display="block"
+                        gutterBottom
+                      >
+                        GOLD
+                      </Typography>
+                    </div>
+                  </Paper>
+                  <Paper>
+                    <div
+                      className="pn-btn"
+                      onClick={() => {
+                        setethplan('ETH-PLATINUM');
+                        setethhashvalue('20TH/s');
+                        setethvalue('10,999');
+                        obj['name'] = plans.eth[0].names[1];
+                        obj['price'] = plans.eth[0].prices[1];
+                        obj['hashpower'] = plans.eth[0].hashpower[1];
+                        onSetOrder(obj);
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                      }}
                     >
-                      PLATINUM
-                    </Typography>
-                  </div>
-                  <div
-                    style={{
-                      padding: '10px',
-                      backgroundColor: 'black',
-                      color: '#f0b90b',
-                      margin: '0 5px',
-                      minWidth: '80px',
-                      cursor: 'pointer',
-                      textAlign: 'center',
-                    }}
-                    onClick={() => {
-                      setethplan('ETH-DIAMOND');
-                      setethhashvalue('104TH/s');
-                      setethvalue('21,999');
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      display="block"
-                      gutterBottom
+                      <Typography
+                        variant="button"
+                        display="block"
+                        gutterBottom
+                      >
+                        PLATINUM
+                      </Typography>
+                    </div>
+                  </Paper>
+                  <Paper>
+                    <div
+                      className="pn-btn"
+                      onClick={() => {
+                        setethplan('ETH-DIAMOND');
+                        setethhashvalue('104TH/s');
+                        setethvalue('21,999');
+
+                        obj['name'] = plans.eth[0].names[2];
+
+                        obj['price'] = plans.eth[0].prices[2];
+                        obj['hashpower'] = plans.eth[0].hashpower[2];
+                        onSetOrder(obj);
+
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                        window.localStorage.setItem(
+                          'order',
+                          JSON.stringify(obj),
+                        );
+                      }}
                     >
-                      DIAMOND
-                    </Typography>
-                  </div>
+                      <Typography
+                        variant="button"
+                        display="block"
+                        gutterBottom
+                      >
+                        DIAMOND
+                      </Typography>
+                    </div>
+                  </Paper>
                 </div>
                 <Typography
                   variant="subtitle1"
@@ -372,10 +531,17 @@ export default function pickplan() {
                 >
                   CUSTOM PLAN
                 </Typography>
+                <p
+                  style={{ textAlign: 'center', margin: '3px auto' }}
+                >{`${ethhashval}`}</p>
+                <Divider />
+                <p
+                  style={{ textAlign: 'center', margin: '3px auto' }}
+                >{`${ethval}USD`}</p>
                 <div
                   style={{ marginTop: '35px', marginBottom: '13px' }}
                 >
-                  <Slider
+                  <AirbnbSlider
                     className={classes.slider}
                     defaultValue={25000}
                     getAriaValueText={valuetext}
@@ -385,6 +551,7 @@ export default function pickplan() {
                     marks
                     min={20500}
                     max={50000}
+                    ThumbComponent={AirbnbThumbComponent}
                     valueLabelDisplay="on"
                     onChange={handleSliderChangeeth}
                   />
@@ -408,21 +575,23 @@ export default function pickplan() {
           )}
         </div>
 
-        <div className="prevarea">
+        <div>
           {
             //prev area
           }
           {btcview ? (
-            <div
-              syle={{
-                margin: '10px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
+            <div className="prevarea">
+              <Button
+                variant="contained"
+                className={classes.btn}
+                onClick={() => {
+                  hn();
+                }}
+              >
+                PROCEED REVIEW ORDER
+              </Button>
+              <Typography variant="h6">summary</Typography>
               <div>
-                <Typography variant="h5">Summary</Typography>
                 <TableContainer component={Paper}>
                   <Table
                     className={classes.table}
@@ -459,7 +628,9 @@ export default function pickplan() {
                     </TableBody>
                   </Table>
                 </TableContainer>
-                <Divider dark />
+              </div>
+              <Divider />
+              <div>
                 <div
                   style={{
                     display: 'flex',
@@ -470,21 +641,16 @@ export default function pickplan() {
                   <h5>Total:</h5>
                   <h5>{btcval}</h5>{' '}
                 </div>
-                <Divider dark />
               </div>
-              <h5>Payment type: <br/> BITCOIN </h5>
+              <Divider dark />
+              <h5>
+                Payment type: <br /> BITCOIN{' '}
+              </h5>
             </div>
           ) : (
-            <div
-              syle={{
-                margin: '10px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
+            <div className="prevarea">
+              <Typography variant="h5">Summary</Typography>
               <div>
-                <Typography variant="h5">Summary</Typography>
                 <TableContainer component={Paper}>
                   <Table
                     className={classes.table}
@@ -521,7 +687,9 @@ export default function pickplan() {
                     </TableBody>
                   </Table>
                 </TableContainer>
-                <Divider dark />
+              </div>
+              <Divider />
+              <div>
                 <div
                   style={{
                     display: 'flex',
@@ -532,9 +700,11 @@ export default function pickplan() {
                   <h5>Total:</h5>
                   <h5>{ethval}</h5>{' '}
                 </div>
-                <Divider dark />
               </div>
-              <h5>Payment type: <br/> BITCOIN</h5>
+              <Divider />
+              <h5>
+                Payment type: <br /> ETHEREUM
+              </h5>
             </div>
           )}
         </div>
@@ -542,3 +712,14 @@ export default function pickplan() {
     </div>
   );
 }
+const mapDispatchToProps = dispatch => ({
+  onSetOrder: order => dispatch({ type: 'ORDER', order }),
+});
+export default compose(
+  withFirebase,
+
+  connect(
+    null,
+    mapDispatchToProps,
+  ),
+)(pickplan);

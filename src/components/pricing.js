@@ -18,6 +18,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import ClearIcon from '@material-ui/icons/Clear';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import Review from './reviewcontainer';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -84,7 +85,8 @@ export default function pricing() {
     const [input,Setval]= React.useState(20500)
     return (
         <div>
-            <header className="header yy" >
+          <Review/>
+          <header className="header yy">
       <Particles
         width="100px"
         height="70px"
@@ -117,11 +119,7 @@ export default function pricing() {
       </div>
 
       <ul className="header__nav">
-        <li>
-          <a href="#" className="a">
-            Home{' '}
-          </a>
-        </li>
+        
         <li>
           <a href="/about" className="a">
             About Us
@@ -141,8 +139,8 @@ export default function pricing() {
           </a>
         </li>
         <li>
-          <a href="/account" className="a">
-           Dashboard
+        <a href="/contactus" className="a">
+       Customer Service
           </a>
         </li>
         <li>
@@ -188,16 +186,16 @@ export default function pricing() {
         </li>
       </ul>
 
-      <div className="  header__btns ">
+      <div className="  hyy header__btns ">
         <a
-          href="/signin"
-          className="  btn btn--transparent btn--header a"
+          href="/account"
+          className=" hyy btn btn--transparent btn--header a"
         >
           log in
         </a>
         <a
           href="/signup"
-          className="   btn btn--white btn--header a"
+          className="  hyy btn btn--white btn--header a"
         >
          REGISTER
         </a>
@@ -382,7 +380,7 @@ export default function pricing() {
 						<h2 class="price__title">CUSTOM</h2>
             <small>create a custom  btc plan</small>
 						<ul class="price__list">
-						<li><h3>104 TH/s</h3> </li>
+						<li><h3>{`${Math.round(Number(input)/192)}` }TH/s</h3> </li>
 							<li><b>30 Months Bitcoin Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
@@ -480,9 +478,9 @@ export default function pricing() {
           <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
 			
 						<h2 class="price__title">CUSTOM</h2>
-            <small>create a custom  btc plan</small>
+            <small>create a custom  eth plan</small>
 						<ul class="price__list">
-						<li><h3>104 TH/s</h3> </li>
+						<li><h3>{`${Math.round((Number(input)+1000)/192)}` } TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>

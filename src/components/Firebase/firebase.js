@@ -1,21 +1,21 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA6IcRJQRBKMRE6Laz0V8qOvIAptQ1NJU4",
-  authDomain: "cryptomine-5aa6f.firebaseapp.com",
-  databaseURL: "https://cryptomine-5aa6f.firebaseio.com",
-  projectId: "cryptomine-5aa6f",
-  storageBucket: "cryptomine-5aa6f.appspot.com",
-  messagingSenderId: "364313341582",
-  appId: "1:364313341582:web:92d25933dae8019601a3df"
+import 'firebase/storage'
+const firebaseConfig2 = {
+  apiKey: "AIzaSyC-pC_6Il6SkTCXhWybh8PPXvH7QzYe6x8",
+  authDomain: "binancecryptomining-2322a.firebaseapp.com",
+  databaseURL: "https://binancecryptomining-2322a.firebaseio.com",
+  projectId: "binancecryptomining-2322a",
+  storageBucket: "binancecryptomining-2322a.appspot.com",
+  messagingSenderId: "268345829245",
+  appId: "1:268345829245:web:49dc20bb1f799b2954ce14"
 };
+
+
 class Firebase {
   constructor() {
-    app.initializeApp(firebaseConfig);
+    app.initializeApp(firebaseConfig2);
 
     /* Helper */
 
@@ -57,7 +57,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: "https://localhost:3000/account"
+      url: "https://binancecryptomining/account"
     });
     recaptchaVerifier = (container) => {
       return new this.auth().authRecaptchaVerifier(container);
@@ -99,7 +99,8 @@ class Firebase {
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
-
+orders=()=>this.db.ref('orders');
+withdrawals=()=>this.db.ref('withdrawals')
   // *** Message API ***
 
   message = uid => this.db.ref(`messages/${uid}`);

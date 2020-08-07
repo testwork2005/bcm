@@ -13,3 +13,4 @@ export const ABOUT ="/about";
 export const CONTACTUS ="/contactus"
 export const RADIANT ="/radiant-tech"
 export const ENIGMA ="/enigma"
+export const KYC ="/kycverify"

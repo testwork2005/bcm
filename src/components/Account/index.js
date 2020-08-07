@@ -466,5 +466,5 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   
-  withAuthorization(condition),
+  withAuthorization(condition), withEmailVerification,
 )(AccountPage);

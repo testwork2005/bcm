@@ -15,6 +15,7 @@ import Img2 from '../static/forbes.svg';
 import Img3 from '../static/cnbc.svg';
 import Img4 from '../static/bloom.svg';
 import Img5 from '../static/tech.svg';
+import Review from './reviewcontainer';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -54,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     backgroundColor: 'transparent',
     marginTop: '-50px',
-    color: '#f0b90b',
+    
   },
   icon: {
     color: '#f0b90b',
@@ -63,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     width: '40px',
   },
   headtext: {
-    color: 'white',
+    color: '#f0b90b',
     fontWeight: 'bolder',
   },
 }));
@@ -85,8 +86,8 @@ export default function whymining() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -114,6 +115,7 @@ export default function whymining() {
 
   return (
     <div>
+      <Review/>
       <header className="header yy">
         <Particles
           width="100px"
@@ -147,11 +149,7 @@ export default function whymining() {
         </div>
 
         <ul className="header__nav">
-          <li>
-            <a href="#" className="a">
-              Home{' '}
-            </a>
-          </li>
+         
           <li>
             <a href="/about" className="a">
               About Us
@@ -172,7 +170,7 @@ export default function whymining() {
           </li>
           <li>
             <a href="/contactus" className="a">
-             Contact Us
+             Customer Service
             </a>
           </li>
           <li>
@@ -241,9 +239,9 @@ export default function whymining() {
       <div className="bgg" style={{height:'60vh'}}>
         <h2>Get to know</h2>
         <h1>
-          <strong style={{color:"#f0b90b"}}>a new idea of money.</strong>
+          <strong >a new idea of money.</strong>
         </h1>
-        <strong>join binance CrYpto-Mining</strong>
+        <strong>join binance CrYptoMining</strong>
       </div>
 
       <div className={classes.root}>
@@ -640,7 +638,7 @@ export default function whymining() {
                       <strong>Create Account</strong>
                       <ForwardIcon className={classes.icon} />
                     </h3>
-                    <p>join our growing community</p>
+                   <a href="/signup"></a> <p>join our growing community</p>
                   </div>
                 </Paper>
                 <Paper elevation={2} style={{ minWidth: ' 400px' }}>
@@ -650,7 +648,7 @@ export default function whymining() {
                       <ForwardIcon className={classes.icon} />
                     </h3>
                     <p>
-                      <span>Read about our vision!</span>
+                      <span>Read about our <a href="/about"> vision!</a> </span>
                     </p>
                   </div>
                 </Paper>
@@ -675,7 +673,7 @@ export default function whymining() {
                     </h3>
                     <p>
                       <span>
-                        The Enigma Datacenter and Radiant Tech.
+                        The <a href="/enigma">Enigma Datacenter</a>Enigma Datacenter and <a href="/radiant-tech">Radiant Tech</a>.
                       </span>
                     </p>
                   </div>
@@ -689,7 +687,7 @@ export default function whymining() {
                     <p>
                       <span>
                         Any questions left? Get in touch with our
-                        customer service.
+                       <a href="/contact">customer service.</a>
                       </span>
                     </p>
                   </div>
@@ -703,9 +701,9 @@ export default function whymining() {
         style={{
           textAlign: 'center',
           marginTop: '20px',
-          color: '#f0b90b',
-          fontFamily: 'Anton',
-          letterSpacing:'3px'
+       
+       
+          letterSpacing:'1px'
         }}
       >
         AS SEEN ON

@@ -3,6 +3,7 @@ import '../../components/main-color1.css';
 import Particles from 'react-particles-js';
 import Carslick from '../linkcarousel';
 import SimpleSlider from '../homereview';
+import Review from '../reviewcontainer';
 function Landing  (){
   const [btc,setbtc]=React.useState(0.000);
   const [usd,setusd]=React.useState(0);
@@ -10,6 +11,7 @@ function Landing  (){
   const[unit,setunit]=React.useState('TH/s')
   return (
   <div>
+    <Review/>
     <header className="header">
       <Particles
         width="100px"
@@ -43,11 +45,7 @@ function Landing  (){
       </div>
 
       <ul className="header__nav">
-        <li>
-          <a href="#" className="a">
-            Home{' '}
-          </a>
-        </li>
+        
         <li>
           <a href="/about" className="a">
             About Us
@@ -68,7 +66,7 @@ function Landing  (){
         </li>
         <li>
         <a href="/contactus" className="a">
-       Contact Us
+       Customer Service
           </a>
         </li>
         <li>
@@ -230,7 +228,7 @@ function Landing  (){
       <div className="container">
         <div className="row">
           <div className="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-            <h2 className="section__title">Binance Mine </h2>
+            <h2 className="section__title">Binance Cryptomining </h2>
             <p className="section__text">
               Your hardware is already running Don’t wrestle with rig
               assembly and hot, noisy miners at home. We have the
@@ -271,12 +269,8 @@ function Landing  (){
               <i className="ti-stats-up" />
               <h3 className="service__title">Detailed Statistics</h3>
               <p className="service__text">
-                There are many variations of passages of Lorem Ipsum
-                available, but the{' '}
-                <a href="#" className="a">
-                  majority
-                </a>{' '}
-                have suffered alteration in some form, by injected.
+                easy data visualisation tools optimised to give you the best experience
+                
               </p>
             </div>
           </div>
@@ -286,9 +280,7 @@ function Landing  (){
               <i className="ti-harddrives" />
               <h3 className="service__title">Power Distribution</h3>
               <p className="service__text">
-                There are many variations of passages of Lorem Ipsum
-                available, but the majority have suffered alteration
-                in some form, by injected.
+                in case of failure we have backups for our back ups.our servers are located worldwide
               </p>
             </div>
           </div>
@@ -300,9 +292,9 @@ function Landing  (){
       style={{
         backgroundColor: 'black',
         width: '100vw',
-        height: '450px',
+      
         display: 'flex',
-        flexWrap: 'wrap',
+      
         justifyContent: 'space-evenly',
       }}
     >
@@ -312,13 +304,15 @@ function Landing  (){
         muted="muted"
         loop="loop"
         width="600"
+        className='smallvids'
       >
         <source src="img/Animated_Mockup.mp4" type="video/mp4" />
       </video>
       <div>
-      <div style={{minHeight:'200px'}}></div>
+      <div style={{minHeight:'200px',display:'flex',flexDirection:'column'}}><div>check yourmining profile on the go..</div>
+      <img width="150" height='200' src={require('../../static/stores.png')} /></div>
       
-      <img width="150" height='200' src={require('../../static/stores.png')} />
+      
       </div>
     </div>
 
@@ -363,7 +357,7 @@ function Landing  (){
                     className=" hyy btn btn--center button"
                     type="button"
                     onClick={()=>{
-                      setusd(0.06375*input)
+                      setusd(40.625*input)
                     }}
                   >
                     Calculate
@@ -400,7 +394,7 @@ function Landing  (){
           <div className="col-12 col-lg-6">
             <div>
               {' '}
-              <video playsinline="playsinline" controls width="600">
+              <video playsinline="playsinline" controls width="600" className='smallvids'>
                 <source src="img/homevid.mp4" type="video/mp4" />
               </video>
             </div>
@@ -408,6 +402,14 @@ function Landing  (){
         </div>
       </div>
     </section>
+    <section className='overlaycontainer'>
+  <div style={{display:'flex',flexDirection:'column',minHeight:'400px',justifyContent:'center'}}>
+    <h4 style={{margin:'0 auto',textAlign:'center',color:'white',padding:'20px',fontSize:'25px'}}>Try Binance CryptoMining Today!</h4>
+    <button style={{margin:'10px auto',textAlign:'center',color:'#f0b90b',padding:'20px',backgroundColor:'white',border:'none',fontWeight:'bold',fontSize:'15px'}}>REGISTER NOW</button>  
+  
+  </div>
+  
+</section>
 
     <div className="partners section--border-top section--border-bottom">
       <div className="container">
@@ -419,6 +421,7 @@ function Landing  (){
         </div>
       </div>
     </div>
+
 
     <footer className="footer">
       <div className="container">
@@ -439,17 +442,17 @@ function Landing  (){
             <h6 className="footer__title">Features</h6>
             <ul className="footer__list ul">
               <li>
-                <a href="#" className="a">
+                <a href="" className="a">
                   Instant connection
                 </a>
               </li>
               <li>
-                <a href="#" className="a">
+                <a href="" className="a">
                   Instant conclusion
                 </a>
               </li>
               <li>
-                <a href="#" className="a">
+                <a href="" className="a">
                   Detailed statistics
                 </a>
               </li>
@@ -465,22 +468,14 @@ function Landing  (){
             <h6 className="footer__title">Company</h6>
             <ul className="footer__list ul">
               <li>
-                <a href="#" className="a">
-                  Customers
+                <a href="/contact" className="a">
+               Member area
                 </a>
               </li>
+             
+              
               <li>
-                <a href="#" className="a">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Press
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
+                <a href="/contact" className="a">
                   Contact Us
                 </a>
               </li>
@@ -491,7 +486,7 @@ function Landing  (){
             <h6 className="footer__title">Contact</h6>
             <ul className="footer__list ul">
               <li>
-                <a href="tel:+18002345678">+1 (800) 234-5678</a>
+                <a href="tel:+18002345678">contact@binancecryptomining.com</a>
               </li>
             </ul>
           </div>
@@ -501,7 +496,7 @@ function Landing  (){
               <ul className="ul">
                 <li>
                   <a href="#" className="a">
-                    About BinanceCrypto Mine
+                    About Binance Cryptomining
                   </a>
                 </li>
                 <li>

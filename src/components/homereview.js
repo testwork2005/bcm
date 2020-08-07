@@ -17,8 +17,8 @@ export default class SimpleSlider extends Component {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             infinite: true,
             dots: true,
           },
@@ -26,9 +26,9 @@ export default class SimpleSlider extends Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1,
           },
         },
         {
@@ -42,7 +42,7 @@ export default class SimpleSlider extends Component {
     };
     return (
       <div>
-            <h2> TESTIMONIALS</h2>
+        <h2 className='test'> TESTIMONIALS</h2>
         <Slider {...settings}>
           <div className="review">
             <blockquote className="review__blockquote">
@@ -95,23 +95,20 @@ export default class SimpleSlider extends Component {
           <div>
             <div className="review">
               <blockquote className="review__blockquote">
-                Binance Crypto Miningg is one of our
-                biggest clients and proven to be a reliable and
-                trustworthy business partner. Their transparent mining
-                sites and high quality software infrastructure
-                together with our high end mining hardware result in a
-                great and unique product and experience for everybody
-                interested in mining!
+                Binance Crypto Miningg is one of our biggest clients
+                and proven to be a reliable and trustworthy business
+                partner. Their transparent mining sites and high
+                quality software infrastructure together with our high
+                end mining hardware result in a great and unique
+                product and experience for everybody interested in
+                mining!
               </blockquote>
               <span className="review__autor">
-              Jing Wei, CEO of MinerEU
-                <span>
-                Leading Scrypt Asic Manufacturing Company
-                </span>
+                Jing Wei, CEO of MinerEU
+                <span>Leading Scrypt Asic Manufacturing Company</span>
               </span>
             </div>
           </div>
-          
         </Slider>
       </div>
     );

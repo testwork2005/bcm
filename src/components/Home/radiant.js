@@ -11,6 +11,7 @@ import Img2 from '../../static/forbes.svg';
 import Img3 from '../../static/cnbc.svg';
 import Img4 from '../../static/bloom.svg';
 import Img5 from '../../static/tech.svg';
+import Review from '../reviewcontainer';
 
 function radiant() {
   const [btc, setbtc] = React.useState(0.0);
@@ -19,134 +20,128 @@ function radiant() {
   const [unit, setunit] = React.useState('TH/s');
   return (
     <div>
-      <header className="header yy">
-        <Particles
-          width="100px"
-          height="70px"
-          style={{
-            background: `transparent`,
-          }}
-          params={{
-            particles: {
-              color: {
-                value: '#D4AF37',
-              },
-              line_linked: {
-                enable: true,
-                distance: 50,
-                color: '#ffff',
-                opacity: 1,
-                width: 1.5,
-              },
+      <Review/>
+      
+    <header className="header yy">
+      <Particles
+        width="100px"
+        height="70px"
+        style={{
+          background: `transparent`,
+        }}
+        params={{
+          particles: {
+            color: {
+              value: '#D4AF37',
             },
-          }}
-        />
-        <div className="header__logo">
-          <a href="/" className="a">
-            <img
-              src={require('../../static/home-bg.png')}
-              className="img"
-              alt=""
-            />
+            line_linked: {
+              enable: true,
+              distance: 50,
+              color: '#ffff',
+              opacity: 1,
+              width: 1.5,
+            },
+          },
+        }}
+      />
+      <div className="header__logo">
+        <a href="/" className="a">
+          <img
+            src={require('../../static/home-bg.png')}
+            className="img"
+            alt=""
+          />
+        </a>
+      </div>
+
+      <ul className="header__nav">
+        
+        <li>
+          <a href="/about" className="a">
+            About Us
           </a>
-        </div>
-
-        <ul className="header__nav">
-          <li>
-            <a href="#" className="a">
-              Home{' '}
-            </a>
-          </li>
-          <li>
-            <a href="/about" className="a">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://bitcointicker.co/transactions/"
-              className="a"
-            >
-              Live Payout
-            </a>
-          </li>
-          <li>
-            <a href="/pricing" className="a">
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a href="/contactus" className="a">
-              Contact Us
-            </a>
-          </li>
-          <li>
-            <a href="/whymining" className="a">
-              Why Mining
-            </a>
-          </li>
-          {
-            //<li className="dropdown header__dropdown">
-            //<a
-            //  className="dropdown-toggle a"
-            //  href="/account"
-            //  id="dropdownMenuLink2"
-            // >
-            //   DashBoard
-            //</li></li> </a>}
-            //  </li>
-          }
-          <li class="dropdown header__dropdown">
-            <a
-              class="dropdown-toggle"
-              href="#"
-              role="button"
-              id="dropdownMenuLink1"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Technology
-            </a>
-
-            <ul
-              class="dropdown-menu header__dropdown-menu"
-              aria-labelledby="dropdownMenuLink1"
-            >
-              <li>
-                <a href="/enigma" style={{ color: 'black' }}>
-                  Enigma Data center
-                </a>
-              </li>
-              <li>
-                <a href="/radiant-tech" style={{ color: 'black' }}>
-                  Radiant Tech
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-        <div className="  hyy header__btns ">
+        </li>
+        <li>
           <a
-            href="/signin"
-            className=" hyy btn btn--transparent btn--header a"
+            href="https://bitcointicker.co/transactions/"
+            className="a"
           >
-            log in
+            Live Payout
           </a>
+        </li>
+        <li>
+          <a href="/pricing" className="a">
+            Pricing
+          </a>
+        </li>
+        <li>
+        <a href="/contactus" className="a">
+       Customer Service
+          </a>
+        </li>
+        <li>
+          <a href="/whymining" className="a">
+            Why Mining
+          </a>
+        </li>
+        {
+          //<li className="dropdown header__dropdown">
+          //<a
+          //  className="dropdown-toggle a"
+          //  href="/account"
+          //  id="dropdownMenuLink2"
+          // >
+          //   DashBoard
+          //</li></li> </a>}
+          //  </li>
+        }
+        <li class="dropdown header__dropdown">
           <a
-            href="/signup"
-            className="  hyy btn btn--white btn--header a"
+            class="dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink1"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
           >
-            REGISTER
+            Technology
           </a>
-        </div>
 
-        <button className="header__menu button" type="button">
-          <i className="ti-menu" />
-          <i className="ti-close" />
-        </button>
-      </header>
+          <ul
+            class="dropdown-menu header__dropdown-menu"
+            aria-labelledby="dropdownMenuLink1"
+          >
+            <li>
+              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
+            </li>
+            <li>
+              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div className="  hyy header__btns ">
+        <a
+          href="/account"
+          className=" hyy btn btn--transparent btn--header a"
+        >
+          log in
+        </a>
+        <a
+          href="/signup"
+          className="  hyy btn btn--white btn--header a"
+        >
+         REGISTER
+        </a>
+      </div>
+
+      <button className="header__menu button" type="button">
+        <i className="ti-menu" />
+        <i className="ti-close" />
+      </button>
+    </header>
       <section className="home home--circle">
         <div
           id="particles-js"
@@ -166,10 +161,11 @@ function radiant() {
         </div>
       </section>
       <h1 className="pressheader">PRESS</h1>
-      <section className="press">
-        <img src={Img1} />
-        <img src={Img2} /> <img src={Img3} /> <img src={Img4} />{' '}
-        <img src={Img5} />
+      <section >
+      <div className="press columnise"> <div><img src={Img1} /></div> 
+      <div><img src={Img2} /></div>   <div><img src={Img3} /></div> <div><img src={Img4} /></div> {' '}
+       <div><img src={Img5} /></div> </div>
+       
       </section>
       <h2 className="pressheader">  what we’ve achieved!</h2>
       <Rad />
@@ -210,7 +206,44 @@ function radiant() {
           the solution was ready.
         </p>
       </div>
+      <section
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
+        className="blueenigma"
+      >
+        <h1
+          style={{
+            color: 'white',
+            textAlign: 'center',
+            margin: '30px',
+            fontWeight: 'bold',
+            fontFamily: 'Noto Sans JP, sans-serif',
+            letterSpacing: '3px',
+          }}
+        >
+          Join Our evolution!
+        </h1>
 
+        <div
+          style={{
+            padding: '10px',
+            margin: '15px auto',
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'bold',
+            fontFamily: 'Noto Sans JP, sans-serif',
+            letterSpacing: '1px',
+          }}
+          onClick={() => {
+            window.location.href = '/account';
+          }}
+        >
+          BECOME A MINER TODAY!
+        </div>
+      </section>
       <footer className="footer">
         <div className="container">
           <div className="row">

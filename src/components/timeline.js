@@ -96,6 +96,30 @@ export default function OppositeContentTimeline() {
             <Typography>Mined Over 2000btc </Typography>
           </TimelineContent>
         </TimelineItem>
+        <TimelineItem>
+          <TimelineOppositeContent>
+            <Typography >2018</Typography>
+          </TimelineOppositeContent>
+          <TimelineSeparator>
+            <TimelineDot />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>Added a dozen more mining farms and held a Cryptomining seminar</Typography>
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineOppositeContent>
+            <Typography >2019</Typography>
+          </TimelineOppositeContent>
+          <TimelineSeparator>
+            <TimelineDot />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>held second seminar with the largest turnout  </Typography>
+          </TimelineContent>
+        </TimelineItem>
       </Timeline>
     </React.Fragment>
   );

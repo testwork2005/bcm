@@ -33,9 +33,11 @@ import Atable from './activitytable';
 import Dt from './profilecontainer';
 import Ticket from '../ticket';
 import Orders from './orders';
+import With from './withdrawals';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import Hashpower from './buystepper';
+import UHashpower from './upgrade';
 const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
@@ -51,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   badge: {
     float: 'right',
     color: 'yellow',
-    marginLeft: '60vw',
+   float:'right'
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
@@ -72,6 +74,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
     fontFamily: 'times new roman',
     fontWeight: 'bold',
+    paddingTop:'50px'
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -90,7 +93,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Dash() {
+function Dash(props) {
   const classes = useStyles();
   return (
     <div
@@ -118,7 +121,7 @@ function Dash() {
             <OfflineBoltSharpIcon className={classes.icon} />
           </div>
 
-          <h1 style={{ margin: '0 auto' }}>400 TH/s</h1>
+          <h1 style={{ margin: '0 auto' }}>{`${props.auth.hashpower} TH/s`}</h1>
 
           <div style={{ margin: '0 auto' }}>
             ---------------------
@@ -144,7 +147,7 @@ function Dash() {
             <OfflineBoltSharpIcon className={classes.icon} />
           </div>
 
-          <h1 style={{ margin: '0 auto' }}>400 TH/s</h1>
+          <h1 style={{ margin: '0 auto' }}>{`${props.auth.ethhashpower} TH/s`}</h1>
 
           <div style={{ margin: '0 auto' }}>
             ---------------------
@@ -171,12 +174,14 @@ function ResponsiveDrawer(props) {
   const [open, setOpen] = React.useState(false);
   const [currentview, setview] = React.useState(0);
   const [color, setcolor] = React.useState('white');
+  const [page,setpage]=React.useState('Dashboard')
+ 
   const toggleview = () => {
     switch (currentview) {
       case 0:
         return (
           <div>
-            <Dash />
+            <Dash auth={props.authUser} />
             <div
               style={{
                 padding: '20px',
@@ -193,6 +198,7 @@ function ResponsiveDrawer(props) {
               }}
               onClick={() => {
                 setview(4);
+
               }}
             >
               <div style={{ marginRight: '0px' }}>
@@ -212,9 +218,20 @@ function ResponsiveDrawer(props) {
         break;
       case 2:
         return (
-          <div>
+          <div style={{display:'flex',flexDirection:'column'}}>
+            <div style={{display:'flex',justifyContent:'space-between'}}>
+            <div style={{display:'flex',flexDirection:'column'}}>
+              <h1>CONTACT</h1>
+              <p style={{maxWidth:'300px'}}>Keep in mind that the quality and promptness of our response depends on how accurately you fill out the Contact form. Our drop down menu has several options, and if the wrong topic is used, it can delay the resolution of the ticket.
+We are looking forward to hearing from you!</p>
             <Ticket />
-          </div>
+            </div>
+            
+            <div style={{display:'flex',flexDirection:'column'}}>cv</div>
+            </div>
+          
+          
+      </div>
         );
         break;
       case 3:
@@ -228,6 +245,20 @@ function ResponsiveDrawer(props) {
         return (
           <div>
             <Hashpower />
+          </div>
+        );
+        break;
+      case 5:
+        return (
+          <div>
+            <UHashpower />
+          </div>
+        );
+        break;
+      case 6:
+        return (
+          <div>
+            <With />
           </div>
         );
         break;
@@ -247,7 +278,7 @@ function ResponsiveDrawer(props) {
       <div
         style={{
           backgroundColor: 'black',
-          height: '100px',
+          height: '120px',
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',
@@ -255,7 +286,12 @@ function ResponsiveDrawer(props) {
           color: 'white',
         }}
       >
-        welcome back
+         <img
+            src={require('../../static/home-bg.png')}
+            width="100"
+            alt=""
+            style={{margin:'0 auto'}}
+          />
       </div>
       <Divider />
       <List className={classes.list}>
@@ -263,6 +299,7 @@ function ResponsiveDrawer(props) {
           button
           onClick={() => {
             setview(0);
+            setpage('Dashboard')
           }}
         >
           <ListItemIcon className={classes.icon}>
@@ -284,6 +321,7 @@ function ResponsiveDrawer(props) {
               button
               onClick={() => {
                 setview(1);
+                setpage('Account details')
               }}
               className={classes.nested}
             >
@@ -296,6 +334,7 @@ function ResponsiveDrawer(props) {
               button
               onClick={() => {
                 setview(2);
+                setpage('Customer Service')
               }}
               className={classes.nested}
             >
@@ -311,6 +350,7 @@ function ResponsiveDrawer(props) {
           button
           onClick={() => {
             setview(3);
+            setpage('My orders')
           }}
         >
           <ListItemIcon className={classes.icon}>
@@ -325,9 +365,34 @@ function ResponsiveDrawer(props) {
           <ListItemText
             onClick={() => {
               setview(4);
+              setpage('Buy hashpower')
             }}
             primary="BUY HASHPOWER"
           />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon className={classes.icon}>
+            <DashboardOutlinedIcon className={classes.icon} />
+          </ListItemIcon>
+          <ListItemText
+            onClick={() => {
+              setview(5);
+              setpage('Upgrade Hashpower')
+            }}
+            primary="UPGRADE HASHPOWER"
+          />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => {
+            setview(6);
+            setpage('My withdrawals')
+          }}
+        >
+          <ListItemIcon className={classes.icon}>
+            <DashboardOutlinedIcon className={classes.icon} />
+          </ListItemIcon>
+          <ListItemText primary="MY WITHDRAWALS" />
         </ListItem>
       </List>
       <Divider />
@@ -351,17 +416,14 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <img
-            src={require('../../static/home-bg.png')}
-            height="100"
-            alt=""
-          />
+  <div><h4>{page}</h4></div>
+        
 
           <IconButton
             aria-label="show 11 new notifications"
             color="inherit"
           >
-            <Badge badgeContent={11} color="secondary">
+            <Badge badgeContent={0} color="secondary" edge='right'>
               <NotificationsIcon className={classes.badge} />
             </Badge>
           </IconButton>
@@ -404,13 +466,15 @@ function ResponsiveDrawer(props) {
           i go do the rest i never finish. no worry.
         </div>
         <Alert
-          severity="error"
+          severity="info"
           style={{
             marginTop: '20px',
+            backgroundColor:'white',
+            color:'black'
           }}
         >
-          to be verified go <a href="">here</a> and upload KYC
-          documents!
+          to be verified go <a href="/kycverify">here</a> and upload
+          KYC documents!
         </Alert>
         <br />
         {toggleview()}
@@ -435,5 +499,6 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   withFirebase,
-  //withAuthorization(condition),
+  withAuthorization(condition),
+ withEmailVerification,
 )(ResponsiveDrawer);

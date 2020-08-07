@@ -10,6 +10,7 @@ import HomePage from '../Home';
 import RadPage from '../Home/radiant';
 import EnigmaPage from '../Home/enigma';
 import AccountPage from '../Account/userdash';
+import KycPage from '../Account/kyc';
 import AdminPage from '../Dashboard';
 import PricingPage from '../pricing';
 import WhyPage from '../whymining';
@@ -40,13 +41,8 @@ const App = () => {
   };
   return (
     <div>
-      <Widget
-        handleNewUserMessage={handleNewUserMessage}
-        profileAvatar={Logo}
-        title="Customer Rep."
-        subtitle="..."
-      />
-      <Review />
+      
+     
       <Router>
         <div>
           <Route
@@ -60,6 +56,7 @@ const App = () => {
           <Route path={ROUTES.CONTACTUS} component={ContactPage} />
           <Route path={ROUTES.ABOUT} component={AboutPage} />
           <Route path={ROUTES.BLOG} component={Blogpage} />
+          <Route path={ROUTES.KYC} component={KycPage} />
           <Route
             path={ROUTES.PASSWORD_FORGET}
             component={PasswordForgetPage}
@@ -73,7 +70,7 @@ const App = () => {
           <Route path={ROUTES.ADMIN} component={AdminPage} />
         </div>
       </Router>
-    </div>
+      </div>
   );
 };
 

@@ -9,7 +9,7 @@ import PhoneInput from 'react-phone-number-input';
 const SignUpPage = () => {
   return (
     <div>
-      <header className="header yy">
+       <header className="header yy">
       <Particles
         width="100px"
         height="70px"
@@ -42,11 +42,7 @@ const SignUpPage = () => {
       </div>
 
       <ul className="header__nav">
-        <li>
-          <a href="#" className="a">
-            Home{' '}
-          </a>
-        </li>
+        
         <li>
           <a href="/about" className="a">
             About Us
@@ -67,7 +63,7 @@ const SignUpPage = () => {
         </li>
         <li>
         <a href="/contactus" className="a">
-       Contact Us
+       Customer Service
           </a>
         </li>
         <li>
@@ -103,7 +99,7 @@ const SignUpPage = () => {
             class="dropdown-menu header__dropdown-menu"
             aria-labelledby="dropdownMenuLink1"
           >
-           <li>
+            <li>
               <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
             </li>
             <li>
@@ -115,7 +111,7 @@ const SignUpPage = () => {
 
       <div className="  hyy header__btns ">
         <a
-          href="/signin"
+          href="/account"
           className=" hyy btn btn--transparent btn--header a"
         >
           log in
@@ -134,100 +130,75 @@ const SignUpPage = () => {
       </button>
     </header>
       <SignUpForm />
-      <div><h1 style={{ textAlign:'center',margin:'0 auto' }}>Binance crypto-mining Features</h1></div>
-      <div
-        style={{
-          webkitFilter: 'grayscale(100%)' /* Safari 6.0 - 9.0 */,
-          filter: 'grayscale(100%)',
-        }}
-      >
-        <div className="feat">
-          <div>
-            <img
-              src={require('../../static/idea.png')}
-              alt=""
-              style={{ margin: '0 auto', width: '150px' }}
-            />
-            <h2>State of the Art Mining Technology</h2>
-            <p class="reveal reveal-650 reveal_visible">
-              For every blockchain algorithm that we offer, we’re
-              providing some of the highest performing mining systems
-              that exist
-            </p>
-          </div>
-          <div>
-            {' '}
-            <img
-              src={require('../../static/libro.png')}
-              alt=""
-              style={{ margin: '0 auto', width: '150px' }}
-            />
-            <h2>Daily Mining Outputs</h2>
-            <p class="reveal reveal-650 reveal_visible">
-              Your mining outputs will be added to your account daily
-              and automatically
-            </p>
-          </div>
-          <div>
-            <img
-              src={require('../../static/maletin.png')}
-              alt=""
-              style={{ margin: '0 auto', width: '150px' }}
-            />
-            <h2 class="reveal reveal-992 reveal_visible">
-              Diverse Mining Portfolio
-            </h2>
-            <p class="reveal reveal-992 reveal_visible">
-              Choose from 6 major mining algorithms that span over 10+
-              mineable cryptocurrencies
-            </p>
-          </div>
-          <div>
-            <img
-              src={require('../../static/activo.png')}
-              alt=""
-              style={{ margin: '0 auto', width: '150px' }}
-            />
-            <h2 class="reveal reveal-full reveal_visible">
-              Freedom of Allocation
-            </h2>
-            <p class="reveal reveal-full reveal_visible">
-              Allocate your hash power to other cryptocurrencies
-              within your mining algorithm of choice
-            </p>
-          </div>{' '}
-          <div>
-            <img
-              src={require('../../static/tablero.png')}
-              alt=""
-              style={{ margin: '0 auto', width: '150px' }}
-            />
-            <h2 class="reveal reveal-full reveal_visible">
-              Intuitive Dashboard
-            </h2>
-            <p class="reveal reveal-full reveal_visible">
-              All the crypto mining data and charts that you need,
-              when you need them
-            </p>
-          </div>
-          <div>
-            <img
-              src={require('../../static/seguridad.png')}
-              alt=""
-              style={{ margin: '0 auto', width: '150px' }}
-            />
-            <h2 class="reveal reveal-full reveal_visible">
-              Secure &amp; Private
-            </h2>
-            <p class="reveal reveal-full reveal_visible">
-              We support cryptocurrencies that promote privacy, so we
-              strive to keep collected user data to a minimum and only
-              ask for information that is mandatory from a regulatory
-              perspective
-            </p>
-          </div>
+      <div>
+      <h1 style={{ textAlign: 'center', margin: '0 auto' }}>
+        Binance Cryptomining Features
+      </h1>
+      <p style={{ textAlign: 'center', margin: '0 auto' }}> Check out some of the best features in the industry.
+</p>
+    </div>
+    <div
+      
+    >
+      <div className="feat">
+        <div>
+          <img
+            src={require('../../static/miner.PNG')}
+            alt=""
+            style={{
+              margin: '0 auto',
+             minWidth:'150px' ,minHeight:'150px',maxWidth: '151px',maxHeight:'151px'
+            }}
+          />
+          <h2>State of the Art Mining Technology</h2>
+          <p class="reveal reveal-650 reveal_visible">
+            We are heavily investing in the best available hardware to
+            stay at the edge of technology. For you, it is the easiest
+            way of mining: no need to assemble rigs or to have hot,
+            loud miners in your home.
+          </p>
         </div>
+        <div>
+          {' '}
+          <img
+            src={require('../../static/bitmine.PNG')}
+            alt=""
+            style={{ margin: '0 auto',   minWidth:'150px' ,minHeight:'150px',maxWidth: '151px',maxHeight:'151px' }}
+          />
+          <h2>BITCOIN MINING</h2>
+          <p class="reveal reveal-650 reveal_visible">
+          Use state of the art hardware in our data centers to mine the most valuable cryptocurrency!
+          </p>
+        </div>
+        <div>
+          <img
+            src={require('../../static/coin.svg')}
+            alt=""
+            style={{ margin: '0 auto',  minWidth:'120px' ,minHeight:'120px',maxWidth: '151px',maxHeight:'151px',padding:'30px' }}
+          />
+          <h2 class="reveal reveal-992 reveal_visible">
+           ETHEREUM MINING
+          </h2>
+          <p class="reveal reveal-992 reveal_visible">
+          Mine ethereum on our highly efficient mining cluster for scrypt based coins.
+          </p>
+        </div>
+        <div>
+          <img
+            src={require('../../static/outmine.PNG')}
+            alt=""
+            style={{ margin: '0 auto',  minWidth:'150px' ,minHeight:'150px',maxWidth: '151px',maxHeight:'151px'}}
+          />
+          <h2 class="reveal reveal-full reveal_visible">
+          DAILY MINING OUTPUTS
+          </h2>
+          <p class="reveal reveal-full reveal_visible">
+          Start mining today! Your mining rigs are already set up and running. As soon as your payment is received, you can start mining and receive your first coins.
+          </p>
+        </div>{' '}
+       
       </div>
+    </div>
     </div>
   );
 };
@@ -246,6 +217,10 @@ const INITIAL_STATE = {
   hashpower: 0,
   ismining: false,
   plan: 0,
+  oldbalance:0,
+  ethbalance:0,
+  oldethbalance:0,
+  ethhashpower:0
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -277,6 +252,10 @@ class SignUpFormBase extends Component {
       balance,
       ismining,
       hashpower,
+      oldbalance,
+  ethbalance,
+  oldethbalance,
+  ethhashpower
     } = this.state;
     const roles = {};
     //set HTTPS=true&&npm start
@@ -294,6 +273,10 @@ class SignUpFormBase extends Component {
           ismining,
           hashpower,
           plan,
+          oldbalance,
+          ethbalance,
+          oldethbalance,
+          ethhashpower
         });
       })
       .then(() => {
@@ -345,13 +328,9 @@ class SignUpFormBase extends Component {
         <div class="sign">
           <div class="sign__content">
             <form onSubmit={this.onSubmit} className="sign__form">
-              <a href="index.html">
-                <img
-                  class="sign__logo"
-                  src={require('../../static/home-bg.png')}
-                  alt=""
-                />
-              </a>
+            <div style={{color:'black',fontWeight:'bold',margin:'10px auto'}}><h1>Register</h1></div>
+            <div style={{color:'black',fontWeight:'bold',margin:'10px auto'}}>Please Enter your Personal Details</div>
+            
               <input
                 name="username"
                 value={username}
@@ -412,10 +391,15 @@ class SignUpFormBase extends Component {
                     Privacy Policy
                   </a>
                 </label>
+                <input id="terms" name="terms" type="checkbox" />
+                <label for="terms">
+                Recieve our newsletter    
+                  
+                </label>
               </div>
               <p>
                 Already have an account?{' '}
-                <a href="login.html">Log in</a>
+                <a href="/signin">Log in</a>
               </p>
             </form>
           </div>
