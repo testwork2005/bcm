@@ -4,6 +4,7 @@ import Particles from 'react-particles-js';
 import Carslick from '../linkcarousel';
 import SimpleSlider from '../homereview';
 import Review from '../reviewcontainer';
+import Footer from '../Landing/footer'
 function Landing  (){
   const [btc,setbtc]=React.useState(0.000);
   const [usd,setusd]=React.useState(0);
@@ -38,7 +39,7 @@ function Landing  (){
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -423,93 +424,7 @@ function Landing  (){
     </div>
 
 
-    <footer className="footer">
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div className="footer__logo">
-              <a href="index.html" className="a">
-                <img
-                  src={require('../../static/home-bg.png')}
-                  className="img"
-                  alt=""
-                />
-              </a>
-            </div>
-          </div>
-
-          <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-            <h6 className="footer__title">Features</h6>
-            <ul className="footer__list ul">
-              <li>
-                <a href="" className="a">
-                  Instant connection
-                </a>
-              </li>
-              <li>
-                <a href="" className="a">
-                  Instant conclusion
-                </a>
-              </li>
-              <li>
-                <a href="" className="a">
-                  Detailed statistics
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Power distribution
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-            <h6 className="footer__title">Company</h6>
-            <ul className="footer__list ul">
-              <li>
-                <a href="/contact" className="a">
-               Member area
-                </a>
-              </li>
-             
-              
-              <li>
-                <a href="/contact" className="a">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-12 col-sm-6 col-lg-3">
-            <h6 className="footer__title">Contact</h6>
-            <ul className="footer__list ul">
-              <li>
-                <a href="tel:+18002345678">contact@binancecryptomining.com</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-12">
-            <div className="footer__copyright">
-              <ul className="ul">
-                <li>
-                  <a href="#" className="a">
-                    About Binance Cryptomining
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+   <Footer/>
   </div>
 );
  }

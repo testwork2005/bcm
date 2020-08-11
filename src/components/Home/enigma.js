@@ -17,6 +17,7 @@ import Img2 from '../../static/forbes.svg';
 import Img3 from '../../static/cnbc.svg';
 import Img4 from '../../static/bloom.svg';
 import Img5 from '../../static/tech.svg';
+import Footer from '../Landing/footer'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -102,7 +103,7 @@ export default function about() {
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -197,13 +198,7 @@ export default function about() {
       </button>
     </header>
       <div className="bgg">
-        <br />
-        <h2 style={{ color: '#f0b90b' }}> EXPLORE ENIGMA</h2>
-
-        <small>
-          The evolution of one of the world’s largest cryptocurrency
-          mining facilities
-        </small>
+        
 
         <div
           style={{
@@ -222,6 +217,13 @@ export default function about() {
             <source src="img/homevid.mp4" type="video/mp4" />
           </video>
         </div>
+        <br />
+        <h2 style={{ color: '#f0b90b' }}> EXPLORE ENIGMA</h2>
+
+        <small>
+          The evolution of one of the world’s largest cryptocurrency
+          mining facilities
+        </small>
 
         <div
           style={{
@@ -325,101 +327,8 @@ export default function about() {
           BECOME A MINER TODAY!
         </div>
       </section>
-      <footer className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div className="footer__logo">
-                <a href="/home" className="a">
-                  <img
-                    src={require('../../static/home-bg.png')}
-                    className="img"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Features</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Instant connection
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Instant conclusion
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Detailed statistics
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Power distribution
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Company</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Customers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Press
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12 col-sm-6 col-lg-3">
-              <h6 className="footer__title">Contact</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="tel:+18002345678">+1 (800) 234-5678</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12">
-              <div className="footer__copyright">
-                <ul className="ul">
-                  <li>
-                    <a href="#" className="a">
-                      About BinanceCrypto Mine
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="a">
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+        
     </div>
   );
 }

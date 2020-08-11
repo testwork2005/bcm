@@ -110,7 +110,7 @@ this.setState({btnvis:true})
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -242,7 +242,7 @@ this.setState({btnvis:true})
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>

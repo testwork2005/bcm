@@ -6,6 +6,7 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
+import Footer from '../Landing/footer';
 const SignUpPage = () => {
   return (
     <div>
@@ -35,7 +36,7 @@ const SignUpPage = () => {
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -199,6 +200,7 @@ const SignUpPage = () => {
        
       </div>
     </div>
+    <Footer/>
     </div>
   );
 };
@@ -383,20 +385,25 @@ class SignUpFormBase extends Component {
               </button>
 
               {error && <p>{error.message}</p>}
-              <div class="form__group">
+              <div >
                 <input id="terms" name="terms" type="checkbox" />
                 <label for="terms">
                   I agree to the{' '}
-                  <a href="#" target="_blank">
+                  <a href="/privacy" target="_blank">
                     Privacy Policy
                   </a>
                 </label>
-                <input id="terms" name="terms" type="checkbox" />
+                
+              </div>
+              <div >
+              <input id="news" name="terms" type="checkbox" />
                 <label for="terms">
                 Recieve our newsletter    
                   
                 </label>
+                
               </div>
+             
               <p>
                 Already have an account?{' '}
                 <a href="/signin">Log in</a>

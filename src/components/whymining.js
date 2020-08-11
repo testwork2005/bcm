@@ -16,6 +16,7 @@ import Img3 from '../static/cnbc.svg';
 import Img4 from '../static/bloom.svg';
 import Img5 from '../static/tech.svg';
 import Review from './reviewcontainer';
+import Footer from '../components/Landing/footer';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -55,7 +56,6 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     backgroundColor: 'transparent',
     marginTop: '-50px',
-    
   },
   icon: {
     color: '#f0b90b',
@@ -115,7 +115,7 @@ export default function whymining() {
 
   return (
     <div>
-      <Review/>
+      <Review />
       <header className="header yy">
         <Particles
           width="100px"
@@ -142,14 +142,13 @@ export default function whymining() {
           <a href="/" className="a">
             <img
               src={require('../static/home-bg.png')}
-              className="img"
+              className="img smaller"
               alt=""
             />
           </a>
         </div>
 
         <ul className="header__nav">
-         
           <li>
             <a href="/about" className="a">
               About Us
@@ -170,7 +169,7 @@ export default function whymining() {
           </li>
           <li>
             <a href="/contactus" className="a">
-             Customer Service
+              Customer Service
             </a>
           </li>
           <li>
@@ -206,12 +205,16 @@ export default function whymining() {
               class="dropdown-menu header__dropdown-menu"
               aria-labelledby="dropdownMenuLink1"
             >
-               <li>
-              <a href="/enigma" style={{color:"black"}}>Enigma Data center</a>
-            </li>
-            <li>
-              <a href="/radiant-tech" style={{color:"black"}}>Radiant Tech</a>
-            </li>
+              <li>
+                <a href="/enigma" style={{ color: 'black' }}>
+                  Enigma Data center
+                </a>
+              </li>
+              <li>
+                <a href="/radiant-tech" style={{ color: 'black' }}>
+                  Radiant Tech
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -236,10 +239,10 @@ export default function whymining() {
           <i className="ti-close" />
         </button>
       </header>
-      <div className="bgg" style={{height:'60vh'}}>
+      <div className="bgg" style={{ height: '60vh' }}>
         <h2>Get to know</h2>
         <h1>
-          <strong >a new idea of money.</strong>
+          <strong>a new idea of money.</strong>
         </h1>
         <strong>join binance CrYptoMining</strong>
       </div>
@@ -633,27 +636,39 @@ export default function whymining() {
             <Paper elevation={3}>
               <div className="startguide">
                 <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-                  <div className="startitems">
+                  <div
+                    className="startitems"
+                    onClick={() => {
+                      window.location.href = '/account';
+                    }}
+                  >
                     <h3 className="action">
                       <strong>Create Account</strong>
                       <ForwardIcon className={classes.icon} />
                     </h3>
-                   <a href="/signup"></a> <p>join our growing community</p>
+                    <a href="/signup" />{' '}
+                    <p>join our growing community</p>
                   </div>
                 </Paper>
                 <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-                  <div className="startitems">
+                  <div className="startitems"   onClick={() => {
+                      window.location.href = '/about';
+                    }}>
                     <h3 className="action">
                       <strong>Get to know us better.</strong>{' '}
                       <ForwardIcon className={classes.icon} />
                     </h3>
                     <p>
-                      <span>Read about our <a href="/about"> vision!</a> </span>
+                      <span>
+                        Read about our <a href="/about"> vision!</a>{' '}
+                      </span>
                     </p>
                   </div>
                 </Paper>
                 <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-                  <div className="startitems">
+                  <div className="startitems"   onClick={() => {
+                      window.location.href = '/pricing';
+                    }}>
                     <h3 className="action">
                       <strong>See our pricing.</strong>
                       <ForwardIcon className={classes.icon} />
@@ -666,20 +681,26 @@ export default function whymining() {
                   </div>
                 </Paper>
                 <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-                  <div className="startitems">
+                  <div className="startitems"  onClick={() => {
+                      window.location.href = '/enigma';
+                    }}>
                     <h3 className="action">
                       <strong>Learn more about our tech.</strong>
                       <ForwardIcon className={classes.icon} />
                     </h3>
                     <p>
                       <span>
-                        The <a href="/enigma">Enigma Datacenter</a>Enigma Datacenter and <a href="/radiant-tech">Radiant Tech</a>.
+                        The <a href="/enigma">Enigma Datacenter</a>
+                        Enigma Datacenter and{' '}
+                        <a href="/radiant-tech">Radiant Tech</a>.
                       </span>
                     </p>
                   </div>
                 </Paper>
                 <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-                  <div className="startitems">
+                  <div className="startitems"   onClick={() => {
+                      window.location.href = '/contact';
+                    }}>
                     <h3 className="action">
                       <strong>See what we can do for you!</strong>
                       <ForwardIcon className={classes.icon} />
@@ -687,7 +708,7 @@ export default function whymining() {
                     <p>
                       <span>
                         Any questions left? Get in touch with our
-                       <a href="/contact">customer service.</a>
+                        <a href="/contact">customer service.</a>
                       </span>
                     </p>
                   </div>
@@ -701,9 +722,8 @@ export default function whymining() {
         style={{
           textAlign: 'center',
           marginTop: '20px',
-       
-       
-          letterSpacing:'1px'
+
+          letterSpacing: '1px',
         }}
       >
         AS SEEN ON
@@ -713,101 +733,7 @@ export default function whymining() {
         <img src={Img2} /> <img src={Img3} /> <img src={Img4} />{' '}
         <img src={Img5} />
       </section>
-      <footer className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div className="footer__logo">
-                <a href="index.html" className="a">
-                  <img
-                    src={require('../static/home-bg.png')}
-                    className="img"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Features</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Instant connection
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Instant conclusion
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Detailed statistics
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Power distribution
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Company</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Customers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Press
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12 col-sm-6 col-lg-3">
-              <h6 className="footer__title">Contact</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="tel:+18002345678">+1 (800) 234-5678</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12">
-              <div className="footer__copyright">
-                <ul className="ul">
-                  <li>
-                    <a href="#" className="a">
-                      About BinanceCrypto Mine
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="a">
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

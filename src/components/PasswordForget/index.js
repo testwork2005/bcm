@@ -32,7 +32,7 @@ const PasswordForgetPage = () => (
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>

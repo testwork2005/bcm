@@ -19,6 +19,7 @@ import TableRow from '@material-ui/core/TableRow';
 import ClearIcon from '@material-ui/icons/Clear';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import Review from './reviewcontainer';
+import Footer from '../components/Landing/footer';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -112,7 +113,7 @@ export default function pricing() {
         <a href="/" className="a">
           <img
             src={require('../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -332,6 +333,7 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
+<div style={{margin:'15px auto'}}><small>highly rated by our user,perfect starting options</small> </div>
 					</div>
 				
 					<div class="price">
@@ -351,6 +353,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
+<div style={{margin:'15px auto'}}><small>highly rated by our users,faster mining option,faster results</small> </div>
+	
 					</div>
 				
 					<div class="price ">
@@ -370,6 +374,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 						<a class="btn btn--center" type="button" href="/account">Buy now</a>
+            <div style={{margin:'15px auto'}}><small>highly rated by our users,huge earnings in a short period</small> </div>
+	
 					</div>
 					
 
@@ -393,6 +399,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
+<div style={{margin:'15px auto'}}><small>highly rated by our verified users,recommended for pro miners</small> </div>
+	
 					</div>
 					
 				</div>
@@ -432,6 +440,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
+<div style={{margin:'15px auto'}}><small>highly rated by our users,perfect starting options</small> </div>
+	
 					</div>
 				
 					<div class="price">
@@ -451,6 +461,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
+<div style={{margin:'15px auto'}}><small>highly rated by our users,our seasoned miners love this plan</small> </div>
+	
 					</div>
 				
 					<div class="price ">
@@ -470,6 +482,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 						<a class="btn btn--center" type="button" href="/account">Buy now</a>
+            <div style={{margin:'15px auto'}}><small>highly rated by our users,huge earnings in a short period</small> </div>
+	
 					</div>
 					
 
@@ -493,6 +507,8 @@ export default function pricing() {
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
+<div style={{margin:'15px auto'}}><small>highly rated by our verified users,recommended for pro miners</small> </div>
+	
 					</div>
 					
 				</div>
@@ -667,101 +683,8 @@ The daily mining outputs are variable and are determined by these factors: the m
 </div>
 
   </Paper>
-  <footer className="footer">
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div className="footer__logo">
-              <a href="index.html" className="a">
-                <img
-                  src={require('../static/home-bg.png')}
-                  className="img"
-                  alt=""
-                />
-              </a>
-            </div>
-          </div>
-
-          <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-            <h6 className="footer__title">Features</h6>
-            <ul className="footer__list ul">
-              <li>
-                <a href="#" className="a">
-                  Instant connection
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Instant conclusion
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Detailed statistics
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Power distribution
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-            <h6 className="footer__title">Company</h6>
-            <ul className="footer__list ul">
-              <li>
-                <a href="#" className="a">
-                  Customers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Press
-                </a>
-              </li>
-              <li>
-                <a href="#" className="a">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-12 col-sm-6 col-lg-3">
-            <h6 className="footer__title">Contact</h6>
-            <ul className="footer__list ul">
-              <li>
-                <a href="tel:+18002345678">+1 (800) 234-5678</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-12">
-            <div className="footer__copyright">
-              <ul className="ul">
-                <li>
-                  <a href="#" className="a">
-                    About BinanceCrypto Mine
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <Footer />
+     
 
         </div>
     )

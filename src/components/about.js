@@ -14,6 +14,9 @@ import Divider from '@material-ui/core/Divider';
 import Rev from '../components/review';
 import Slider from 'react-slick';
 import ForwardIcon from '@material-ui/icons/Forward';
+
+import Footer from './Landing/footer';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -133,7 +136,7 @@ export default function about() {
         <a href="/" className="a">
           <img
             src={require('../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -349,7 +352,11 @@ export default function about() {
           }}
         >
           {' '}
-          <h1>
+          <h1   style={{
+                margin: '0 auto',
+                textAlign: 'center',
+                color: 'white',
+              }}>
             <strong
               style={{
                 margin: '0 auto',
@@ -366,6 +373,7 @@ export default function about() {
               textAlign: 'center',
               color: 'white',
               fontWeight: 'bold',
+              maxWidth:'500px'
             }}
           >
             Disclaimer: The displayed datacenters represent only a
@@ -490,170 +498,97 @@ export default function about() {
 
       <Divider light />
       <div className="getstarted">
-        <div>
-          <h1 className="st">
-            How would you like to <br />
-            get started?
-          </h1>
-        </div>
-        <Paper elevation={3}>
-          <div className="startguide">
-            <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-              <div className="startitems">
-                <h3 className="action">
-                  <strong>Create Account</strong>
-                  <ForwardIcon className={classes.icon} />
-                </h3>
-                <p>join our growing community</p>
-              </div>
-            </Paper>
-            <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-              <div className="startitems">
-                <h3 className="action">
-                  <strong>Get to know us better.</strong>{' '}
-                  <ForwardIcon className={classes.icon} />
-                </h3>
-                <p>
-                  <span>Read about our vision!</span>
-                </p>
-              </div>
-            </Paper>
-            <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-              <div className="startitems">
-                <h3 className="action">
-                  <strong>See our pricing.</strong>
-                  <ForwardIcon className={classes.icon} />
-                </h3>
-                <p>
-                  <span>
-                    Each algorithm and coin has its own beauty!
-                  </span>
-                </p>
-              </div>
-            </Paper>
-            <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-              <div className="startitems">
-                <h3 className="action">
-                  <strong>Learn more about our tech.</strong>
-                  <ForwardIcon className={classes.icon} />
-                </h3>
-                <p>
-                  <span>The Enigma Datacenter and Radiant Tech.</span>
-                </p>
-              </div>
-            </Paper>
-            <Paper elevation={2} style={{ minWidth: ' 400px' }}>
-              <div className="startitems">
-                <h3 className="action">
-                  <strong>See what we can do for you!</strong>
-                  <ForwardIcon className={classes.icon} />
-                </h3>
-                <p>
-                  <span>
-                    Any questions left? Get in touch with our customer
-                    service.
-                  </span>
-                </p>
+            <div>
+              <h1 className="st">
+                How would you like to <br />
+                get started?
+              </h1>
+            </div>
+            <Paper elevation={3}>
+              <div className="startguide">
+                <Paper elevation={2} style={{ minWidth: ' 400px' }}>
+                  <div
+                    className="startitems"
+                    onClick={() => {
+                      window.location.href = '/account';
+                    }}
+                  >
+                    <h3 className="action">
+                      <strong>Create Account</strong>
+                      <ForwardIcon className={classes.icon} />
+                    </h3>
+                    <a href="/signup" />{' '}
+                    <p>join our growing community</p>
+                  </div>
+                </Paper>
+                <Paper elevation={2} style={{ minWidth: ' 400px' }}>
+                  <div className="startitems"   onClick={() => {
+                      window.location.href = '/about';
+                    }}>
+                    <h3 className="action">
+                      <strong>Get to know us better.</strong>{' '}
+                      <ForwardIcon className={classes.icon} />
+                    </h3>
+                    <p>
+                      <span>
+                        Read about our <a href="/about"> vision!</a>{' '}
+                      </span>
+                    </p>
+                  </div>
+                </Paper>
+                <Paper elevation={2} style={{ minWidth: ' 400px' }}>
+                  <div className="startitems"   onClick={() => {
+                      window.location.href = '/pricing';
+                    }}>
+                    <h3 className="action">
+                      <strong>See our pricing.</strong>
+                      <ForwardIcon className={classes.icon} />
+                    </h3>
+                    <p>
+                      <span>
+                        Each algorithm and coin has its own beauty!
+                      </span>
+                    </p>
+                  </div>
+                </Paper>
+                <Paper elevation={2} style={{ minWidth: ' 400px' }}>
+                  <div className="startitems"  onClick={() => {
+                      window.location.href = '/enigma';
+                    }}>
+                    <h3 className="action">
+                      <strong>Learn more about our tech.</strong>
+                      <ForwardIcon className={classes.icon} />
+                    </h3>
+                    <p>
+                      <span>
+                        The <a href="/enigma">Enigma Datacenter</a>
+                        Enigma Datacenter and{' '}
+                        <a href="/radiant-tech">Radiant Tech</a>.
+                      </span>
+                    </p>
+                  </div>
+                </Paper>
+                <Paper elevation={2} style={{ minWidth: ' 400px' }}>
+                  <div className="startitems"   onClick={() => {
+                      window.location.href = '/contact';
+                    }}>
+                    <h3 className="action">
+                      <strong>See what we can do for you!</strong>
+                      <ForwardIcon className={classes.icon} />
+                    </h3>
+                    <p>
+                      <span>
+                        Any questions left? Get in touch with our
+                        <a href="/contact">customer service.</a>
+                      </span>
+                    </p>
+                  </div>
+                </Paper>
               </div>
             </Paper>
           </div>
-        </Paper>
-      </div>
-      <footer className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div className="footer__logo">
-                <a href="/home" className="a">
-                  <img
-                    src={require('../static/home-bg.png')}
-                    className="img"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Features</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Instant connection
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Instant conclusion
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Detailed statistics
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Power distribution
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Company</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Customers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Press
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12 col-sm-6 col-lg-3">
-              <h6 className="footer__title">Contact</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="tel:+18002345678">+1 (800) 234-5678</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12">
-              <div className="footer__copyright">
-                <ul className="ul">
-                  <li>
-                    <a href="#" className="a">
-                      About BinanceCrypto Mine
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="a">
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+       
     </div>
   );
 }

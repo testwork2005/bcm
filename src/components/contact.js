@@ -16,7 +16,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Ticket from "./ticket"
-
+import Footer from '../components/Landing/footer';
 
 
 function TabPanel(props) {
@@ -103,7 +103,7 @@ export default function contact() {
           <a href="/" className="a">
             <img
               src={require('../static/home-bg.png')}
-              className="img"
+              className="img smaller"
               alt=""
             />
           </a>
@@ -497,97 +497,8 @@ In case you have lost access to your primary e-mail, submit your request via our
 
 We are looking forward to hearing from you!</p></div>
 <div style={{margin:"30px 60px"}}><Ticket/></div>
-      <footer className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div className="footer__logo">
-                <a href="index.html" className="a">
-                  <img
-                    src={require('../static/home-bg.png')}
-                    className="img"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Features</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="" className="a">
-                    Instant connection
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="a">
-                    Daily outputs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Detailed statistics
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="a">
-                    Power distribution
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Company</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="#" className="a">
-                    Customers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="a">
-                    Careers
-                  </a>
-                </li>
-                
-                <li>
-                  <a href="/contact" className="a">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12 col-sm-6 col-lg-3">
-              <h6 className="footer__title">Contact</h6>
-              <ul className="footer__list ul">
-                <li>
-                  <a href="tel:+18002345678">contact@binancecryptomining.com</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12">
-              <div className="footer__copyright">
-                <ul className="ul">
-                  <li>
-                    <a href="/about" className="a">
-                      About Binance CryptoMining
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="a">
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+      
         </div>
     )
 }

@@ -7,6 +7,7 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import Particles from 'react-particles-js';
+import Footer from '../../components/Landing/footer';
 const SignInPage = () => (
   <div>
        <header className="header yy">
@@ -35,7 +36,7 @@ const SignInPage = () => (
         <a href="/" className="a">
           <img
             src={require('../../static/home-bg.png')}
-            className="img"
+            className="img smaller"
             alt=""
           />
         </a>
@@ -199,6 +200,7 @@ const SignInPage = () => (
        
       </div>
     </div>
+    <Footer/>
   </div>
 );
 
