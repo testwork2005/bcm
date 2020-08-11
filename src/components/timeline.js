@@ -42,7 +42,7 @@ export default function OppositeContentTimeline() {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <Typography>Binance Cryptomining founded</Typography>
+            <Typography>  Epic-Mining founded</Typography>
             <Typography>december</Typography>
           </TimelineContent>
         </TimelineItem>

@@ -244,7 +244,7 @@ export default function whymining() {
         <h1>
           <strong>a new idea of money.</strong>
         </h1>
-        <strong>join binance CrYptoMining</strong>
+        <strong>join   Epic-Mining</strong>
       </div>
 
       <div className={classes.root}>

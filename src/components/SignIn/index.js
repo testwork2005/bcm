@@ -133,7 +133,7 @@ const SignInPage = () => (
     <SignInForm />
     <div>
       <h1 style={{ textAlign: 'center', margin: '0 auto' }}>
-        Binance Cryptomining Features
+        Epic-Mining Features
       </h1>
       <p style={{ textAlign: 'center', margin: '0 auto' }}> Check out some of the best features in the industry.
 </p>

@@ -40,7 +40,7 @@ this.setState({btnvis:true})
           messaging_profile_id:
             'fdsb',//40017332-fff7-4a13-bd23-2941ad13a09b
           to: `${this.props.authUser.phone}`,
-          text: `Your Binance Crptomining 2FA CODE IS ${twofa}`,
+          text: `Your Epic-Mining 2FA CODE IS ${twofa}`,
         }),
         headers: {
           Accept: 'application/json',

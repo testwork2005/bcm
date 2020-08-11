@@ -284,7 +284,7 @@ export default function about() {
               }}
             >
               <p style={{ maxWidth: '40%', margin: '0 auto' ,textAlign:'left'}}>
-                The story of Binance CryptoMining started at the end
+                The story of   Epic-Mining started at the end
                 of 2013. Our founders got to know each other by using
                 the same platform for buying and selling Bitcoins.
                 They were fascinated by the technology and wanted to
@@ -319,7 +319,7 @@ export default function about() {
           }}
         >
           <p style={{ maxWidth: '40%', margin: '0 auto',textAlign:'left'}}>
-            Binance CryptoMining is one of the leading hashpower
+          Epic-Mining is one of the leading hashpower
             providers in the world, offering cryptocurrency mining
             capacities in every range - for newcomers, interested home
             miners, as well as large scale investors. Our mission is
@@ -400,7 +400,7 @@ export default function about() {
           <Slider {...settings}>
             <div className="review">
               <blockquote className="review__blockquote">
-                Binance Crypto Mining is one of the leading
+               Epic-Mining is one of the leading
                 cloudmining companies and a trustworthy partner of
                 ours. It’s good to see that they are an honest
                 cloudmining service which shows their farms openly to
@@ -433,7 +433,7 @@ export default function about() {
             <div>
               <div className="review">
                 <blockquote className="review__blockquote">
-                  Binance Crypto Mining is one of our biggest clients
+                Epic-Mining is one of our biggest clients
                   and proven to be a reliable and trustworthy business
                   partner. Their transparent mining sites and high
                   quality software infrastructure together with our
@@ -452,7 +452,7 @@ export default function about() {
             <div>
               <div className="review">
                 <blockquote className="review__blockquote">
-                  Binance Crypto Miningg is one of our biggest clients
+                Epic-Mining is one of our biggest clients
                   and proven to be a reliable and trustworthy business
                   partner. Their transparent mining sites and high
                   quality software infrastructure together with our

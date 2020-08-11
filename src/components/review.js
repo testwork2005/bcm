@@ -18,10 +18,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const revews=[
   {id:0, name:"Andrew W.", dates: "05/17/20" ,reviews:"GREAT EASY" },
   {id:1 ,name:"Pekka H.", dates: "05/07/20" ,reviews:"Excellent experience for a half yearNow waiting forward what happens in the next BTC halving (4 days to go)!" },
-  { id:2,name:"Kaan K.", dates: "04/20/20" ,reviews:"¡EXELENTE! LA EXPERIENCIA DE USUARIO QUE HE TENIDO A SIDO MARAVILLOSA. GRACIAS BINANCE" },
-  { id:3 ,name:"MRROBSON",dates: "04/17/20" ,reviews:"This is complicated business, and new to all of us. Binance Crypto Mining is helping with patience and care. I see they know what they are doing. Let´s go on with the future!" },
+  { id:2,name:"Kaan K.", dates: "04/20/20" ,reviews:"¡EXELENTE! LA EXPERIENCIA DE USUARIO QUE HE TENIDO A SIDO MARAVILLOSA. GRACIAS" },
+  { id:3 ,name:"MRROBSON",dates: "04/17/20" ,reviews:"This is complicated business, and new to all of us.   Epic-Mining is helping with patience and care. I see they know what they are doing. Let´s go on with the future!" },
   {  id:4, name:"John B.", dates: "04/07/20" ,reviews:"solid site amazing support" },
-  { id:5,name:"kate J.",dates: "04/05/20" ,reviews:"I have been using Binance crypto mining since BTC was $100 a coin and it was a great investment to get as much mining power as possible. I continue to use the site and top up when I can. It is a low investment if you believe crypto coin will continue to climb. To the moon baby!!" },
+  { id:5,name:"kate J.",dates: "04/05/20" ,reviews:"I have been using   Epic-Mining since BTC was $100 a coin and it was a great investment to get as much mining power as possible. I continue to use the site and top up when I can. It is a low investment if you believe crypto coin will continue to climb. To the moon baby!!" },
   { id:6,name:"MARY L.", dates: "04/04/20" ,reviews:"LOVE YOU GUYS" },
   { id:7,name:"brad T", dates: "03/24/20" ,reviews:"Thanks to the speed and ease with which you begin to earn, it is certainly one of the best platforms to invest your money" },
 
@@ -76,7 +76,7 @@ export default function AlertDialogSlide() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-          BINANCE CRYPTO-MINING REVIEWS
+          EPIC-MINING REVIEWS
           </DialogContentText>
           {revews.map(revs => {
 return <div  key={revs.id} style={{ display: 'flex', flexDirection: 'column',marginBottom:"10px" }}>

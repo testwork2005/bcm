@@ -446,7 +446,7 @@ function HomePage() {
               fontSize: '25px',
             }}
           >
-            Try Binance CryptoMining Today!
+            Try Epic-Mining Today!
           </h4>
           <button
             style={{

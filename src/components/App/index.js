@@ -29,11 +29,7 @@ import {
 import Logo from '../../static/blog.svg';
 import 'react-chat-widget/lib/styles.css';
 const App = () => {
-  React.useEffect(() => {
-    addResponseMessage(
-      'Welcome to bINANCE Cryptomining customer chat!',
-    );
-  }, []);
+ 
   const handleNewUserMessage = newMessage => {
     console.log(`New message incoming! ${newMessage}`);
     // Now send the message throught the backend API

@@ -388,7 +388,7 @@ function pickplan({ onSetOrder, hn }) {
                     display="block"
                     gutterBottom
                   >
-                    Operational address: Binance CryptoMining Ltd.,
+                    Operational address: Epic-Mining Ltd.,
                     Trinity Chambers, P.O. Box 4301, Road Town,
                     Tortola, British Virgin Islands Payments processed
                     by: Genesis Mining Iceland ehf., Company No.
@@ -575,7 +575,7 @@ function pickplan({ onSetOrder, hn }) {
                     display="block"
                     gutterBottom
                   >
-                    Operational address: Binance CryptoMining Ltd.,
+                    Operational address: Epic-Mining Ltd.,
                     Trinity Chambers, P.O. Box 4301, Road Town,
                     Tortola, British Virgin Islands Payments processed
                     by: Genesis Mining Iceland ehf., Company No.

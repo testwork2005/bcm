@@ -46,7 +46,7 @@ export default class SimpleSlider extends Component {
         <Slider {...settings}>
           <div className="review">
             <blockquote className="review__blockquote">
-              Binance Crypto Mining is one of the leading cloudmining
+            Epic-Mining is one of the leading cloudmining
               companies and a trustworthy partner of ours. It’s good
               to see that they are an honest cloudmining service which
               shows their farms openly to the public.
@@ -76,7 +76,7 @@ export default class SimpleSlider extends Component {
           <div>
             <div className="review">
               <blockquote className="review__blockquote">
-                Binance Crypto Mining is one of our biggest clients
+              Epic-Mining is one of our biggest clients
                 and proven to be a reliable and trustworthy business
                 partner. Their transparent mining sites and high
                 quality software infrastructure together with our high
@@ -95,7 +95,7 @@ export default class SimpleSlider extends Component {
           <div>
             <div className="review">
               <blockquote className="review__blockquote">
-                Binance Crypto Miningg is one of our biggest clients
+              Epic-Mining is one of our biggest clients
                 and proven to be a reliable and trustworthy business
                 partner. Their transparent mining sites and high
                 quality software infrastructure together with our high

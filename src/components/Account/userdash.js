@@ -250,9 +250,23 @@ function ResponsiveDrawer(props) {
               </div>
 
               <div
-                style={{ display: 'flex', flexDirection: 'column' }}
+                style={{ display: 'flex', flexDirection: 'column',maxWidth:'300px' }}
               >
-                cv
+             
+             
+             <h3>General information</h3>
+             <h5>Our office</h5>
+             <p>Epic-Mining Services Ltd.
+Trinity Chambers, P.O. Box 6789,
+Road Town, Tortola,
+British Virgin Islands</p>
+<br/>
+<h5>Customer Service</h5>
+<br/>
+<p>Email: contact@epic-mining.com
+Average response time: within 1 business day.
+However, depending on the volume of requests, the response time may occasionally be longer.
+Check out our Customer Service section</p>
               </div>
             </div>
           </div>
@@ -542,6 +556,6 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   withFirebase,
-  withAuthorization(condition),
-  withEmailVerification,
+//withAuthorization(condition),
+  //withEmailVerification,
 )(ResponsiveDrawer);

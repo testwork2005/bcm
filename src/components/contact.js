@@ -211,11 +211,11 @@ export default function contact() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>What is binance cryptomining</Typography>
+          <Typography className={classes.heading}>What is Epic-Mining</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-         Binance CrpytoMining is a Cryptocurrency cloud mining service that offers an easy and safe way to purchase hashpower without having to deal with complex hardware and software setup. We offer hosted cryptocurrency mining services and a variety of mining related solutions to small and large scale customers. The combination of our algorithmic trading framework, mining infrastructure, and proprietary mining farm-management software, Genesis Hive, quickly made us an industry leader.
+          Epic-Mining is a Cryptocurrency cloud mining service that offers an easy and safe way to purchase hashpower without having to deal with complex hardware and software setup. We offer hosted cryptocurrency mining services and a variety of mining related solutions to small and large scale customers. The combination of our algorithmic trading framework, mining infrastructure, and proprietary mining farm-management software, Genesis Hive, quickly made us an industry leader.
 
 Our team of mining experts with extensive knowledge of the digital currency sector specializes in building the most efficient and reliable mining facilities. Genesis Mining is also the founding partner of Logos Fund, the first ever Bitcoin Mining Fund, which targets professional investors looking to gain access to Bitcoin’s and various other digital assets’ potential.
 
@@ -229,7 +229,7 @@ Our service was founded by the end of 2013 and with now over 2.000.000 users we 
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography className={classes.heading}>How does bitcoin mining work with Binance CryptoMining?</Typography>
+          <Typography className={classes.heading}>How does bitcoin mining work with   Epic-Mining?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -344,7 +344,7 @@ It allows you to get mining outputs in many different coins even if they are not
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography className={classes.heading}>How does bitcoin mining work with Binance CryptoMining?</Typography>
+          <Typography className={classes.heading}>How does bitcoin mining work with   Epic-Mining?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -406,7 +406,7 @@ Please refer to section “When do I get my mining output?” for more details.
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Due to security measures, your account can only be unlocked by customer support. Please submit a ticket via the web contact form below (select: ‘My account - General - Unlock my account’) and we will unlock your account for you. Before submitting, make sure you enter the primary e-mail address of your Binance CryptoMining account, or else we won’t be able to help you. </Typography>
+          Due to security measures, your account can only be unlocked by customer support. Please submit a ticket via the web contact form below (select: ‘My account - General - Unlock my account’) and we will unlock your account for you. Before submitting, make sure you enter the primary e-mail address of your   Epic-Mining account, or else we won’t be able to help you. </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion >
@@ -449,7 +449,7 @@ In case you have lost access to your primary e-mail, submit your request via our
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          If you have decided that you want to delete your account and stop being a member of the Binance CryptoMining family, please contact our customer service using your primary e-mail address.      </Typography>
+          If you have decided that you want to delete your account and stop being a member of the   Epic-Mining family, please contact our customer service using your primary e-mail address.      </Typography>
         </AccordionDetails>
       </Accordion>
     </div></div>

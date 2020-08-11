@@ -207,18 +207,14 @@ export default function pricing() {
         <i className="ti-close" />
       </button>
     </header>
-            <section class="section section--first section--bg" data-bg="img/section/section-bg.jpg">
-		<div class="container">
-			<div class="row">
+           
 				
-				<div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-					<h2 class="section__title section__title--white">Pricing</h2>
-					<p class="section__text section__text--white section__text--head">The fair approach to cloud mining pay as you mine without upfront payments</p>
+				<div className="bgg" style={{ height: '60vh' }} >
+					<h2 >Pricing</h2>
+					<p >The fair approach to cloud mining pay as you mine without upfront payments</p>
 				</div>
 			
-			</div>
-		</div>
-	</section>
+		
 	
 	<section class="section">
 		<div class="container">
@@ -317,7 +313,7 @@ export default function pricing() {
 				<div class="col-12 col-lg-10 offset-lg-1 col-xl-12 offset-xl-0">
 				
 					<div class="price">
-            <div style={{backgroundColor:'black',color:'white', height:'35px',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+            <div style={{backgroundColor:'black',color:'white', height:'35px',fontWeight:'bold',}}>Back in stock (limited Offfer)</div>
 						<h2 class="price__title">GOLD</h2>
             <small>starter</small>
 						<ul class="price__list">
@@ -337,7 +333,7 @@ export default function pricing() {
 					</div>
 				
 					<div class="price">
-          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',}}>Back in stock (limited Offfer)</div>
 			
           <h2 class="price__title">PLATINUM</h2>
             <small>best buy</small>
@@ -358,7 +354,7 @@ export default function pricing() {
 					</div>
 				
 					<div class="price ">
-          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',}}>Back in stock (limited Offfer)</div>
 			
           <h2 class="price__title">DIAMOND</h2>
             <small>professional</small>
@@ -381,7 +377,7 @@ export default function pricing() {
 
 					
 					<div class="price">
-          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',}}>Back in stock (limited Offfer)</div>
 			
 						<h2 class="price__title">CUSTOM</h2>
             <small>create a custom  btc plan</small>
@@ -424,7 +420,7 @@ export default function pricing() {
 				<div class="col-12 col-lg-10 offset-lg-1 col-xl-12 offset-xl-0">
 				
 					<div class="price">
-            <div style={{backgroundColor:'black',color:'white', height:'35px',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+            <div style={{backgroundColor:'black',color:'white', height:'35px',fontWeight:'bold',}}>Back in stock (limited Offfer)</div>
 						<h2 class="price__title">GOLD</h2>
             <small>starter</small>
 						<ul class="price__list">
@@ -445,7 +441,7 @@ export default function pricing() {
 					</div>
 				
 					<div class="price">
-          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',}}>Back in stock (limited Offfer)</div>
 			
           <h2 class="price__title">PLATINUM</h2>
             <small>best buy</small>
@@ -466,7 +462,7 @@ export default function pricing() {
 					</div>
 				
 					<div class="price ">
-          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold'}}>Back in stock (limited Offfer)</div>
 			
           <h2 class="price__title">DIAMOND</h2>
             <small>professional</small>
@@ -489,7 +485,7 @@ export default function pricing() {
 
 					
 					<div class="price">
-          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold',font:'Times New Roman'}}>Back in stock (limited Offfer)</div>
+          <div style={{backgroundColor:'black', height:'35px',color:'white',fontWeight:'bold'}}>Back in stock (limited Offfer)</div>
 			
 						<h2 class="price__title">CUSTOM</h2>
             <small>create a custom  eth plan</small>
@@ -529,7 +525,7 @@ The daily mining outputs are variable and are determined by these factors: the m
     
  
     <h2 style={{textAlign:"center",fontSize:"30px"}}>Bitcoin Mining Cost and Benefits Comparison Chart</h2>
-<p style={{textAlign:"center",margin:"20px 0"}}>A chart to compare the costs and benefits of having your own hardware to having a contract with Binance Crypto Mining</p>
+<p style={{textAlign:"center",margin:"20px 0"}}>A chart to compare the costs and benefits of having your own hardware to having a contract with   Epic-Mining</p>
 	<Paper elevation={3} style={{width:'fit-content',margin:'0 auto', marginBottom:'3%'}}>
 <div style={{display:'flex',flexDirection:'column'}}>
 <div style={{display:'flex' ,justifyContent:'center',textAlign:'center'}}>
@@ -539,7 +535,7 @@ The daily mining outputs are variable and are determined by these factors: the m
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead className={classes.head}>
           <TableRow>
-            <TableCell className={classes.head}>Costs of a contract with Binance CryptoMining</TableCell>
+            <TableCell className={classes.head}>Costs of a contract with   Epic-Mining</TableCell>
             
           </TableRow>
         </TableHead>

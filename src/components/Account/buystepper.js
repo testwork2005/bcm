@@ -416,7 +416,7 @@ function HorizontalLabelPositionBelowStepper({
             >
               <DialogTitle id="alert-dialog-slide-title">
                 {
-                  'Binance CryptoMining Cloud Services Terms of Services'
+                  'EPIC Mining Cloud Services Terms of Services'
                 }
               </DialogTitle>
               <DialogContent>
@@ -426,13 +426,12 @@ function HorizontalLabelPositionBelowStepper({
                   </Typography>
                   <br />
                   <Typography variant="body2" gutterBottom>
-                    This BiNance cryptoMining Cloud Services Terms of
+                    This EPIC Mining Cloud Services Terms of
                     Service Specifications document (the “Agreement
                     Specifications”) includes the specifications for
                     price, computational power/hash rate, term, and
                     other pricing factors for the Customers agreement
-                    with Binance cryptoMining governed by the Binance
-                    cryptoMining Cloud Services Terms of Service (the
+                    with Epic-Mining governed by the Epic-Mining Cloud Services Terms of Service (the
                     “Agreement”). All capitalized terms shall have the
                     meaning of the Agreement in effect as of the
                     Effective Date of these Agreement Specifications.

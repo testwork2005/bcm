@@ -56,7 +56,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: 'https://www.binancecryptomining.com/account',
+      url: 'https://www.epic-mining.com/account',
     });
   recaptchaVerifier = container => {
     return new this.auth().authRecaptchaVerifier(container);
