@@ -31,6 +31,7 @@ import StorageSharpIcon from '@material-ui/icons/StorageSharp';
 import { withFirebase } from '../Firebase';
 import Atable from './activitytable';
 import Dt from './profilecontainer';
+import Kyc from './kyc';
 import Ticket from '../ticket';
 import Orders from './orders';
 import With from './withdrawals';
@@ -38,6 +39,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import Hashpower from './buystepper';
 import UHashpower from './upgrade';
+import Signout from '../../components/SignOut';
 const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
@@ -53,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   badge: {
     float: 'right',
     color: 'yellow',
-   float:'right'
+    float: 'right',
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
@@ -74,8 +76,12 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
     fontFamily: 'times new roman',
     fontWeight: 'bold',
-    paddingTop:'50px'
+    paddingTop: '50px',
   },
+  tool: {
+    display: 'flex',
+  },
+
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
@@ -121,7 +127,9 @@ function Dash(props) {
             <OfflineBoltSharpIcon className={classes.icon} />
           </div>
 
-          <h1 style={{ margin: '0 auto' }}>{`${props.auth.hashpower} TH/s`}</h1>
+          <h1 style={{ margin: '0 auto' }}>{`${
+            props.auth.hashpower
+          } TH/s`}</h1>
 
           <div style={{ margin: '0 auto' }}>
             ---------------------
@@ -147,7 +155,9 @@ function Dash(props) {
             <OfflineBoltSharpIcon className={classes.icon} />
           </div>
 
-          <h1 style={{ margin: '0 auto' }}>{`${props.auth.ethhashpower} TH/s`}</h1>
+          <h1 style={{ margin: '0 auto' }}>{`${
+            props.auth.ethhashpower
+          } TH/s`}</h1>
 
           <div style={{ margin: '0 auto' }}>
             ---------------------
@@ -174,8 +184,8 @@ function ResponsiveDrawer(props) {
   const [open, setOpen] = React.useState(false);
   const [currentview, setview] = React.useState(0);
   const [color, setcolor] = React.useState('white');
-  const [page,setpage]=React.useState('Dashboard')
- 
+  const [page, setpage] = React.useState('Dashboard');
+
   const toggleview = () => {
     switch (currentview) {
       case 0:
@@ -198,7 +208,6 @@ function ResponsiveDrawer(props) {
               }}
               onClick={() => {
                 setview(4);
-
               }}
             >
               <div style={{ marginRight: '0px' }}>
@@ -212,26 +221,41 @@ function ResponsiveDrawer(props) {
       case 1:
         return (
           <div>
-            <Dt style={{ margin: '0 auto' }} />
+            <Dt style={{ margin: '0 auto' }} auth={props.authUser} />
           </div>
         );
         break;
       case 2:
         return (
-          <div style={{display:'flex',flexDirection:'column'}}>
-            <div style={{display:'flex',justifyContent:'space-between'}}>
-            <div style={{display:'flex',flexDirection:'column'}}>
-              <h1>CONTACT</h1>
-              <p style={{maxWidth:'300px'}}>Keep in mind that the quality and promptness of our response depends on how accurately you fill out the Contact form. Our drop down menu has several options, and if the wrong topic is used, it can delay the resolution of the ticket.
-We are looking forward to hearing from you!</p>
-            <Ticket />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <div
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
+                <h1>CONTACT</h1>
+                <p style={{ maxWidth: '300px' }}>
+                  Keep in mind that the quality and promptness of our
+                  response depends on how accurately you fill out the
+                  Contact form. Our drop down menu has several
+                  options, and if the wrong topic is used, it can
+                  delay the resolution of the ticket. We are looking
+                  forward to hearing from you!
+                </p>
+                <Ticket />
+              </div>
+
+              <div
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
+                cv
+              </div>
             </div>
-            
-            <div style={{display:'flex',flexDirection:'column'}}>cv</div>
-            </div>
-          
-          
-      </div>
+          </div>
         );
         break;
       case 3:
@@ -262,6 +286,13 @@ We are looking forward to hearing from you!</p>
           </div>
         );
         break;
+      case 7:
+        return (
+          <div>
+            <Kyc />
+          </div>
+        );
+        break;
       default:
         return <div>account setting</div>;
     }
@@ -286,12 +317,12 @@ We are looking forward to hearing from you!</p>
           color: 'white',
         }}
       >
-         <img
-            src={require('../../static/home-bg.png')}
-            width="100"
-            alt=""
-            style={{margin:'0 auto'}}
-          />
+        <img
+          src={require('../../static/home-bg.png')}
+          width="100"
+          alt=""
+          style={{ margin: '0 auto' }}
+        />
       </div>
       <Divider />
       <List className={classes.list}>
@@ -299,7 +330,7 @@ We are looking forward to hearing from you!</p>
           button
           onClick={() => {
             setview(0);
-            setpage('Dashboard')
+            setpage('Dashboard');
           }}
         >
           <ListItemIcon className={classes.icon}>
@@ -321,7 +352,7 @@ We are looking forward to hearing from you!</p>
               button
               onClick={() => {
                 setview(1);
-                setpage('Account details')
+                setpage('Account details');
               }}
               className={classes.nested}
             >
@@ -334,7 +365,7 @@ We are looking forward to hearing from you!</p>
               button
               onClick={() => {
                 setview(2);
-                setpage('Customer Service')
+                setpage('Customer Service');
               }}
               className={classes.nested}
             >
@@ -350,7 +381,7 @@ We are looking forward to hearing from you!</p>
           button
           onClick={() => {
             setview(3);
-            setpage('My orders')
+            setpage('My orders');
           }}
         >
           <ListItemIcon className={classes.icon}>
@@ -365,7 +396,7 @@ We are looking forward to hearing from you!</p>
           <ListItemText
             onClick={() => {
               setview(4);
-              setpage('Buy hashpower')
+              setpage('Buy hashpower');
             }}
             primary="BUY HASHPOWER"
           />
@@ -377,7 +408,7 @@ We are looking forward to hearing from you!</p>
           <ListItemText
             onClick={() => {
               setview(5);
-              setpage('Upgrade Hashpower')
+              setpage('Upgrade Hashpower');
             }}
             primary="UPGRADE HASHPOWER"
           />
@@ -386,7 +417,7 @@ We are looking forward to hearing from you!</p>
           button
           onClick={() => {
             setview(6);
-            setpage('My withdrawals')
+            setpage('My withdrawals');
           }}
         >
           <ListItemIcon className={classes.icon}>
@@ -406,7 +437,7 @@ We are looking forward to hearing from you!</p>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.tool}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -416,17 +447,22 @@ We are looking forward to hearing from you!</p>
           >
             <MenuIcon />
           </IconButton>
-  <div><h4>{page}</h4></div>
-        
+          <div>
+            <h4>{page}</h4>
+          </div>
 
           <IconButton
             aria-label="show 11 new notifications"
             color="inherit"
           >
-            <Badge badgeContent={0} color="secondary" edge='right'>
+            <Badge badgeContent={0} color="secondary" edge="right">
               <NotificationsIcon className={classes.badge} />
             </Badge>
           </IconButton>
+          <div style={{ float: 'right' }}>
+            {' '}
+            <Signout />
+          </div>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
@@ -465,17 +501,24 @@ We are looking forward to hearing from you!</p>
           {' '}
           i go do the rest i never finish. no worry.
         </div>
-        <Alert
-          severity="info"
-          style={{
-            marginTop: '20px',
-            backgroundColor:'white',
-            color:'black'
+        <div
+          onClick={() => {
+            setview(7);
           }}
         >
-          to be verified go <a href="/kycverify">here</a> and upload
-          KYC documents!
-        </Alert>
+          <Alert
+            severity="info"
+            style={{
+              marginTop: '20px',
+              backgroundColor: 'white',
+              color: 'black',
+              cursor: 'pointer',
+            }}
+          >
+            to be verified click here and upload KYC documents!
+          </Alert>{' '}
+        </div>
+
         <br />
         {toggleview()}
       </main>
@@ -500,5 +543,5 @@ export default compose(
   connect(mapStateToProps),
   withFirebase,
   withAuthorization(condition),
- withEmailVerification,
+  withEmailVerification,
 )(ResponsiveDrawer);

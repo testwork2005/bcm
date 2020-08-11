@@ -7,10 +7,14 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Personal from './profile';
-import Password from '../PasswordChange'
+import Password from '../PasswordChange';
 import TextField from '@material-ui/core/TextField';
-
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import { withAuthorization, withEmailVerification } from '../Session';
+import { withFirebase } from '../Firebase';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -51,10 +55,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FullWidthTabs() {
+function FullWidthTabs({ firebase, auth }) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [eth, seteth] = React.useState('');
+  const [btc, setbtc] = React.useState('');
+
+  React.useEffect(() => {
+    if (!!auth.ethwallet) {
+      seteth(auth.ethwallet);
+    }
+    if (!!auth.btcwallet) {
+      setbtc(auth.btcwallet);
+    }
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -83,39 +98,94 @@ export default function FullWidthTabs() {
       </AppBar>
 
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <Personal />
+        <Personal auth={auth} />
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
-          <Password/>
+        <Password />
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
-      <div style={{display:'flex',justifyContent:'space-around'}}>
+        <div
+          style={{ display: 'flex', justifyContent: 'space-around' }}
+        >
           <div>
-          <Typography variant="h6" gutterBottom>
-      Bitcoin
-      </Typography>
-     <Typography variant="caption" display="block" gutterBottom>
-     You don’t have a Dash wallet yet? <a href="https://bitcoin.org/en/getting-started" target="_blank">Click here</a> to get started!
-      
-      </Typography>
-      <TextField id="outlined-basic" label="btc wallet" variant="outlined" />
-
+            <Typography variant="h6" gutterBottom>
+              Bitcoin
+            </Typography>
+            <Typography
+              variant="caption"
+              display="block"
+              gutterBottom
+            >
+              You don’t have a Dash wallet yet?{' '}
+              <a
+                href="https://bitcoin.org/en/getting-started"
+                target="_blank"
+              >
+                Click here
+              </a>{' '}
+              to get started!
+            </Typography>
+            <TextField
+              id="outlined-basic"
+              label="btc wallet"
+              value={btc}
+              variant="outlined"
+              onChange={e => {
+                setbtc(e.target.value);
+              }}
+            />
           </div>
           <div>
-          <Typography variant="h6" gutterBottom>
-      Ethereum
-      </Typography>
-     <Typography variant="caption" display="block" gutterBottom>
-     You don’t have a Ethereum wallet yet? <a href="https://www.myetherwallet.com/" target="_blank">Click here</a> to get started!
-      
-      </Typography>
-      <TextField id="outlined-basic" label="btc wallet" variant="outlined" />
-
+            <Typography variant="h6" gutterBottom>
+              Ethereum
+            </Typography>
+            <Typography
+              variant="caption"
+              display="block"
+              gutterBottom
+            >
+              You don’t have a Ethereum wallet yet?{' '}
+              <a
+                href="https://www.myetherwallet.com/"
+                target="_blank"
+              >
+                Click here
+              </a>{' '}
+              to get started!
+            </Typography>
+            <TextField
+              id="outlined-basic"
+              label="eth wallet"
+              variant="outlined"
+              value={eth}
+              onChange={e => {
+                seteth(e.target.value);
+              }}
+            />
           </div>
-        
-
-      </div>
+        </div>
+        <Button variant='contained'
+     
+        style={{float:'right',backgroundColor:'#f0b90b'}}
+          onClick={() => {
+            firebase
+              .user(auth.uid)
+              .update({
+                ethwallet: eth,
+                btcwallet: btc,
+              })
+              .then(() => {
+                alert('wallets updated successfully');
+              })
+              .catch(() => {
+                alert('something went wrong! unable to update');
+              });
+          }}
+        >
+          Update wallets
+        </Button>
       </TabPanel>
     </div>
   );
 }
+export default withFirebase(FullWidthTabs);

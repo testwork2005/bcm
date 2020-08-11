@@ -107,9 +107,19 @@ function Fin() {
 function getStepContent(stepIndex, order, handleNext, handleBack) {
   const classes = useStyles();
   const [copySuccess, setCopySuccess] = React.useState(false);
-
+  const btcwallet = '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ';
+  const ethwallet = '0xCE3BDF72fA3c7b9A5c4AD5490Ed8D67a29941A74';
   // your function to copy here
-
+  const [pt, setpt] = React.useState(btcwallet);
+  React.useEffect(() => {
+    var tmp = window.localStorage.getItem('pt');
+    if (tmp === 'btc') {
+      setpt(btcwallet);
+    }
+    if (tmp === 'eth') {
+      setpt(ethwallet);
+    }
+  }, []);
   const copyToClipBoard = async copyMe => {
     try {
       await navigator.clipboard.writeText(copyMe);
@@ -211,49 +221,44 @@ function getStepContent(stepIndex, order, handleNext, handleBack) {
                 margin: '0 auto',
                 minWidth: '45%',
                 display: 'flex',
-                
+
                 flexDirection: 'column',
-               
               }}
             >
-             <Paper className={classes.table2}>
-          {' '}
-          <TableContainer component={Paper}>
-            <div>
-              <Alert severity="info">
-               ORDER DETAILS
-              </Alert>
-            </div>
-            <Table aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Plan</StyledTableCell>
-                  <StyledTableCell>HashPower</StyledTableCell>
-                  
-               
-                  <StyledTableCell>Price</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <StyledTableRow>
-                  <StyledTableCell>
-                    {' '}
-                    {order.order.name}
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    {' '}
-                    {order.order.hashpower}
-                  </StyledTableCell>
-                
-                  <StyledTableCell>
-                    {order.order.price}
-                  </StyledTableCell>
-                </StyledTableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-         </Paper>
-        
+              <Paper className={classes.table2}>
+                {' '}
+                <TableContainer component={Paper}>
+                  <div>
+                    <Alert severity="info">ORDER DETAILS</Alert>
+                  </div>
+                  <Table aria-label="customized table">
+                    <TableHead>
+                      <TableRow>
+                        <StyledTableCell>Plan</StyledTableCell>
+                        <StyledTableCell>HashPower</StyledTableCell>
+
+                        <StyledTableCell>Price</StyledTableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <StyledTableRow>
+                        <StyledTableCell>
+                          {' '}
+                          {order.order.name}
+                        </StyledTableCell>
+                        <StyledTableCell>
+                          {' '}
+                          {order.order.hashpower}
+                        </StyledTableCell>
+
+                        <StyledTableCell>
+                          {order.order.price}
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Paper>
             </div>
 
             <div
@@ -274,39 +279,28 @@ function getStepContent(stepIndex, order, handleNext, handleBack) {
                   justifyContent: 'space-evenly',
                 }}
               >
-                <p style={{marginTop:'5px'}}>1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ</p>{' '}
-                <div
-                 
-                  style={{ margin: '0 10px' }}
-                >
+                <p style={{ marginTop: '5px' }}>{pt}</p>{' '}
+                <div style={{ margin: '0 10px' }}>
                   <IconButton
                     color="primary"
                     aria-label="upload picture"
                     component="span"
-                    onClick={() =>
-                      copyToClipBoard(
-                        '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ',
-                      )
-                    }
+                    onClick={() => copyToClipBoard(pt)}
                   >
                     <FileCopyOutlinedIcon />
                   </IconButton>
                 </div>
               </div>
-              <QRCode
-                value="1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ"
-                includeMargin={true}
-                size={300}
-              />
-               <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              handleNext();
-            }}
-          >
-            CONFIRM PAYMENT
-          </Button>
+              <QRCode value={pt} includeMargin={true} size={300} />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  handleNext();
+                }}
+              >
+                CONFIRM PAYMENT
+              </Button>
             </div>
           </div>{' '}
         </Paper>
@@ -325,7 +319,7 @@ function getStepContent(stepIndex, order, handleNext, handleBack) {
                 alignItems: 'center',
               }}
             >
-              <Fin/>
+              <Fin />
               <Alert severity="info">
                 Mining will commence Immediately payment is Approved
               </Alert>
@@ -490,7 +484,7 @@ function HorizontalLabelPositionBelowStepper({
                 </Button>
                 <Button
                   onClick={() => {
-                    var uid=uuidv4();
+                    var uid = uuidv4();
                     var neworder = {
                       name: order.order.name,
                       amount: order.order.price,
@@ -502,7 +496,8 @@ function HorizontalLabelPositionBelowStepper({
                       email: authUser.email,
                     };
                     firebase
-                      .orders().child(uid)
+                      .orders()
+                      .child(uid)
                       .set(neworder)
                       .then(() => {
                         setActiveStep(

@@ -3334,3 +3334,7 @@ body{
 .btn{
   line-height: 40px;
 }
+.makeStyles-tool-7 {
+  display: flex;
+  justify-content: space-between;
+}

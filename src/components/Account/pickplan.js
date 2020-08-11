@@ -18,6 +18,11 @@ import { withAuthorization, withEmailVerification } from '../Session';
 import { withFirebase } from '../Firebase';
 import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 import Tooltip from '@material-ui/core/Tooltip';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 const useStyles = makeStyles(theme => ({
   root: {
     width: 300,
@@ -129,6 +134,7 @@ function pickplan({ onSetOrder, hn }) {
   const [ethval, setethvalue] = React.useState(0);
   const [btchashval, setbtchashvalue] = React.useState(0);
   const [ethhashval, setethhashvalue] = React.useState(0);
+  const [value22, setValue22] = React.useState('female');
   const forceUpdate = useForceUpdate();
   function AirbnbThumbComponent(props) {
     return (
@@ -151,6 +157,12 @@ function pickplan({ onSetOrder, hn }) {
       </Tooltip>
     );
   }
+  
+
+  const handleChange22 = (event) => {
+    setValue22(event.target.value);
+    window.localStorage.setItem('pt',event.target.value)
+  };
   const [order, setorder] = React.useState({});
   var obj = {};
   const classes = useStyles();
@@ -643,13 +655,27 @@ function pickplan({ onSetOrder, hn }) {
                 </div>
               </div>
               <Divider dark />
-              <h5>
-                Payment type: <br /> BITCOIN{' '}
-              </h5>
+              <FormControl component="fieldset">
+      <FormLabel component="legend">PAYMENT TYPE</FormLabel>
+      <RadioGroup aria-label="gender" name="gender1" value={value22} onChange={handleChange22}>
+        <FormControlLabel value="btc" control={<Radio />} label="BITCOIN" />
+        <FormControlLabel value="eth" control={<Radio />} label="ETHEREUM" />
+       
+      </RadioGroup>
+    </FormControl>
             </div>
           ) : (
             <div className="prevarea">
-              <Typography variant="h5">Summary</Typography>
+              <Button
+                variant="contained"
+                className={classes.btn}
+                onClick={() => {
+                  hn();
+                }}
+              >
+                PROCEED REVIEW ORDER
+              </Button>
+              <Typography variant="h6">summary</Typography>
               <div>
                 <TableContainer component={Paper}>
                   <Table
@@ -702,9 +728,14 @@ function pickplan({ onSetOrder, hn }) {
                 </div>
               </div>
               <Divider />
-              <h5>
-                Payment type: <br /> ETHEREUM
-              </h5>
+              <FormControl component="fieldset">
+      <FormLabel component="legend">PAYMENT TYPE</FormLabel>
+      <RadioGroup aria-label="gender" name="gender1" value={value22} onChange={handleChange22}>
+        <FormControlLabel value="btc" control={<Radio />} label="BITCOIN" />
+        <FormControlLabel value="eth" control={<Radio />} label="ETHEREUM" />
+       
+      </RadioGroup>
+    </FormControl>
             </div>
           )}
         </div>

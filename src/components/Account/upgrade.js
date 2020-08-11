@@ -30,6 +30,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -136,10 +141,27 @@ function upgrade({ onSetOrder }) {
   const [btchashval, setbtchashvalue] = React.useState(0);
   const [ethhashval, setethhashvalue] = React.useState(0);
   const [copySuccess, setCopySuccess] = React.useState(false);
+  const [value22, setValue22] = React.useState('BITCOIN');
   const [wannapay, setwannapay] = React.useState(false);
   // your function to copy here
   const [open, setOpen] = React.useState(false);
-
+  const handleChange22 = event => {
+    setValue22(event.target.value);
+    window.localStorage.setItem('pt', event.target.value);
+  };
+  const btcwallet = '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ';
+  const ethwallet = '0xCE3BDF72fA3c7b9A5c4AD5490Ed8D67a29941A74';
+  // your function to copy here
+  const [pt, setpt] = React.useState(btcwallet);
+  React.useEffect(() => {
+    var tmp = window.localStorage.getItem('pt');
+    if (tmp === 'btc') {
+      setpt(btcwallet);
+    }
+    if (tmp === 'eth') {
+      setpt(ethwallet);
+    }
+  }, []);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -218,7 +240,7 @@ function upgrade({ onSetOrder }) {
   };
   return (
     <div>
-       <Dialog
+      <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
@@ -226,14 +248,15 @@ function upgrade({ onSetOrder }) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{" PAYMENT STATUS"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">
+          {' PAYMENT STATUS'}
+        </DialogTitle>
         <DialogContent>
-         <Fin/>
+          <Fin />
         </DialogContent>
         <DialogActions>
-          
           <Button onClick={handleClose} color="primary">
-           Close
+            Close
           </Button>
         </DialogActions>
       </Dialog>
@@ -241,8 +264,9 @@ function upgrade({ onSetOrder }) {
         Please only upgrade hashpower if you are required to by our
         customer service
       </Alert>
-      <div >
-        <Button variant='contained'
+      <div>
+        <Button
+          variant="contained"
           className={classes.btn2}
           onClick={e => {
             e.preventDefault();
@@ -252,7 +276,8 @@ function upgrade({ onSetOrder }) {
         >
           Bitcoin Mining
         </Button>
-        <Button variant='contained'
+        <Button
+          variant="contained"
           className={classes.btn2}
           onClick={e => {
             e.preventDefault();
@@ -365,194 +390,240 @@ function upgrade({ onSetOrder }) {
                   </div>
                   <Divider dark />
                 </div>
-                <h5>
-                  Payment type: <br /> BITCOIN{' '}
-                </h5>
-                {!wannapay && <Button variant='contained' className={classes.btn2} onClick={()=>{
-                  setwannapay(true);
-                }} >MAKE PAYMENT</Button>}
-              </div>
-            </div>
-          </div>
-
-          { wannapay && <div>
-            <Alert severity="info">{`Please scan this address and send ${btcval} USD to complete this order`}</Alert>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-evenly',
-              }}
-            >
-              <p style={{ marginTop: '5px' }}>
-                1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ
-              </p>{' '}
-              <div style={{ margin: '0 10px' }}>
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="span"
-                  onClick={() =>
-                    copyToClipBoard(
-                      '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ',
-                    )
-                  }
-                >
-                  <FileCopyOutlinedIcon />
-                </IconButton>
-              </div>
-            </div>
-           
-            
-            <QRCode
-              value="1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ"
-              includeMargin={true}
-              size={300}
-            />
-            <div><Button variant='contained' className={classes.btn2} onClick={()=>{
-                  setOpen(true);
-                }} >CONFIRM PAYMENT</Button></div>
-          </div>}
-        </div>
-      ) : ( 
-        <div style={{display:'flex' ,justifyContent:'space-evenly',flexWrap: 'wrap',
-        marginTop: '20px',}}>
-
-
-
-
-        <div>
-          <p
-            style={{ textAlign: 'center', margin: '3px auto' }}
-          >{`${ethhashval}`}</p>
-          <Divider />
-          <p
-            style={{ textAlign: 'center', margin: '3px auto' }}
-          >{`${ethval}USD`}</p>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ marginTop: '35px', marginBottom: '13px' }}>
-              <ThemeProvider theme={AmountSlider}>
-                <Slider
-                  defaultValue={500}
-                  aria-labelledby="custom"
-                  step={50}
-                  min={0}
-                  max={10000}
-                  ThumbComponent={AirbnbThumbComponent}
-                  onChange={handleSliderChangeeth}
-                />
-              </ThemeProvider>
-            </div>
-            <Divider />
-         
-         </div>
-          <div>
-            
-          </div>
-        </div>
-        <div
-              syle={{
-                margin: '10px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              <div>
-                <Typography variant="h5">Summary</Typography>
-                <TableContainer component={Paper}>
-                  <Table
-                    className={classes.table}
-                    aria-label="simple table"
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">
+                    PAYMENT TYPE
+                  </FormLabel>
+                  <RadioGroup
+                    aria-label="gender"
+                    name="gender1"
+                    value={value22}
+                    onChange={handleChange22}
                   >
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>
-                          {' '}
-                          <Typography
-                            variant="subtitle2"
-                            gutterBottom
-                          >
-                            Plan
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography
-                            variant="subtitle2"
-                            gutterBottom
-                          >
-                            Hashpower
-                          </Typography>
-                        </TableCell>
-                        <TableCell>Price(USD)</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>{ethplan}</TableCell>
-                        <TableCell>{ethhashval}</TableCell>
-                        <TableCell>{ethval}</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <Divider dark />
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    margin: '20px 3px',
+                    <FormControlLabel
+                      value="btc"
+                      control={<Radio />}
+                      label="BITCOIN"
+                    />
+                    <FormControlLabel
+                      value="eth"
+                      control={<Radio />}
+                      label="ETHEREUM"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                {!wannapay && (
+                  <Button
+                    variant="contained"
+                    className={classes.btn2}
+                    onClick={() => {
+                      setwannapay(true);
+                    }}
+                  >
+                    MAKE PAYMENT
+                  </Button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {wannapay && (
+            <div>
+              <Alert severity="info">{`Please scan this address and send ${btcval} USD to complete this order`}</Alert>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-evenly',
+                }}
+              >
+                <p style={{ marginTop: '5px' }}>{pt}</p>{' '}
+                <div style={{ margin: '0 10px' }}>
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="span"
+                    onClick={() => copyToClipBoard(pt)}
+                  >
+                    <FileCopyOutlinedIcon />
+                  </IconButton>
+                </div>
+              </div>
+
+              <QRCode value={pt} includeMargin={true} size={300} />
+              <div>
+                <Button
+                  variant="contained"
+                  className={classes.btn2}
+                  onClick={() => {
+                    setOpen(true);
                   }}
                 >
-                  <h5>Total:</h5>
-                  <h5>{ethval}</h5>{' '}
-                </div>
-                <Divider dark />
+                  CONFIRM PAYMENT
+                </Button>
               </div>
-              <h5>
-                Payment type: <br /> ETHEREUM
-              </h5>
-              {!wannapay && <Button variant='contained' className={classes.btn2} onClick={()=>{
-                  setwannapay(true);
-                }} >MAKE PAYMENT</Button>}
             </div>
-        { wannapay &&(<div> <Alert severity="info">{`Please scan this address and send ${ethval} USD to complete this order`}</Alert>
+          )}
+        </div>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
+            marginTop: '20px',
+          }}
+        >
+          <div>
+            <p
+              style={{ textAlign: 'center', margin: '3px auto' }}
+            >{`${ethhashval}`}</p>
+            <Divider />
+            <p
+              style={{ textAlign: 'center', margin: '3px auto' }}
+            >{`${ethval}USD`}</p>
             <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-evenly',
-              }}
+              style={{ display: 'flex', justifyContent: 'center' }}
             >
-              <p style={{ marginTop: '5px' }}>
-                1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ
-              </p>{' '}
-              <div style={{ margin: '0 10px' }}>
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="span"
-                  onClick={() =>
-                    copyToClipBoard(
-                      '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ',
-                    )
-                  }
+              <div
+                style={{ marginTop: '35px', marginBottom: '13px' }}
+              >
+                <ThemeProvider theme={AmountSlider}>
+                  <Slider
+                    defaultValue={500}
+                    aria-labelledby="custom"
+                    step={50}
+                    min={0}
+                    max={10000}
+                    ThumbComponent={AirbnbThumbComponent}
+                    onChange={handleSliderChangeeth}
+                  />
+                </ThemeProvider>
+              </div>
+              <Divider />
+            </div>
+            <div />
+          </div>
+          <div
+            syle={{
+              margin: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <div>
+              <Typography variant="h5">Summary</Typography>
+              <TableContainer component={Paper}>
+                <Table
+                  className={classes.table}
+                  aria-label="simple table"
                 >
-                  <FileCopyOutlinedIcon />
-                </IconButton>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        {' '}
+                        <Typography variant="subtitle2" gutterBottom>
+                          Plan
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="subtitle2" gutterBottom>
+                          Hashpower
+                        </Typography>
+                      </TableCell>
+                      <TableCell>Price(USD)</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>{ethplan}</TableCell>
+                      <TableCell>{ethhashval}</TableCell>
+                      <TableCell>{ethval}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <Divider dark />
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  margin: '20px 3px',
+                }}
+              >
+                <h5>Total:</h5>
+                <h5>{ethval}</h5>{' '}
+              </div>
+              <Divider dark />
+            </div>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">PAYMENT TYPE</FormLabel>
+              <RadioGroup
+                aria-label="gender"
+                name="gender1"
+                value={value22}
+                onChange={handleChange22}
+              >
+                <FormControlLabel
+                  value="btc"
+                  control={<Radio />}
+                  label="BITCOIN"
+                />
+                <FormControlLabel
+                  value="eth"
+                  control={<Radio />}
+                  label="ETHEREUM"
+                />
+              </RadioGroup>
+            </FormControl>
+            {!wannapay && (
+              <Button
+                variant="contained"
+                className={classes.btn2}
+                onClick={() => {
+                  setwannapay(true);
+                }}
+              >
+                MAKE PAYMENT
+              </Button>
+            )}
+          </div>
+          {wannapay && (
+            <div>
+              {' '}
+              <Alert severity="info">{`Please scan this address and send ${ethval} USD to complete this order`}</Alert>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-evenly',
+                }}
+              >
+                <p style={{ marginTop: '5px' }}>{pt}</p>{' '}
+                <div style={{ margin: '0 10px' }}>
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="span"
+                    onClick={() => copyToClipBoard(pt)}
+                  >
+                    <FileCopyOutlinedIcon />
+                  </IconButton>
+                </div>
+              </div>
+              <QRCode value={pt} includeMargin={true} size={300} />
+              <div>
+                <Button
+                  variant="contained"
+                  className={classes.btn2}
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                >
+                  CONFIRM PAYMENT
+                </Button>
               </div>
             </div>
-
-            <QRCode
-              value="1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ"
-              includeMargin={true}
-              size={300}
-            />
-            
-            <div><Button variant='contained' className={classes.btn2} onClick={()=>{
-                 setOpen(true);
-                }} >CONFIRM PAYMENT</Button></div>
-        
-            
-            </div>)}
+          )}
         </div>
       )}
     </div>
