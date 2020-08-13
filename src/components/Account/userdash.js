@@ -40,6 +40,7 @@ import Badge from '@material-ui/core/Badge';
 import Hashpower from './buystepper';
 import UHashpower from './upgrade';
 import Signout from '../../components/SignOut';
+import Nt from './notification';
 const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
@@ -185,7 +186,22 @@ function ResponsiveDrawer(props) {
   const [currentview, setview] = React.useState(0);
   const [color, setcolor] = React.useState('white');
   const [page, setpage] = React.useState('Dashboard');
-
+const [show,setshow]=React.useState('');
+const[not,setnot]=React.useState(0);
+React.useEffect(()=>{
+  var hi=0
+if(!!props.authUser.messages)
+{hi= Object.entries(props.authUser.messages).length;
+setnot(hi)}
+},[])
+const toggler=()=>{
+  if(show==="show"){
+    setshow('');
+setnot(0)
+  }
+  else
+  setshow('show')
+}
   const toggleview = () => {
     switch (currentview) {
       case 0:
@@ -221,7 +237,7 @@ function ResponsiveDrawer(props) {
       case 1:
         return (
           <div>
-            <Dt style={{ margin: '0 auto' }} auth={props.authUser} />
+            <Dt style={{ margin: '0 auto' }} auth={props.authUser}  />
           </div>
         );
         break;
@@ -250,23 +266,28 @@ function ResponsiveDrawer(props) {
               </div>
 
               <div
-                style={{ display: 'flex', flexDirection: 'column',maxWidth:'300px' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  maxWidth: '300px',
+                }}
               >
-             
-             
-             <h3>General information</h3>
-             <h5>Our office</h5>
-             <p>Epic-Mining Services Ltd.
-Trinity Chambers, P.O. Box 6789,
-Road Town, Tortola,
-British Virgin Islands</p>
-<br/>
-<h5>Customer Service</h5>
-<br/>
-<p>Email: contact@epic-mining.com
-Average response time: within 1 business day.
-However, depending on the volume of requests, the response time may occasionally be longer.
-Check out our Customer Service section</p>
+                <h3>General information</h3>
+                <h5>Our office</h5>
+                <p>
+                  Epic-Mining Services Ltd. Trinity Chambers, P.O. Box
+                  6789, Road Town, Tortola, British Virgin Islands
+                </p>
+                <br />
+                <h5>Customer Service</h5>
+                <br />
+                <p>
+                  Email: contact@epic-mining.com Average response
+                  time: within 1 business day. However, depending on
+                  the volume of requests, the response time may
+                  occasionally be longer. Check out our Customer
+                  Service section
+                </p>
               </div>
             </div>
           </div>
@@ -468,8 +489,16 @@ Check out our Customer Service section</p>
           <IconButton
             aria-label="show 11 new notifications"
             color="inherit"
+            onClick={()=>{
+              if(show==="show"){
+                setshow('');
+
+              }
+              else
+              setshow('show')
+            }}
           >
-            <Badge badgeContent={0} color="secondary" edge="right">
+            <Badge badgeContent={not} color="secondary" edge="right">
               <NotificationsIcon className={classes.badge} />
             </Badge>
           </IconButton>
@@ -534,6 +563,8 @@ Check out our Customer Service section</p>
         </div>
 
         <br />
+        <div className={`notcontainer ${show} `} ><Nt toggler={toggler} messages={props.authUser.messages} /></div>
+        
         {toggleview()}
       </main>
     </div>
@@ -556,6 +587,6 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   withFirebase,
-//withAuthorization(condition),
+  //withAuthorization(condition),
   //withEmailVerification,
 )(ResponsiveDrawer);

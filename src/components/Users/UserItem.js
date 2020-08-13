@@ -19,6 +19,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import EmailIcon from '@material-ui/icons/Email';
+import Moment  from 'moment'
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -51,6 +53,9 @@ class UserItem extends Component {
       open: false,
       newprofit:0,
       newamount:0,
+      open2: false,
+      topic:'',
+      message:''
 
     };
   }
@@ -77,7 +82,9 @@ class UserItem extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-
+  handleClose2 = () => {
+    this.setState({ open2: false });
+  };
   componentWillUnmount() {
     this.props.firebase.user(this.props.match.params.id).off();
   }
@@ -125,6 +132,41 @@ class UserItem extends Component {
             </Button>
           </DialogActions>
         </Dialog>
+        <Dialog
+          open={this.state.open2}
+          onClose={this.handleClose2}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">send message</DialogTitle>
+          <DialogContent>
+            <DialogContentText>Topic</DialogContentText>
+            <input type="textr"  onChange={(e)=>{this.setState({topic:e.target.value})}} />
+            <DialogContentText>Message</DialogContentText>
+            <textarea AutoResize type="text"  onChange={(e)=>{this.setState({message:e.target.value})}} width='300'  ></textarea>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose2} color="primary">
+              Cancel
+            </Button>
+            <Button
+
+              onClick={() => {
+                this.props.firebase
+                  .user(this.props.match.params.id).child('messages')
+                  .push({
+                    topic: this.state.topic,
+                    message: this.state.message,
+                   date:Moment().format("DD/MM/YYYY").toString()
+                  }).then(()=>{alert('message sent');this.handleClose2()
+                }).catch(()=>{alert('something went wrong')
+                this.handleClose2()})
+              }}
+              color="primary"
+            >
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
         <h2>USER ({this.props.match.params.id})</h2>
         {loading && <div>Loading ...</div>}
 
@@ -139,19 +181,27 @@ class UserItem extends Component {
                   USERNAME
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  AMOUNT($)
+                  AMOUNTBTC($)
                 </StyledTableCell>
-                <StyledTableCell align="center">edit</StyledTableCell>
                 <StyledTableCell align="center">
-                  PROFIT($)
+                 HASHPOWERBTC(TH/S)
                 </StyledTableCell>
-                <StyledTableCell align="center">edit</StyledTableCell>
+                <StyledTableCell align="center">
+                 AMOUNTETH($)
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                 HASHPOWERETH(TH/S)
+                </StyledTableCell>
                 <StyledTableCell align="center">
                   PHONE
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  WALLET
+                  WALLETBTC
                 </StyledTableCell>
+                <StyledTableCell align="center">
+                  WALLETETH
+                </StyledTableCell>
+                <StyledTableCell align="center">edit</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -164,28 +214,34 @@ class UserItem extends Component {
                     {user.username}
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">
-                    {user.amount}
+                    {user.balance}
                   </StyledTableCell>
-
-                  <StyledTableCell>
-                    <div onClick={this.handleClickOpen}>
-                      <EditIcon />
-                    </div>
-                  </StyledTableCell>
-
                   <StyledTableCell component="th" scope="row">
-                    {user.profit}
+                    {user.hashpower}
                   </StyledTableCell>
-                  <StyledTableCell>
-                    {' '}
-                    <EditIcon />
+                  <StyledTableCell component="th" scope="row">
+                    {user.ethbalance}
                   </StyledTableCell>
+                  <StyledTableCell component="th" scope="row">
+                    {user.ethhashpower}
+                  </StyledTableCell>
+
+                 
+                  
 
                   <StyledTableCell component="th" scope="row">
                     {user.phone}
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">
-                    {user.wallet}
+                    {user.btcwallet}
+                  </StyledTableCell>
+                  <StyledTableCell component="th" scope="row">
+                    {user.ethwallet}
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <div onClick={this.handleClickOpen}>
+                      <EditIcon />
+                    </div>
                   </StyledTableCell>
                 </StyledTableRow>
               )}
@@ -201,8 +257,11 @@ class UserItem extends Component {
               Send Password Reset
             </button>
             <br />
-            <Fab size="small" color="secondary" aria-label="edit">
-              <EditIcon />
+            <Fab size="small" color="secondary" aria-label="edit" onClick={()=>{
+        
+              this.setState({ open2: true })}
+            }>
+              <EmailIcon />
             </Fab>
           </div>
         )}

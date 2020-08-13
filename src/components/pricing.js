@@ -83,7 +83,8 @@ export default function pricing() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-    const [input,Setval]= React.useState(20500)
+    const [input,Setval]= React.useState(15500)
+    const [input2,Setval2]= React.useState(16500)
     return (
         <div>
           <Review/>
@@ -317,13 +318,13 @@ export default function pricing() {
 						<h2 class="price__title">GOLD</h2>
             <small>starter</small>
 						<ul class="price__list">
-							<li><h3>4 TH/s</h3> </li>
+							<li><h3>40 TH/s</h3> </li>
 							<li><b>30 Months Bitcoin Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$2,999</span>
+						<span class="price__value">$1,500</span>
 						
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
@@ -338,13 +339,13 @@ export default function pricing() {
           <h2 class="price__title">PLATINUM</h2>
             <small>best buy</small>
 						<ul class="price__list">
-							<li><h3>20 TH/s</h3> </li>
+							<li><h3>200 TH/s</h3> </li>
 							<li><b>30 Months Bitcoin Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$9,999</span>
+						<span class="price__value">$7,500</span>
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
@@ -359,13 +360,13 @@ export default function pricing() {
           <h2 class="price__title">DIAMOND</h2>
             <small>professional</small>
 						<ul class="price__list">
-							<li><h3>104 TH/s</h3> </li>
+							<li><h3>500 TH/s</h3> </li>
 							<li><b>30 Months Bitcoin Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$20,999</span>
+						<span class="price__value">$15,300</span>
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
@@ -382,7 +383,7 @@ export default function pricing() {
 						<h2 class="price__title">CUSTOM</h2>
             <small>create a custom  btc plan</small>
 						<ul class="price__list">
-						<li><h3>{`${Math.round(Number(input)/192)}` }TH/s</h3> </li>
+						<li><h3>{`${Math.round(Number(input)/28)}` }TH/s</h3> </li>
 							<li><b>30 Months Bitcoin Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
@@ -392,7 +393,7 @@ export default function pricing() {
 						<span class="price__value">${input}</span>
 				
                         <div className="slidecontainer">
-  <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
+  <input type="range" min="15500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
 <div style={{margin:'15px auto'}}><small>highly rated by our verified users,recommended for pro miners</small> </div>
@@ -424,13 +425,13 @@ export default function pricing() {
 						<h2 class="price__title">GOLD</h2>
             <small>starter</small>
 						<ul class="price__list">
-							<li><h3>4 TH/s</h3> </li>
+							<li><h3>62 TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$2,999</span>
+						<span class="price__value">$1,999</span>
 						
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
@@ -446,13 +447,13 @@ export default function pricing() {
           <h2 class="price__title">PLATINUM</h2>
             <small>best buy</small>
 						<ul class="price__list">
-							<li><h3>20 TH/s</h3> </li>
+							<li><h3>240 TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$9,999</span>
+						<span class="price__value">$7,999</span>
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
@@ -467,15 +468,15 @@ export default function pricing() {
           <h2 class="price__title">DIAMOND</h2>
             <small>professional</small>
 						<ul class="price__list">
-							<li><h3>104 TH/s</h3> </li>
+							<li><h3>540 TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$20,999</span>
+						<span class="price__value">$15,999</span>
                         <div className="slidecontainer hide">
-  <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
+  <input type="range" min="1500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 						<a class="btn btn--center" type="button" href="/account">Buy now</a>
             <div style={{margin:'15px auto'}}><small>highly rated by our users,huge earnings in a short period</small> </div>
@@ -490,17 +491,17 @@ export default function pricing() {
 						<h2 class="price__title">CUSTOM</h2>
             <small>create a custom  eth plan</small>
 						<ul class="price__list">
-						<li><h3>{`${Math.round((Number(input)+1000)/192)}` } TH/s</h3> </li>
+						<li><h3>{`${Math.round((Number(input2)+1000)/28)}` } TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						
 						</ul>
-						<span class="price__value">${input}</span>
+						<span class="price__value">${input2}</span>
 				
                         <div className="slidecontainer">
-  <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
+  <input type="range" min="20500" max="50000" value={input2} className="slider" id="myRange" onInput={(e)=>{Setval2(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
 <div style={{margin:'15px auto'}}><small>highly rated by our verified users,recommended for pro miners</small> </div>

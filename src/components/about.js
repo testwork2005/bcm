@@ -346,12 +346,20 @@ export default function about() {
       <Paper>
         <div
           style={{
-            padding: '5%',
+           
             marginTop: '-30%',
             backgroundColor: 'white',
           }}
         >
           {' '}
+          <div style={{
+              margin: '0 auto',
+              textAlign: 'center',
+              color: 'white',
+              fontWeight: 'bold',
+              maxWidth:'500px'
+            }}>
+
           <h1   style={{
                 margin: '0 auto',
                 textAlign: 'center',
@@ -373,7 +381,7 @@ export default function about() {
               textAlign: 'center',
               color: 'white',
               fontWeight: 'bold',
-              maxWidth:'500px'
+              width:'500px'
             }}
           >
             Disclaimer: The displayed datacenters represent only a
@@ -384,6 +392,7 @@ export default function about() {
             and we do so without disclosing sensitive information or
             critical intellectual property.
           </small>
+          </div>
           <Divider light />
          
             <MapChart />
