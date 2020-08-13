@@ -587,6 +587,6 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   withFirebase,
-  //withAuthorization(condition),
-  //withEmailVerification,
+  withAuthorization(condition),
+  withEmailVerification,
 )(ResponsiveDrawer);
