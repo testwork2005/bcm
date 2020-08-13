@@ -108,7 +108,7 @@ class UserItem extends Component {
           <DialogContent>
             <DialogContentText>Edit Amount</DialogContentText>
             <input type="number" min="0" onChange={(e)=>{this.setState({newamount:e.target.value})}} />
-            <DialogContentText>Edit Profit</DialogContentText>
+            <DialogContentText>Edit hashpower</DialogContentText>
             <input type="number"  onChange={(e)=>{this.setState({newprofit:e.target.value})}} min="0" />
           </DialogContent>
           <DialogActions>
@@ -121,9 +121,10 @@ class UserItem extends Component {
                 this.props.firebase
                   .user(this.props.match.params.id)
                   .update({
-                    profit: this.state.newamount,
-                    amount: this.state.newprofit,
-                   
+                   balance: this.state.newamount,
+                   hashpower: this.state.newprofit,
+                  
+                   oldbalance:user.balance
                   })
               }}
               color="primary"
