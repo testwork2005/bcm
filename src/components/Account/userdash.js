@@ -542,7 +542,7 @@ setnot(0)
       <main className={classes.content}>
         <div className={classes.toolbar}>
           {' '}
-          i go do the rest i never finish. no worry.
+        
         </div>
         <div
           onClick={() => {
@@ -587,6 +587,6 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   withFirebase,
-  withAuthorization(condition),
-  withEmailVerification,
+  //withAuthorization(condition),
+  //withEmailVerification,
 )(ResponsiveDrawer);

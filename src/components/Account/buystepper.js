@@ -462,7 +462,7 @@ function HorizontalLabelPositionBelowStepper({
                         primary={`Upfront Fees: ${
                           order.order.price
                         }USD per TH/s`}
-                      />
+                      /> 
                     </ListItem>
                   </List>
                   <Typography variant="caption">

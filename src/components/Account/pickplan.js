@@ -655,14 +655,16 @@ function pickplan({ onSetOrder, hn }) {
                 </div>
               </div>
               <Divider dark />
-              <FormControl component="fieldset">
+              <h3>PAYMENT TYPE:</h3>
+              <strong>BITCOIN</strong>
+             { /*<FormControl component="fieldset">
       <FormLabel component="legend">PAYMENT TYPE</FormLabel>
       <RadioGroup aria-label="gender" name="gender1" value={value22} onChange={handleChange22}>
         <FormControlLabel value="btc" control={<Radio />} label="BITCOIN" />
         <FormControlLabel value="eth" control={<Radio />} label="ETHEREUM" />
        
       </RadioGroup>
-    </FormControl>
+                </FormControl>*/}
             </div>
           ) : (
             <div className="prevarea">
@@ -728,14 +730,16 @@ function pickplan({ onSetOrder, hn }) {
                 </div>
               </div>
               <Divider />
-              <FormControl component="fieldset">
+              <h3>PAYMENT TYPE:</h3>
+              <strong>BITCOIN</strong>
+           { /*  <FormControl component="fieldset">
       <FormLabel component="legend">PAYMENT TYPE</FormLabel>
       <RadioGroup aria-label="gender" name="gender1" value={value22} onChange={handleChange22}>
         <FormControlLabel value="btc" control={<Radio />} label="BITCOIN" />
         <FormControlLabel value="eth" control={<Radio />} label="ETHEREUM" />
        
       </RadioGroup>
-    </FormControl>
+                </FormControl> */}
             </div>
           )}
         </div>

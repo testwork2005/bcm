@@ -390,7 +390,9 @@ function upgrade({ onSetOrder }) {
                   </div>
                   <Divider dark />
                 </div>
-                <FormControl component="fieldset">
+                <h3>PAYMENT TYPE:</h3>
+              <strong>BITCOIN</strong>
+              { /* <FormControl component="fieldset">
                   <FormLabel component="legend">
                     PAYMENT TYPE
                   </FormLabel>
@@ -411,7 +413,7 @@ function upgrade({ onSetOrder }) {
                       label="ETHEREUM"
                     />
                   </RadioGroup>
-                </FormControl>
+                  </FormControl>*/}
                 {!wannapay && (
                   <Button
                     variant="contained"
@@ -556,7 +558,7 @@ function upgrade({ onSetOrder }) {
               </div>
               <Divider dark />
             </div>
-            <FormControl component="fieldset">
+            {/*<FormControl component="fieldset">
               <FormLabel component="legend">PAYMENT TYPE</FormLabel>
               <RadioGroup
                 aria-label="gender"
@@ -575,7 +577,7 @@ function upgrade({ onSetOrder }) {
                   label="ETHEREUM"
                 />
               </RadioGroup>
-            </FormControl>
+              </FormControl> */}
             {!wannapay && (
               <Button
                 variant="contained"
