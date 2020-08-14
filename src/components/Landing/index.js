@@ -326,6 +326,7 @@ function Landing() {
               minHeight: '200px',
               display: 'flex',
               flexDirection: 'column',
+              justifyContent:'space-evenly'
             }}
           >
             <div><h3 style={{ color: 'white', textAlign: 'center',margin:'10px auto',color:'#f09b0b' }}>what you have been waiting for</h3></div>
@@ -338,13 +339,13 @@ function Landing() {
             }}>
               {' '}
               
-              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,textAlign:'left'}}>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,textAlign:'left',borderBottom:'1px solid #f0b90b'}}>
               Instant confirmation and Notification
               </p>
-              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px',borderBottom:'1px solid #f0b90b'}}>
                Realtime mining output and dashboard state 
               </p>
-              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px',borderBottom:'1px solid #f0b90b',}}>
              Added layer of security
               </p>
               
@@ -358,13 +359,13 @@ function Landing() {
             }}>
               {' '}
               
-              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,textAlign:'left'}}>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,textAlign:'left',borderBottom:'1px solid #f0b90b'}}>
               Mining becomes more covinient
               </p>
-              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px',borderBottom:'1px solid #f0b90b'}}>
                Realtime market report and updates
               </p>
-              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px',borderBottom:'1px solid #f0b90b'}}>
            Mining portfolio sharing
               </p>
               
