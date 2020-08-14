@@ -321,23 +321,61 @@ function Landing() {
         </video>
         <div>
           <div
+          className='SP'
             style={{
               minHeight: '200px',
               display: 'flex',
               flexDirection: 'column',
             }}
           >
+            <div><h3 style={{ color: 'white', textAlign: 'center',margin:'10px auto',color:'#f09b0b' }}>what you have been waiting for</h3></div>
+             <div style={{
+              minHeight: '200px',
+              display: 'flex',
+              justifyContent:'space-between',
+              marginTop:'10px',
+              maxWidth:'500px'
+            }}>
+              {' '}
+              
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,textAlign:'left'}}>
+              Instant confirmation and Notification
+              </p>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+               Realtime mining output and dashboard state 
+              </p>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+             Added layer of security
+              </p>
+              
+            </div>
+            <div style={{
+              minHeight: '200px',
+              display: 'flex',
+              justifyContent:'space-between',
+              marginTop:'10px',
+              maxWidth:'500px'
+            }}>
+              {' '}
+              
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,textAlign:'left'}}>
+              Mining becomes more covinient
+              </p>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+               Realtime market report and updates
+              </p>
+              <p style={{ color: 'white', textAlign: 'center',maxWidth:'200px' ,marginLeft:'10px'}}>
+           Mining portfolio sharing
+              </p>
+              
+            </div>
             <img
               width="150"
               height="200"
               src={require('../../static/stores.png')}
+              style={{margin:'0 auto'}}
             />
-            <div>
-              {' '}
-              <h3 style={{ color: 'white', textAlign: 'center' }}>
-                Making your mining processes more convinient...
-              </h3>
-            </div>
+           
           </div>
         </div>
       </div>

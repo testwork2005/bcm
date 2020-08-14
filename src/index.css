@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
- 
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -42,7 +42,8 @@ code {
 
 .fullscreen-video-wrap2 video {
   min-height: 100%;
-  max-width: 100vw;
+  width: 100vw;
+  margin: 0 auto;
 }
 .grid-container {
   display: grid;
@@ -59,9 +60,10 @@ code {
   margin: 12px;
   font-family: 'Courier New', Courier, monospace;
 }
-.press{
-  display:flex;
-justify-content:space-evenly}
+.press {
+  display: flex;
+  justify-content: space-evenly;
+}
 .grid-container > div {
   display: flex;
   flex-direction: column;
@@ -271,53 +273,50 @@ justify-content:space-evenly}
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin:0 auto;
+  margin: 0 auto;
 }
-.prevarea >*{
+.prevarea > * {
   margin-bottom: 20px;
 }
-.mn-btn{
+.mn-btn {
   background-color: #fff;
   border: 2px solid #f0b90b;
   border-radius: 3px;
   color: #f0b90b;
-   min-height:50px;
-   margin: 0 25px;
- 
+  min-height: 50px;
+  margin: 0 25px;
 }
-.mn-btn:hover,.mn-btn:focus{
+.mn-btn:hover,
+.mn-btn:focus {
   border: 2px solid #00ac5c;
   transform: translateY(-3px);
-
 }
-.pn-btn:hover{
-  border: 0.5px solid  #f0b90b;
+.pn-btn:hover {
+  border: 0.5px solid #f0b90b;
   transform: translateY(-3px);
 }
-.pn-btn{
+.pn-btn {
   padding: 10px;
   background-color: #fff;
- 
+
   border-radius: 3px;
   color: #000;
   margin: 0 3px;
   min-width: 80px;
   cursor: pointer;
   text-align: center;
-
-
 }
-.planpick{
-  display:flex;
+.planpick {
+  display: flex;
   justify-content: space-evenly;
 }
-.planarea{
+.planarea {
   max-width: 55%;
 }
-.MuiSlider-rail{
-color: #f0b90b;
+.MuiSlider-rail {
+  color: #f0b90b;
 }
-.overlaycontainer{
+.overlaycontainer {
   position: relative;
   min-width: '100vw';
   min-height: '20vh';
@@ -331,7 +330,7 @@ color: #f0b90b;
   display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
-  top: 0; 
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -339,50 +338,48 @@ color: #f0b90b;
   z-index: 2000; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
-.blueenigma{
+.blueenigma {
   background-image: url('../src/static/sbg.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 100%;
   min-height: 65vh;
- margin-top:10%;
+  margin-top: 10%;
 }
-textarea{
-  min-width:300px;
+textarea {
+  min-width: 300px;
   margin-top: 10px;
-  color:black;
+  color: black;
 }
-body{
-  max-width:100vw;
-
+body {
+  max-width: 100vw;
 }
-section{
-  max-width:100vw;
+section {
+  max-width: 100vw;
 }
-button:disabled{
+button:disabled {
   background-color: #555;
   opacity: 0.7;
 }
-.notification{
-display:flex;
-flex-direction: column;
-width:400px;
+.notification {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
 }
-.notification div{
-
+.notification div {
 }
-.notcontainer{
-position: absolute;
-top:100px;
-right:0px;
-background-color: aliceblue;
-height:calc(100vh - 100px);
-transform: translateX(700px);
-transition: all 0.5s ease-out;
+.notcontainer {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  background-color: aliceblue;
+  height: calc(100vh - 100px);
+  transform: translateX(700px);
+  transition: all 0.5s ease-out;
 }
-.show{
+.show {
   transform: translateX(0px);
 }
-.llc{
+.llc {
   padding: 0 10%;
 }
