@@ -476,7 +476,7 @@ export default function pricing() {
 						</ul>
 						<span class="price__value">$15,999</span>
                         <div className="slidecontainer hide">
-  <input type="range" min="1500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
+  <input type="range" min="15500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
 						<a class="btn btn--center" type="button" href="/account">Buy now</a>
             <div style={{margin:'15px auto'}}><small>highly rated by our users,huge earnings in a short period</small> </div>
@@ -501,7 +501,7 @@ export default function pricing() {
 						<span class="price__value">${input2}</span>
 				
                         <div className="slidecontainer">
-  <input type="range" min="20500" max="50000" value={input2} className="slider" id="myRange" onInput={(e)=>{Setval2(e.target.value)}}/>
+  <input type="range" min="16500" max="50000" value={input2} className="slider" id="myRange" onInput={(e)=>{Setval2(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
 <div style={{margin:'15px auto'}}><small>highly rated by our verified users,recommended for pro miners</small> </div>

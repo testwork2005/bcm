@@ -505,6 +505,7 @@ function Landing() {
               fontWeight: 'bold',
               fontSize: '15px',
             }}
+            onClick={()=>{window.location.href='/signup'}}
           >
             REGISTER NOW
           </button>

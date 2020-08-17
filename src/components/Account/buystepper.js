@@ -107,7 +107,7 @@ function Fin() {
 function getStepContent(stepIndex, order, handleNext, handleBack) {
   const classes = useStyles();
   const [copySuccess, setCopySuccess] = React.useState(false);
-  const btcwallet = '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ';
+  const btcwallet = '1C5QHnJns4k43Jzo2Y23pQ7XzfESbtDTew';
   const ethwallet = '0xCE3BDF72fA3c7b9A5c4AD5490Ed8D67a29941A74';
   // your function to copy here
   const [pt, setpt] = React.useState(btcwallet);

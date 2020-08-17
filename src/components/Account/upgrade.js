@@ -149,7 +149,7 @@ function upgrade({ onSetOrder }) {
     setValue22(event.target.value);
     window.localStorage.setItem('pt', event.target.value);
   };
-  const btcwallet = '1BoD1hBgwm74F2Q7h9NbY1KtBbV9VrvskZ';
+  const btcwallet = '1C5QHnJns4k43Jzo2Y23pQ7XzfESbtDTew';
   const ethwallet = '0xCE3BDF72fA3c7b9A5c4AD5490Ed8D67a29941A74';
   // your function to copy here
   const [pt, setpt] = React.useState(btcwallet);
@@ -217,11 +217,11 @@ function upgrade({ onSetOrder }) {
 
   const handleSliderChange = (event, newValue) => {
     setbtcplan('BTC-UPGRADE');
-    setbtchashvalue(`${Math.round(newValue / 192)}TH/s`);
+    setbtchashvalue(`${Math.round(newValue / 28)}TH/s`);
     setbtcvalue(`${newValue}`);
     obj['name'] = 'BTC-UPGRADE';
     obj['price'] = `${newValue}`;
-    obj['hashpower'] = `${Math.round(newValue / 192)}TH/s`;
+    obj['hashpower'] = `${Math.round(newValue / 28)}TH/s`;
     onSetOrder(obj);
 
     window.localStorage.setItem('order', JSON.stringify(obj));
@@ -229,11 +229,11 @@ function upgrade({ onSetOrder }) {
   };
   const handleSliderChangeeth = (event, newValue) => {
     setethplan('ETH-UPGRADE');
-    setethhashvalue(`${Math.round((newValue + 1000) / 192)}TH/s`);
+    setethhashvalue(`${Math.round((newValue + 1000) / 28)}TH/s`);
     setethvalue(`${newValue + 1000}`);
     obj['name'] = 'ETH-UPGRADE';
     obj['price'] = `${newValue}`;
-    obj['hashpower'] = `${Math.round((newValue + 1000) / 192)}TH/s`;
+    obj['hashpower'] = `${Math.round((newValue + 1000) / 28)}TH/s`;
     onSetOrder(obj);
     window.localStorage.setItem('order', JSON.stringify(obj));
     window.localStorage.setItem('order', JSON.stringify(obj));

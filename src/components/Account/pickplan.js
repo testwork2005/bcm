@@ -106,9 +106,9 @@ const plans = {
         'BTC-DIAMOND',
         'BTC-CUSTOM',
       ],
-      hashpower: ['4TH/s', '20TH/s', '104TH/s'],
+      hashpower: ['40TH/s', '200TH/s', '500TH/s'],
 
-      prices: ['2999', '9999', '20500'],
+      prices: ['1500', '7500', '15300'],
     },
   ],
   eth: [
@@ -119,9 +119,9 @@ const plans = {
         'ETH-DIAMOND',
         'ETH-CUSTOM',
       ],
-      hashpower: ['4TH/s', '20TH/s', '104TH/s'],
+      hashpower: ['62TH/s', '240TH/s', '540TH/s'],
 
-      prices: ['3999', '10999', '21500'],
+      prices: ['1999', '7999', '15999'],
     },
   ],
 };
@@ -171,11 +171,11 @@ function pickplan({ onSetOrder, hn }) {
   };
   const handleSliderChange = (event, newValue) => {
     setbtcplan('BTC-CUSTOM');
-    setbtchashvalue(`${Math.round(newValue / 192)}TH/s`);
+    setbtchashvalue(`${Math.round(newValue / 28)}TH/s`);
     setbtcvalue(`${newValue}`);
     obj['name'] = plans.btc[0].names[3];
     obj['price'] = `${newValue}`;
-    obj['hashpower'] = `${Math.round(newValue / 192)}TH/s`;
+    obj['hashpower'] = `${Math.round(newValue / 28)}TH/s`;
     onSetOrder(obj);
 
     window.localStorage.setItem('order', JSON.stringify(obj));
@@ -183,11 +183,11 @@ function pickplan({ onSetOrder, hn }) {
   };
   const handleSliderChangeeth = (event, newValue) => {
     setethplan('ETH-CUSTOM');
-    setethhashvalue(`${Math.round((newValue + 1000) / 192)}TH/s`);
+    setethhashvalue(`${Math.round((newValue + 1000) / 28)}TH/s`);
     setethvalue(`${newValue + 1000}`);
     obj['name'] = plans.eth[0].names[3];
     obj['price'] = `${newValue}`;
-    obj['hashpower'] = `${Math.round((newValue + 1000) / 192)}TH/s`;
+    obj['hashpower'] = `${Math.round((newValue + 1000) / 28)}TH/s`;
     onSetOrder(obj);
     window.localStorage.setItem('order', JSON.stringify(obj));
     window.localStorage.setItem('order', JSON.stringify(obj));
@@ -269,8 +269,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setbtcplan('BTCGOLD');
-                        setbtchashvalue('4TH/s');
-                        setbtcvalue('2,999');
+                        setbtchashvalue('40TH/s');
+                        setbtcvalue('1,500');
                         /** const plans = {
   
   "btc": [
@@ -310,8 +310,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setbtcplan('BTC-PLATINUM');
-                        setbtchashvalue('20TH/s');
-                        setbtcvalue('9,999');
+                        setbtchashvalue('200TH/s');
+                        setbtcvalue('7,500');
 
                         obj['name'] = plans.btc[0].names[1];
                         obj['price'] = plans.btc[0].prices[1];
@@ -333,8 +333,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setbtcplan('BTC-DIAMOND');
-                        setbtchashvalue('104TH/s');
-                        setbtcvalue('20,999');
+                        setbtchashvalue('500TH/s');
+                        setbtcvalue('15,300');
 
                         obj['name'] = plans.btc[0].names[2];
                         obj['price'] = plans.btc[0].prices[2];
@@ -370,10 +370,10 @@ function pickplan({ onSetOrder, hn }) {
                   style={{ marginTop: '35px', marginBottom: '13px' }}
                 >
                   <AirbnbSlider
-                    defaultValue={25000}
+                    defaultValue={15500}
                     aria-labelledby="custom"
                     step={50}
-                    min={20500}
+                    min={15500}
                     max={50000}
                     ThumbComponent={AirbnbThumbComponent}
                     onChange={handleSliderChange}
@@ -445,8 +445,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setethplan('ETH-GOLD');
-                        setethhashvalue('4TH/s');
-                        setethvalue('3,999');
+                        setethhashvalue('62TH/s');
+                        setethvalue('1,999');
 
                         obj['name'] = plans.eth[0].names[0];
                         obj['price'] = plans.eth[0].prices[0];
@@ -477,8 +477,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setethplan('ETH-PLATINUM');
-                        setethhashvalue('20TH/s');
-                        setethvalue('10,999');
+                        setethhashvalue('240TH/s');
+                        setethvalue('7,999');
                         obj['name'] = plans.eth[0].names[1];
                         obj['price'] = plans.eth[0].prices[1];
                         obj['hashpower'] = plans.eth[0].hashpower[1];
@@ -507,8 +507,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setethplan('ETH-DIAMOND');
-                        setethhashvalue('104TH/s');
-                        setethvalue('21,999');
+                        setethhashvalue('540TH/s');
+                        setethvalue('15,999');
 
                         obj['name'] = plans.eth[0].names[2];
 
@@ -555,13 +555,13 @@ function pickplan({ onSetOrder, hn }) {
                 >
                   <AirbnbSlider
                     className={classes.slider}
-                    defaultValue={25000}
+                    defaultValue={16500}
                     getAriaValueText={valuetext}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={50}
                     marks
-                    min={20500}
+                    min={16500}
                     max={50000}
                     ThumbComponent={AirbnbThumbComponent}
                     valueLabelDisplay="on"

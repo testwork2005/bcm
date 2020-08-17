@@ -26,6 +26,12 @@ import { UserList, UserItem } from '../components/Users';
 import * as ROLES from '../constants/roles';
 import * as ROUTES from '../constants/routes';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import {
+  withAuthorization,
+  withEmailVerification,
+} from '../components/Session';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -120,7 +126,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Dashboard() {
+function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -193,34 +199,43 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Switch>
-      <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
-      <Route exact path={ROUTES.ADMIN} component={UserList} />
-    </Switch>
+              <Route
+                exact
+                path={ROUTES.ADMIN_DETAILS}
+                component={UserItem}
+              />
+              <Route exact path={ROUTES.ADMIN} component={UserList} />
+            </Switch>
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-               
-              </Paper>
+              <Paper className={fixedHeightPaper} />
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-             
-              </Paper>
+              <Paper className={fixedHeightPaper} />
             </Grid>
-           
+
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-              
-              </Paper>
+              <Paper className={classes.paper} />
             </Grid>
           </Grid>
           <Box pt={4}>
             <Copyright />
           </Box>
-       
         </Container>
       </main>
     </div>
   );
 }
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+});
+
+const condition = authUser => !!authUser.isAdmin;
+
+export default compose(
+  connect(mapStateToProps),
+ 
+
+  withAuthorization(condition),
+)(Dashboard);
