@@ -391,7 +391,7 @@ function pickplan({ onSetOrder, hn }) {
                     Operational address: Epic-Mining Ltd.,
                     Trinity Chambers, P.O. Box 4301, Road Town,
                     Tortola, British Virgin Islands Payments processed
-                    by: Genesis Mining Iceland ehf., Company No.
+                    by: Epic Mining Iceland ehf., Company No.
                     521016-0430, Borgartúni 27, 105 Reykjavík, Iceland
                   </Typography>
                 </div>
@@ -578,7 +578,7 @@ function pickplan({ onSetOrder, hn }) {
                     Operational address: Epic-Mining Ltd.,
                     Trinity Chambers, P.O. Box 4301, Road Town,
                     Tortola, British Virgin Islands Payments processed
-                    by: Genesis Mining Iceland ehf., Company No.
+                    by: epic Mining Iceland ehf., Company No.
                     521016-0430, Borgartúni 27, 105 Reykjavík, Iceland
                   </Typography>
                 </div>

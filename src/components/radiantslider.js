@@ -66,7 +66,7 @@ export default class SimpleSlider extends Component {
                     textAlign: 'center',
                   }}
                 >
-                  Our self developed monitoring system Genesis Hive
+                  Our self developed monitoring system Epic Hive
                   has matured to become an all-in-one software for
                   miner deployment, maintenance and administration. It
                   is a state of the art tool that enables automation

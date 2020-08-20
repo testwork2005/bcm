@@ -32,6 +32,7 @@ import {
   withAuthorization,
   withEmailVerification,
 } from '../components/Session';
+import Od from '../components/orders/orderitem'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -196,6 +197,11 @@ function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
+        <Grid item xs={12} md={8} lg={9}>
+              <Paper  >
+                <h1>RECENT ORDERS</h1>
+              <Od/></Paper>
+            </Grid>
           <Grid container spacing={3}>
             {/* Chart */}
             <Switch>
@@ -206,9 +212,7 @@ function Dashboard() {
               />
               <Route exact path={ROUTES.ADMIN} component={UserList} />
             </Switch>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper} />
-            </Grid>
+           
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper} />
@@ -216,7 +220,9 @@ function Dashboard() {
 
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper} />
+              <Paper className={classes.paper} >
+               
+                </Paper>
             </Grid>
           </Grid>
           <Box pt={4}>

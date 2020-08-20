@@ -145,7 +145,8 @@ var neworder = {
   amount:Number(input),
   date:Moment().toString(),
   status:'pending',
-  uid:authUser.uid
+  uid:authUser.uid,
+  createdAt:firebase.serverValue.TIMESTAMP
 };
 if((Number(authUser.balance)>Number(input))||(Number(authUser.ethbalance)>Number(input))){
   firebase

@@ -215,9 +215,9 @@ export default function contact() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Epic-Mining is a Cryptocurrency cloud mining service that offers an easy and safe way to purchase hashpower without having to deal with complex hardware and software setup. We offer hosted cryptocurrency mining services and a variety of mining related solutions to small and large scale customers. The combination of our algorithmic trading framework, mining infrastructure, and proprietary mining farm-management software, Genesis Hive, quickly made us an industry leader.
+          Epic-Mining is a Cryptocurrency cloud mining service that offers an easy and safe way to purchase hashpower without having to deal with complex hardware and software setup. We offer hosted cryptocurrency mining services and a variety of mining related solutions to small and large scale customers. The combination of our algorithmic trading framework, mining infrastructure, and proprietary mining farm-management software, Epic Hive, quickly made us an industry leader.
 
-Our team of mining experts with extensive knowledge of the digital currency sector specializes in building the most efficient and reliable mining facilities. Genesis Mining is also the founding partner of Logos Fund, the first ever Bitcoin Mining Fund, which targets professional investors looking to gain access to Bitcoin’s and various other digital assets’ potential.
+Our team of mining experts with extensive knowledge of the digital currency sector specializes in building the most efficient and reliable mining facilities. Epic Mining is also the founding partner of Logos Fund, the first ever Bitcoin Mining Fund, which targets professional investors looking to gain access to Bitcoin’s and various other digital assets’ potential.
 
 Our service was founded by the end of 2013 and with now over 2.000.000 users we are the world‘s leading multi-algorithm cloud mining service.
           </Typography>
@@ -334,7 +334,7 @@ Ethash contract - Ethereum
 CryptoNight contract - Monero/Monero Classic
 Scrypt - Litecoin
 Equihash - Zcash
-(*) “Genesis Mining Advanced Allocation” (special feature):
+(*) “Epic Mining Advanced Allocation” (special feature):
 It allows you to get mining outputs in many different coins even if they are not mined directly by a certain algorithm. For example, you can get mining outputs in BTC while mining with an X11 algorithm! That is possible by mining the DASH coin directly, which is then automatically swapped to BTC by our algorithmic framework. The Allocation function is designed for customers to receive delivery of their mining results in their preferred cryptocurrency. We call it “mining BTC the smart way”. The same technique is also used to get mining results in LTC with a SHA-256 contract, etc. </Typography>
         </AccordionDetails>
       </Accordion>

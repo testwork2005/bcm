@@ -59,9 +59,9 @@ export default class SimpleSlider extends Component {
           <div>
             <div className="review">
               <blockquote className="review__blockquote">
-                MinerEU is very happy to have Genesis Mining as our
+                MinerEU is very happy to have Epic Mining as our
                 trustworthy partner. We have already recommended
-                Genesis-Mining to thousands of our existing customers
+                Epic-Mining to thousands of our existing customers
                 who are happy and satisfied with their excellent
                 services and products.
               </blockquote>

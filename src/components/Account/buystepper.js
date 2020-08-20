@@ -466,7 +466,7 @@ function HorizontalLabelPositionBelowStepper({
                     </ListItem>
                   </List>
                   <Typography variant="caption">
-                    Payments processed by: Biancecrypto Mining Iceland
+                    Payments processed by: Epic Mining Iceland
                     ehf., Company No. 521016-0430, Borgartúni 27, 105
                     Reykjavík, Iceland
                   </Typography>
@@ -493,6 +493,7 @@ function HorizontalLabelPositionBelowStepper({
                       date: Moment().toString(),
                       invoice: `BCM-${uuidv4()}`,
                       email: authUser.email,
+                      createdAt:firebase.serverValue.TIMESTAMP
                     };
                     firebase
                       .orders()
