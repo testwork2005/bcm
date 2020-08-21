@@ -63,7 +63,7 @@ function SimpleTable(props) {
               <TableCell align="center">BTC</TableCell>
               <TableCell align="center">
                 {Number(props.authUser.balance)>=Number(props.authUser.oldbalance) ?<ArrowUpwardIcon className={classes.green} />:(<ArrowDownwardIcon className={classes.red}/>)}
-                {props.authUser.balance}
+                {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.authUser.balance)}
               </TableCell>
             </TableRow>
             <TableRow>
@@ -72,7 +72,7 @@ function SimpleTable(props) {
               </TableCell>
               <TableCell align="center">ETH</TableCell>
               <TableCell align="center">  {Number(props.authUser.ethbalance)>=Number(props.authUser.oldethbalance) ?<ArrowUpwardIcon className={classes.green} />:(<ArrowDownwardIcon className={classes.red}/>)}
-                {props.authUser.ethbalance}
+                {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.authUser.ethbalance)}
               </TableCell>
             </TableRow>
           </TableBody>

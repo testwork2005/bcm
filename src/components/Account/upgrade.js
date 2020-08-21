@@ -34,7 +34,15 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+
 import FormLabel from '@material-ui/core/FormLabel';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import  ListItemText from '@material-ui/core/ListItemText'
+import Select from '@material-ui/core/Select';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -390,8 +398,22 @@ function upgrade({ onSetOrder }) {
                   </div>
                   <Divider dark />
                 </div>
-                <h3>PAYMENT TYPE:</h3>
-              <strong>BITCOIN</strong>
+                   <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">
+          PAYMENT TYPE:
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={value22}
+            onChange={handleChange22}
+          >
+            
+            <MenuItem value={'btc'}>BITCOIN</MenuItem>
+            <MenuItem value={'eth'}>ETHEREUM</MenuItem>
+           
+          </Select>
+        </FormControl>
               { /* <FormControl component="fieldset">
                   <FormLabel component="legend">
                     PAYMENT TYPE
@@ -558,6 +580,22 @@ function upgrade({ onSetOrder }) {
               </div>
               <Divider dark />
             </div>
+            < FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">
+          PAYMENT TYPE:
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={value22}
+            onChange={handleChange22}
+          >
+            
+            <MenuItem value={'btc'}>BITCOIN</MenuItem>
+            <MenuItem value={'eth'}>ETHEREUM</MenuItem>
+           
+          </Select>
+        </FormControl>
             {/*<FormControl component="fieldset">
               <FormLabel component="legend">PAYMENT TYPE</FormLabel>
               <RadioGroup

@@ -23,12 +23,24 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import  ListItemText from '@material-ui/core/ListItemText'
+import Select from '@material-ui/core/Select';
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: 300,
   },
   margin: {
     height: theme.spacing(3),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
   },
   slider: {
     color: '#f0b90b',
@@ -655,8 +667,24 @@ function pickplan({ onSetOrder, hn }) {
                 </div>
               </div>
               <Divider dark />
-              <h3>PAYMENT TYPE:</h3>
-              <strong>BITCOIN</strong>
+              
+              <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">
+          PAYMENT TYPE:
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={value22}
+            onChange={handleChange22}
+          >
+            
+            <MenuItem value={'btc'}>BITCOIN</MenuItem>
+            <MenuItem value={'eth'}>ETHEREUM</MenuItem>
+           
+          </Select>
+        </FormControl>
+              
              { /*<FormControl component="fieldset">
       <FormLabel component="legend">PAYMENT TYPE</FormLabel>
       <RadioGroup aria-label="gender" name="gender1" value={value22} onChange={handleChange22}>
@@ -730,8 +758,22 @@ function pickplan({ onSetOrder, hn }) {
                 </div>
               </div>
               <Divider />
-              <h3>PAYMENT TYPE:</h3>
-              <strong>BITCOIN</strong>
+              <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">
+          PAYMENT TYPE:
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={value22}
+            onChange={handleChange22}
+          >
+            
+            <MenuItem value={'btc'}>BITCOIN</MenuItem>
+            <MenuItem value={'eth'}>ETHEREUM</MenuItem>
+           
+          </Select>
+        </FormControl>
            { /*  <FormControl component="fieldset">
       <FormLabel component="legend">PAYMENT TYPE</FormLabel>
       <RadioGroup aria-label="gender" name="gender1" value={value22} onChange={handleChange22}>
