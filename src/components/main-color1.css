@@ -3196,6 +3196,14 @@ h4 {
   background-repeat: no-repeat;
   background-size: cover;
   margin: 25px;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: black;
+
+}
+.inputWrapper:hover{
+  border: 4px solid gold;
 }
 .fileInput {
   cursor: pointer;

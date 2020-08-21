@@ -589,5 +589,5 @@ export default compose(
   withFirebase,
   withAuthorization(condition),
   
- // withEmailVerification,
+  withEmailVerification,
 )(ResponsiveDrawer);

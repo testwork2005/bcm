@@ -339,7 +339,7 @@ export default function about() {
       </div>
 <div style={{margin:'30px auto',display:'flex',justifyContent:'center',backgroundColor:'#f0b90b',maxWidth:'250px'}}><Rev/></div>
       <img
-        src={require('../static/sbg.jpg')}
+        src={require('../static/map.jpeg')}
         alt=""
         className="backimg"
       />

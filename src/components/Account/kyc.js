@@ -39,9 +39,39 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Fin() {
+function Fin({ files, firebase }) {
   const classes = useStyles();
   const [showload, setshow] = React.useState(true);
+  const onUploadSubmission = e => {
+    e.preventDefault(); // prevent page refreshing
+    const promises = [];
+    files.forEach(file => {
+      const uploadTask = firebase
+        .storage()
+        .ref()
+        .child(`documents/${file.name}`)
+        .put(file);
+      promises.push(uploadTask);
+      uploadTask.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        snapshot => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          if (snapshot.state === firebase.storage.TaskState.RUNNING) {
+            console.log(`Progress: ${progress}%`);
+          }
+        },
+        error => console.log(error.code),
+        async () => {
+          const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+          // do something with the url
+        },
+      );
+    });
+    Promise.all(promises)
+      .then(() => alert('All files uploaded'))
+      .catch(err => console.log(err.code));
+  };
   React.useEffect(() => {
     setTimeout(() => {
       setshow(false);
@@ -51,7 +81,6 @@ function Fin() {
 
   return (
     <div>
-      
       {!showload && (
         <div
           style={{
@@ -105,7 +134,7 @@ function getSteps() {
   return ['Proof of Identiity', 'Selfie', 'Proof of Residence'];
 }
 
-function getStepContent(stepIndex, hn, hb) {
+function getStepContent(stepIndex, hn, hb, firebase) {
   const classes = useStyles();
   const [files, setFiles] = React.useState([]);
   const [selectedFile, setSelectedFile] = React.useState();
@@ -126,7 +155,7 @@ function getStepContent(stepIndex, hn, hb) {
     () => {
       if (!selectedFile) {
         setPreview(undefined);
-       
+
         return;
       }
 
@@ -159,7 +188,7 @@ function getStepContent(stepIndex, hn, hb) {
         setPreview7(objectUrl);
         setcanshow(false);
       }
-
+      setFiles(prevState => [...prevState, selectedFile]);
       // free memory when ever this component is unmounted
       return () => URL.revokeObjectURL(objectUrl);
     },
@@ -176,7 +205,7 @@ function getStepContent(stepIndex, hn, hb) {
     setSelectedFile(e.target.files[0]);
   };
 
-  switch (stepIndex) {
+  switch (stepIndex,firebase) {
     case 0:
       return (
         <div style={{ margin: '0 10%' }}>
@@ -246,7 +275,6 @@ function getStepContent(stepIndex, hn, hb) {
                 style={{ display: 'flex', justifyContent: 'center' }}
               >
                 <div>
-                  {' '}
                   <div className="inputWrapper">
                     {' '}
                     <input
@@ -505,29 +533,31 @@ function getStepContent(stepIndex, hn, hb) {
               </div>
               {selectedFile && <img src={preview6} width="300" />}
             </div>
-            
           </div>
-          <div style={{display:'flex'}}>  <Button
-                variant="contained"
-                disabled={canshow}
-                color="primary"
-                onClick={() => {
-                  setcanshow(true)
-                  hn();
-                }}
-              >
-                next
-              </Button>
-              <Button
-                variant="contained"
-                
-                color="primary"
-                onClick={() => {  setcanshow(false)
-                  hb();
-                }}
-              >
-               back
-              </Button></div>
+          <div style={{ display: 'flex' }}>
+            {' '}
+            <Button
+              variant="contained"
+              disabled={canshow}
+              color="primary"
+              onClick={() => {
+                setcanshow(true);
+                hn();
+              }}
+            >
+              next
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                setcanshow(false);
+                hb();
+              }}
+            >
+              back
+            </Button>
+          </div>
         </Paper>
       );
     case 2:
@@ -597,37 +627,37 @@ function getStepContent(stepIndex, hn, hb) {
             </div>
             {selectedFile && <img src={preview7} width="300" />}
           </div>
-          <div style={{display:'flex'}}>  <Button
-                variant="contained"
-                disabled={canshow}
-                color="primary"
-                onClick={() => {
-                  setcanshow(true)
-                    hn();
-                
-                }}
-              >
-                next
-              </Button>
-              <Button
-                variant="contained"
-                
-                color="primary"
-                onClick={() => {
-                  setcanshow(false);
-                    hb();
-                
-                }}
-              >
-               back
-              </Button></div>
+          <div style={{ display: 'flex' }}>
+            {' '}
+            <Button
+              variant="contained"
+              disabled={canshow}
+              color="primary"
+              onClick={() => {
+                setcanshow(true);
+                hn();
+              }}
+            >
+              next
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                setcanshow(false);
+                hb();
+              }}
+            >
+              back
+            </Button>
+          </div>
         </Paper>
       );
     default:
-      return <Fin />;
+      return <Fin files={files} firebase={firebase} />;
   }
 }
-export const kyc = () => {
+export const kyc = ({ firebase }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -643,7 +673,6 @@ export const kyc = () => {
   };
   return (
     <div>
-     
       <Paper stye={{ margin: '10px auto', maxWidth: '70%' }}>
         <div className={classes.root}>
           <Stepper activeStep={activeStep} alternativeLabel>
@@ -656,13 +685,17 @@ export const kyc = () => {
           <div>
             <div>
               <Typography className={classes.instructions}>
-                {getStepContent(activeStep, handleNext, handleback)}
+                {getStepContent(
+                  activeStep,
+                  handleNext,
+                  handleback,
+                  firebase,
+                )}
               </Typography>
             </div>
           </div>
         </div>
       </Paper>
-      
     </div>
   );
 };
