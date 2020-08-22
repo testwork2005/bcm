@@ -355,16 +355,15 @@ setnot(0)
           justifyContent: 'center',
           color: 'white',
         }}
-        onClick={() => {
-         window.location.href='/'
-        }}
+       
       >
+        <a href="/">
         <img
           src={require('../../static/home-bg.png')}
           width="100"
           alt=""
           style={{ margin: '0 auto' }}
-        />
+        /></a>
       </div>
       <Divider />
       <List className={classes.list}>
