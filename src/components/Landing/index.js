@@ -174,7 +174,7 @@ function Landing() {
                   account, you can start to mine your first coins
                   using our Bitcoin cloud mining service!
                 </p>
-                <a href="#" className=" hyy btn btn--shadow a">
+                <a href="/signup" className=" hyy btn btn--shadow a">
                   get started
                 </a>
               </div>

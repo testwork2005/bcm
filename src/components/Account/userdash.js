@@ -355,6 +355,9 @@ setnot(0)
           justifyContent: 'center',
           color: 'white',
         }}
+        onClick={() => {
+         window.location.href='/'
+        }}
       >
         <img
           src={require('../../static/home-bg.png')}
@@ -562,7 +565,9 @@ setnot(0)
               cursor: 'pointer',
             }}
           >
-            to be verified click here and upload KYC documents!
+            to be verified <a style={{color:"#f0b90b"}}  onClick={() => {
+            setview(7);
+          }}>click here</a>  and upload KYC documents!
           </Alert>{' '}
         </div>}
 

@@ -19,7 +19,7 @@ export default function footer() {
             </div>
 
             <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Useful Links</h6>
+              <h4 style={{color:'white'}} >Useful Links</h4>
               <ul className="footer__list ul">
                 <li>
                   <a href="/about" className="a">
@@ -45,7 +45,7 @@ export default function footer() {
             </div>
 
             <div className="col-6 col-sm-6 col-md-4 col-lg-3">
-              <h6 className="footer__title">Company</h6>
+              <h4 style={{color:'white'}}>Company</h4>
               <ul className="footer__list ul">
                 <li>
                   <a href="/enigma" className="a">
@@ -62,7 +62,7 @@ export default function footer() {
             </div>
 
             <div className="col-12 col-sm-6 col-lg-3">
-              <h6 className="footer__title">Contact</h6>
+              <h4 style={{color:'white'}}>Contact</h4>
               <ul className="footer__list ul">
                 <li>
                   <a href="/contact">support@epic-mining.com</a>
