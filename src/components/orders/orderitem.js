@@ -22,11 +22,10 @@ const orderitem = ({ firebase }) => {
       marginTop: theme.spacing(2),
     },
   }));
-  const Orderitems = ({ order,ident }) => {
-    React.useEffect(()=>{
-
+  const Orderitems = ({ order, ident }) => {
+    React.useEffect(() => {
       console.log(ident);
-    })
+    });
     const classes = useStyles();
     const handleChange = event => {
       setstatus(event.target.value);
@@ -49,7 +48,6 @@ const orderitem = ({ firebase }) => {
             value={status}
             onChange={handleChange}
           >
-            
             <MenuItem value={'pending'}>pending</MenuItem>
             <MenuItem value={'approved'}>approved</MenuItem>
             <MenuItem value={'expired'}>cancel</MenuItem>
@@ -101,7 +99,9 @@ const orderitem = ({ firebase }) => {
 
       <div>
         {Object.keys(orders).map(key => {
-          return <Orderitems key={key} order={orders[key]} ident={key} />;
+          return (
+            <Orderitems key={key} order={orders[key]} ident={key} />
+          );
         })}
       </div>
     </div>

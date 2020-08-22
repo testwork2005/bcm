@@ -39,9 +39,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Fin({ files, firebase }) {
+function Fin({ files, firebase,user }) {
   const classes = useStyles();
   const [showload, setshow] = React.useState(true);
+  const [progress,setprog]=React.useState(0)
   const onUploadSubmission = e => {
     e.preventDefault(); // prevent page refreshing
     const promises = [];
@@ -73,9 +74,36 @@ function Fin({ files, firebase }) {
       .catch(err => console.log(err.code));
   };
   React.useEffect(() => {
-    setTimeout(() => {
-      setshow(false);
-    }, 5000);
+    const promises = [];
+    files.forEach(file => {
+      const uploadTask = firebase.storagedocs().child(`documents/${file.name}`)
+        .put(file);
+      promises.push(uploadTask);
+      uploadTask.on('state_changed',
+        snapshot => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          if ( ((snapshot.bytesTransferred / snapshot.totalBytes) * 100) <100) {
+        setprog(progress)
+        console.log(user.uid)
+          }
+        },
+        error => console.log(error.code),
+        async () => {
+          const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+          // do something with the url
+         firebase.user(user.uid).child('documents').push({link:downloadURL} );
+        },
+      );
+    });
+    Promise.all(promises)
+      .then(() => {alert('All files uploaded')
+      setshow(false);}
+      )
+      .catch(err => console.log(err.code));
+    
+    
+    
     // free memory when ever this component is unmounted
   }, []);
 
@@ -125,6 +153,9 @@ function Fin({ files, firebase }) {
           <p style={{ textAlign: 'center' }}>
             submitting documents...
           </p>
+          <p style={{ textAlign: 'center' }}>
+           {`${Math.round(progress)}%`}
+          </p>
         </div>
       )}
     </div>
@@ -134,7 +165,7 @@ function getSteps() {
   return ['Proof of Identiity', 'Selfie', 'Proof of Residence'];
 }
 
-function getStepContent(stepIndex, hn, hb, firebase) {
+function getStepContent(stepIndex, hn, hb, firebase,user) {
   const classes = useStyles();
   const [files, setFiles] = React.useState([]);
   const [selectedFile, setSelectedFile] = React.useState();
@@ -205,7 +236,7 @@ function getStepContent(stepIndex, hn, hb, firebase) {
     setSelectedFile(e.target.files[0]);
   };
 
-  switch (stepIndex,firebase) {
+  switch (stepIndex) {
     case 0:
       return (
         <div style={{ margin: '0 10%' }}>
@@ -653,11 +684,13 @@ function getStepContent(stepIndex, hn, hb, firebase) {
           </div>
         </Paper>
       );
-    default:
-      return <Fin files={files} firebase={firebase} />;
+      case 3:
+      return <Fin files={files} firebase={firebase} user={user} />;
+     default:
+      return <div >unknown option</div>;
   }
 }
-export const kyc = ({ firebase }) => {
+export const kyc = ({ firebase,authUser }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -690,6 +723,7 @@ export const kyc = ({ firebase }) => {
                   handleNext,
                   handleback,
                   firebase,
+                  authUser
                 )}
               </Typography>
             </div>

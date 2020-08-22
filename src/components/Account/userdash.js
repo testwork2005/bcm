@@ -187,9 +187,13 @@ function ResponsiveDrawer(props) {
   const [color, setcolor] = React.useState('white');
   const [page, setpage] = React.useState('Dashboard');
 const [show,setshow]=React.useState('');
+const[showalert,setalert]=React.useState(true);
 const[not,setnot]=React.useState(0);
 React.useEffect(()=>{
   var hi=0
+  if(!!props.authUser.isverified && props.authUser.isverified){
+    setalert(false)
+  }
 if(!!props.authUser.messages)
 {hi= Object.entries(props.authUser.messages).length;
 setnot(hi)}
@@ -544,7 +548,7 @@ setnot(0)
           {' '}
         
         </div>
-        <div
+        {showalert &&<div
           onClick={() => {
             setview(7);
           }}
@@ -560,7 +564,7 @@ setnot(0)
           >
             to be verified click here and upload KYC documents!
           </Alert>{' '}
-        </div>
+        </div>}
 
         <br />
         <div className={`notcontainer ${show} `} ><Nt toggler={toggler} messages={props.authUser.messages} /></div>

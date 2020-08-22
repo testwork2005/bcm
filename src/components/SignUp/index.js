@@ -252,6 +252,7 @@ const INITIAL_STATE = {
   ethbalance: 0,
   oldethbalance: 0,
   ethhashpower: 0,
+  isverified:false
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -287,6 +288,7 @@ class SignUpFormBase extends Component {
       ethbalance,
       oldethbalance,
       ethhashpower,
+      isverified
     } = this.state;
     const roles = {};
     //set HTTPS=true&&npm start
@@ -309,6 +311,7 @@ class SignUpFormBase extends Component {
           ethbalance,
           oldethbalance,
           ethhashpower,
+          isverified
 
         });
       }) 

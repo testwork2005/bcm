@@ -54,16 +54,19 @@ class UserItem extends Component {
       newprofit: 0,
       newamount: 0,
       newprofiteth: 0,
-      newamounteth:0,
+      newamounteth: 0,
       open2: false,
       topic: '',
       message: '',
+      isblocked:false,
+      verified:false
     };
   }
 
   componentDidMount() {
     if (!this.props.user) {
       this.setState({ loading: true });
+      
     }
 
     this.props.firebase
@@ -75,8 +78,10 @@ class UserItem extends Component {
         );
 
         this.setState({ loading: false });
-      });
-  }
+        if(!!this.props.user.isverified)
+    this.setState({ verified: this.props.user.isverified });
+     
+    })}
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -99,7 +104,7 @@ class UserItem extends Component {
     const { loading } = this.state;
 
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -112,7 +117,6 @@ class UserItem extends Component {
               type="number"
               step="any"
               min="0"
-             placeholder={user.balance}
               onChange={e => {
                 this.setState({ newamount: e.target.value });
               }}
@@ -121,7 +125,6 @@ class UserItem extends Component {
             <input
               type="number"
               step="any"
-              placeholder={user.hashpower}
               onChange={e => {
                 this.setState({ newprofit: e.target.value });
               }}
@@ -132,7 +135,6 @@ class UserItem extends Component {
               type="number"
               step="any"
               min="0"
-              placeholder={user.ethbalance}
               onChange={e => {
                 this.setState({ newamounteth: e.target.value });
               }}
@@ -141,7 +143,6 @@ class UserItem extends Component {
             <input
               type="number"
               step="any"
-              placeholder={user.ethhashpower}
               onChange={e => {
                 this.setState({ newprofiteth: e.target.value });
               }}
@@ -162,9 +163,15 @@ class UserItem extends Component {
                     ethbalance: this.state.newamounteth,
                     ethhashpower: this.state.newprofiteth,
                     oldbalance: user.balance,
-                  }).then(()=>{alert('updated successfully');
-                  this.handleClose()
-                }).catch((err)=>{alert(err)})
+                    oldethbalance:user.ethbalance
+                  })
+                  .then(() => {
+                    alert('updated successfully');
+                    this.handleClose();
+                  })
+                  .catch(err => {
+                    alert(err);
+                  });
               }}
               color="primary"
             >
@@ -328,6 +335,78 @@ class UserItem extends Component {
             </Fab>
           </div>
         )}
+        <h1 style={{ textAlign: 'center' }}>DOCUMENTS</h1>
+        {!!user.documents ? (
+          <div>
+            {Object.keys(user.documents).map(key => {
+              return (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-evenly',
+                  }}
+                >
+                  <p>{key}</p>{' '}
+                  <a
+                    href={`${user.documents[key].link}`}
+                    target="_blank"
+                  >
+                    VIEW{' '}
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div>No documents yet </div>
+        )}
+        <div>
+          {' '}
+         blockmining:
+          <input
+            type="checkbox"
+            id="myCheck"
+            checked={this.state.isblocked}
+            onChange={() => { this.setState({ isblocked:!this.state.isblocked })}}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              this.props.firebase.user(this.props.match.params.id).update({ ismining: this.state.isblocked });
+            }}
+          >
+            Update
+          </Button>
+        </div>
+        <div>
+          {' '}
+         verify kyc :
+          <input
+            type="checkbox"
+            id="myCheck"
+            checked={this.state.verified}
+            onChange={() => { this.setState({ verified:!this.state.verified })}}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              this.props.firebase.user(this.props.match.params.id).update({ isverified: this.state.verified });
+            }}
+          >
+            Update
+          </Button>
+        </div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            window.location.href = '/admin';
+          }}
+        >
+          back to admin
+        </Button>
       </div>
     );
   }

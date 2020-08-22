@@ -25,7 +25,7 @@ class Firebase {
 
     this.auth = app.auth();
     this.db = app.database();
-
+this.storage=app.storage();
     /* Social Sign In Method Provider */
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
@@ -100,9 +100,9 @@ class Firebase {
   orders = () => this.db.ref('orders');
   withdrawals = () => this.db.ref('withdrawals');
   // *** Message API ***
-
+storagedocs=()=>this.storage.ref('documents')
   message = uid => this.db.ref(`messages/${uid}`);
-
+store=()=>this.storage;
   messages = () => this.db.ref('messages');
 }
 
