@@ -40,8 +40,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import  ListItemText from '@material-ui/core/ListItemText'
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -116,12 +116,12 @@ const useStyles = makeStyles(theme => ({
     margin: '0 10px',
     padding: '10px',
     fontWeight: 'bold',
-    maxHeight:'30px'
+    maxHeight: '30px',
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 200,
-  }
+  },
 }));
 function Fin() {
   return (
@@ -315,9 +315,14 @@ function upgrade({ onSetOrder }) {
               style={{ textAlign: 'center', margin: '3px auto' }}
             >{`${btchashval}`}</p>
             <Divider />
-            <p
-              style={{ textAlign: 'center', margin: '3px auto' }}
-            >{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</p>
+            <p style={{ textAlign: 'center', margin: '3px auto' }}>
+              {new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              })
+                .format(btcval)
+                .replace(/\D00$/, '')}
+            </p>
             <div
               style={{ display: 'flex', justifyContent: 'center' }}
             >
@@ -330,7 +335,7 @@ function upgrade({ onSetOrder }) {
                     aria-labelledby="discrete-slider"
                     step={50}
                     min={0}
-                    max={10000}
+                    max={50000}
                     onChange={handleSliderChange}
                     ThumbComponent={AirbnbThumbComponent}
                   />
@@ -384,7 +389,14 @@ function upgrade({ onSetOrder }) {
                         <TableRow>
                           <TableCell>{btcplan}</TableCell>
                           <TableCell>{btchashval}</TableCell>
-                          <TableCell>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</TableCell>
+                          <TableCell>
+                            {new Intl.NumberFormat('en-US', {
+                              style: 'currency',
+                              currency: 'USD',
+                            })
+                              .format(btcval)
+                              .replace(/\D00$/, '')}
+                          </TableCell>
                         </TableRow>
                       </TableBody>
                     </Table>
@@ -399,29 +411,38 @@ function upgrade({ onSetOrder }) {
                     }}
                   >
                     <h5>Total:</h5>
-                    <h5>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</h5>{' '}
+                    <h5>
+                      {new Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      })
+                        .format(btcval)
+                        .replace(/\D00$/, '')}
+                    </h5>{' '}
                   </div>
                   <Divider dark />
                 </div>
-                   <FormControl className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">
-         <h3 style={{color:'black'}}>PAYMENT TYPE:</h3> 
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={value22}
-            onChange={handleChange22}
-
-          >
-            
-            <MenuItem value={'btc'}> <h4 style={{color:'black'}}>BITCOIN</h4></MenuItem>
-            <MenuItem value={'eth'}><h4 style={{color:'black'}}>ETHEREUM </h4> </MenuItem>
-           
-          </Select>
-        </FormControl>
-        </div>
-              { /* <FormControl component="fieldset">
+                <FormControl className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-label">
+                    <h3 style={{ color: 'black' }}>PAYMENT TYPE:</h3>
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={value22}
+                    onChange={handleChange22}
+                  >
+                    <MenuItem value={'btc'}>
+                      {' '}
+                      <h4 style={{ color: 'black' }}>BITCOIN</h4>
+                    </MenuItem>
+                    <MenuItem value={'eth'}>
+                      <h4 style={{ color: 'black' }}>ETHEREUM </h4>{' '}
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+              {/* <FormControl component="fieldset">
                   <FormLabel component="legend">
                     PAYMENT TYPE
                   </FormLabel>
@@ -443,24 +464,31 @@ function upgrade({ onSetOrder }) {
                     />
                   </RadioGroup>
                   </FormControl>*/}
-                {!wannapay && (
-                  <Button
-                    variant="contained"
-                    className={classes.btn2}
-                    onClick={() => {
-                      setwannapay(true);
-                    }}
-                  >
-                    MAKE PAYMENT
-                  </Button>
-                )}
-             
+              {!wannapay && (
+                <Button
+                  variant="contained"
+                  className={classes.btn2}
+                  onClick={() => {
+                    setwannapay(true);
+                  }}
+                >
+                  MAKE PAYMENT
+                </Button>
+              )}
             </div>
           </div>
 
           {wannapay && (
             <div>
-              <Alert severity="info">{`Please scan this address and send ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')} USD to complete this order`}</Alert>
+              <Alert severity="info">{`Please scan this address and send ${new Intl.NumberFormat(
+                'en-US',
+                { style: 'currency', currency: 'USD' },
+              )
+                .format(btcval)
+                .replace(
+                  /\D00$/,
+                  '',
+                )} USD to complete this order`}</Alert>
               <div
                 style={{
                   display: 'flex',
@@ -509,9 +537,14 @@ function upgrade({ onSetOrder }) {
               style={{ textAlign: 'center', margin: '3px auto' }}
             >{`${ethhashval}`}</p>
             <Divider />
-            <p
-              style={{ textAlign: 'center', margin: '3px auto' }}
-            >{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')}</p>
+            <p style={{ textAlign: 'center', margin: '3px auto' }}>
+              {new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              })
+                .format(ethval)
+                .replace(/\D00$/, '')}
+            </p>
             <div
               style={{ display: 'flex', justifyContent: 'center' }}
             >
@@ -524,7 +557,7 @@ function upgrade({ onSetOrder }) {
                     aria-labelledby="custom"
                     step={50}
                     min={0}
-                    max={10000}
+                    max={50000}
                     ThumbComponent={AirbnbThumbComponent}
                     onChange={handleSliderChangeeth}
                   />
@@ -569,7 +602,14 @@ function upgrade({ onSetOrder }) {
                     <TableRow>
                       <TableCell>{ethplan}</TableCell>
                       <TableCell>{ethhashval}</TableCell>
-                      <TableCell>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')}</TableCell>
+                      <TableCell>
+                        {new Intl.NumberFormat('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                        })
+                          .format(ethval)
+                          .replace(/\D00$/, '')}
+                      </TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -583,28 +623,38 @@ function upgrade({ onSetOrder }) {
                 }}
               >
                 <h5>Total:</h5>
-                <h5>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')}</h5>{' '}
+                <h5>
+                  {new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  })
+                    .format(ethval)
+                    .replace(/\D00$/, '')}
+                </h5>{' '}
               </div>
               <Divider dark />
-              < FormControl className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">
-          <h3 style={{color:'black' }}>PAYMENT TYPE:</h3>
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={value22}
-            onChange={handleChange22}
-          >
-            
-            <MenuItem value={'btc'}> <h4 style={{color:'black' }}>BITCOIN</h4></MenuItem>
-            <MenuItem value={'eth'}><h4 style={{color:'black' }}>ETHEREUM </h4></MenuItem>
-           
-          </Select>
-        </FormControl>
+              <FormControl className={classes.formControl}>
+                <InputLabel id="demo-simple-select-label">
+                  <h3 style={{ color: 'black' }}>PAYMENT TYPE:</h3>
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={value22}
+                  onChange={handleChange22}
+                >
+                  <MenuItem value={'btc'}>
+                    {' '}
+                    <h4 style={{ color: 'black' }}>BITCOIN</h4>
+                  </MenuItem>
+                  <MenuItem value={'eth'}>
+                    <h4 style={{ color: 'black' }}>ETHEREUM </h4>
+                  </MenuItem>
+                </Select>
+              </FormControl>
             </div>
-           
-        {!wannapay && (
+
+            {!wannapay && (
               <Button
                 variant="contained"
                 className={classes.btn2}
@@ -615,9 +665,8 @@ function upgrade({ onSetOrder }) {
                 MAKE PAYMENT
               </Button>
             )}
-    
-        </div>
-            {/*<FormControl component="fieldset">
+          </div>
+          {/*<FormControl component="fieldset">
               <FormLabel component="legend">PAYMENT TYPE</FormLabel>
               <RadioGroup
                 aria-label="gender"
@@ -637,11 +686,19 @@ function upgrade({ onSetOrder }) {
                 />
               </RadioGroup>
               </FormControl> */}
-          
+
           {wannapay && (
             <div>
               {' '}
-              <Alert severity="info">{`Please scan this address and send ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')} USD to complete this order`}</Alert>
+              <Alert severity="info">{`Please scan this address and send ${new Intl.NumberFormat(
+                'en-US',
+                { style: 'currency', currency: 'USD' },
+              )
+                .format(ethval)
+                .replace(
+                  /\D00$/,
+                  '',
+                )} USD to complete this order`}</Alert>
               <div
                 style={{
                   display: 'flex',
