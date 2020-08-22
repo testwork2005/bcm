@@ -339,12 +339,12 @@ code {
   cursor: pointer; /* Add a pointer on hover */
 }
 .blueenigma {
-  background-image: url('../src/static/map.jpeg');
+  background-image: url('../src/static/wap.jpg');
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   min-height: 65vh;
-  margin-top: 10%;
+  margin-top: 3%;
 }
 textarea {
   min-width: 300px;
