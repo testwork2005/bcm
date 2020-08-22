@@ -3387,6 +3387,12 @@ body{
 .lowercontent{
   display: flex;
   justify-content: space-evenly;
+ margin: 0 10px;
+
+}
+.lowercontent > div{
+  max-width: 300px;
+  color:white;
 }
 .ordcon div{
   margin-top: 10px;

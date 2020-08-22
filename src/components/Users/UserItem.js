@@ -20,7 +20,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import EmailIcon from '@material-ui/icons/Email';
-import Moment  from 'moment'
+import Moment from 'moment';
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -51,12 +51,13 @@ class UserItem extends Component {
     this.state = {
       loading: false,
       open: false,
-      newprofit:0,
-      newamount:0,
+      newprofit: 0,
+      newamount: 0,
+      newprofiteth: 0,
+      newamounteth:0,
       open2: false,
-      topic:'',
-      message:''
-
+      topic: '',
+      message: '',
     };
   }
 
@@ -107,25 +108,63 @@ class UserItem extends Component {
           <DialogTitle id="form-dialog-title">EDIT</DialogTitle>
           <DialogContent>
             <DialogContentText>Edit Amount</DialogContentText>
-            <input type="number" min="0" onChange={(e)=>{this.setState({newamount:e.target.value})}} />
+            <input
+              type="number"
+              step="any"
+              min="0"
+             placeholder={user.balance}
+              onChange={e => {
+                this.setState({ newamount: e.target.value });
+              }}
+            />
             <DialogContentText>Edit hashpower</DialogContentText>
-            <input type="number"  onChange={(e)=>{this.setState({newprofit:e.target.value})}} min="0" />
+            <input
+              type="number"
+              step="any"
+              placeholder={user.hashpower}
+              onChange={e => {
+                this.setState({ newprofit: e.target.value });
+              }}
+              min="0"
+            />
+            <DialogContentText>Edit ETH Amount</DialogContentText>
+            <input
+              type="number"
+              step="any"
+              min="0"
+              placeholder={user.ethbalance}
+              onChange={e => {
+                this.setState({ newamounteth: e.target.value });
+              }}
+            />
+            <DialogContentText>Edit ETH hashpower</DialogContentText>
+            <input
+              type="number"
+              step="any"
+              placeholder={user.ethhashpower}
+              onChange={e => {
+                this.setState({ newprofiteth: e.target.value });
+              }}
+              min="0"
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
             <Button
-
               onClick={() => {
                 this.props.firebase
                   .user(this.props.match.params.id)
                   .update({
-                   balance: this.state.newamount,
-                   hashpower: this.state.newprofit,
-                  
-                   oldbalance:user.balance
-                  })
+                    balance: this.state.newamount,
+                    hashpower: this.state.newprofit,
+                    ethbalance: this.state.newamounteth,
+                    ethhashpower: this.state.newprofiteth,
+                    oldbalance: user.balance,
+                  }).then(()=>{alert('updated successfully');
+                  this.handleClose()
+                }).catch((err)=>{alert(err)})
               }}
               color="primary"
             >
@@ -138,29 +177,51 @@ class UserItem extends Component {
           onClose={this.handleClose2}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">send message</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+            send message
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Topic</DialogContentText>
-            <input type="textr"  onChange={(e)=>{this.setState({topic:e.target.value})}} />
+            <input
+              type="textr"
+              onChange={e => {
+                this.setState({ topic: e.target.value });
+              }}
+            />
             <DialogContentText>Message</DialogContentText>
-            <textarea AutoResize type="text"  onChange={(e)=>{this.setState({message:e.target.value})}} width='300'  ></textarea>
+            <textarea
+              AutoResize
+              type="text"
+              onChange={e => {
+                this.setState({ message: e.target.value });
+              }}
+              width="300"
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose2} color="primary">
               Cancel
             </Button>
             <Button
-
               onClick={() => {
                 this.props.firebase
-                  .user(this.props.match.params.id).child('messages')
+                  .user(this.props.match.params.id)
+                  .child('messages')
                   .push({
                     topic: this.state.topic,
                     message: this.state.message,
-                   date:Moment().format("DD/MM/YYYY").toString()
-                  }).then(()=>{alert('message sent');this.handleClose2()
-                }).catch(()=>{alert('something went wrong')
-                this.handleClose2()})
+                    date: Moment()
+                      .format('DD/MM/YYYY')
+                      .toString(),
+                  })
+                  .then(() => {
+                    alert('message sent');
+                    this.handleClose2();
+                  })
+                  .catch(() => {
+                    alert('something went wrong');
+                    this.handleClose2();
+                  });
               }}
               color="primary"
             >
@@ -185,13 +246,13 @@ class UserItem extends Component {
                   AMOUNTBTC($)
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                 HASHPOWERBTC(TH/S)
+                  HASHPOWERBTC(TH/S)
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                 AMOUNTETH($)
+                  AMOUNTETH($)
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                 HASHPOWERETH(TH/S)
+                  HASHPOWERETH(TH/S)
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   PHONE
@@ -227,9 +288,6 @@ class UserItem extends Component {
                     {user.ethhashpower}
                   </StyledTableCell>
 
-                 
-                  
-
                   <StyledTableCell component="th" scope="row">
                     {user.phone}
                   </StyledTableCell>
@@ -258,10 +316,14 @@ class UserItem extends Component {
               Send Password Reset
             </button>
             <br />
-            <Fab size="small" color="secondary" aria-label="edit" onClick={()=>{
-        
-              this.setState({ open2: true })}
-            }>
+            <Fab
+              size="small"
+              color="secondary"
+              aria-label="edit"
+              onClick={() => {
+                this.setState({ open2: true });
+              }}
+            >
               <EmailIcon />
             </Fab>
           </div>

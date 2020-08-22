@@ -390,7 +390,7 @@ export default function pricing() {
 							<li><b>1 year</b></li>
 						
 						</ul>
-						<span class="price__value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(input)}</span>
+						<span class="price__value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(input).replace(/\D00$/, '')}</span>
 				
                         <div className="slidecontainer">
   <input type="range" min="15500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
@@ -498,7 +498,7 @@ export default function pricing() {
 							<li><b>1 year</b></li>
 						
 						</ul>
-						<span class="price__value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(input2)}</span>
+						<span class="price__value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(input2).replace(/\D00$/, '')}</span>
 				
                         <div className="slidecontainer">
   <input type="range" min="16500" max="50000" value={input2} className="slider" id="myRange" onInput={(e)=>{Setval2(e.target.value)}}/>

@@ -377,7 +377,7 @@ function pickplan({ onSetOrder, hn }) {
                 <Divider />
                 <p
                   style={{ textAlign: 'center', margin: '3px auto' }}
-                >{`${btcval}USD`}</p>
+                >{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</p>
                 <div
                   style={{ marginTop: '35px', marginBottom: '13px' }}
                 >
@@ -561,7 +561,7 @@ function pickplan({ onSetOrder, hn }) {
                 <Divider />
                 <p
                   style={{ textAlign: 'center', margin: '3px auto' }}
-                >{`${ethval}USD`}</p>
+                >{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')}</p>
                 <div
                   style={{ marginTop: '35px', marginBottom: '13px' }}
                 >
@@ -647,7 +647,7 @@ function pickplan({ onSetOrder, hn }) {
                       <TableRow>
                         <TableCell>{btcplan}</TableCell>
                         <TableCell>{btchashval}</TableCell>
-                        <TableCell>{btcval}</TableCell>
+                        <TableCell>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
@@ -663,14 +663,14 @@ function pickplan({ onSetOrder, hn }) {
                   }}
                 >
                   <h5>Total:</h5>
-                  <h5>{btcval}</h5>{' '}
+                  <h5>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</h5>{' '}
                 </div>
               </div>
               <Divider dark />
               
               <FormControl className={classes.formControl}>
           <InputLabel id="demo-simple-select-label">
-          PAYMENT TYPE:
+         <h3 style={{color:'black'}}> PAYMENT TYPE:</h3>
           </InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -679,8 +679,8 @@ function pickplan({ onSetOrder, hn }) {
             onChange={handleChange22}
           >
             
-            <MenuItem value={'btc'}>BITCOIN</MenuItem>
-            <MenuItem value={'eth'}>ETHEREUM</MenuItem>
+            <MenuItem value={'btc'}><h4 style={{color:'black'}}>BITCOIN</h4></MenuItem>
+            <MenuItem value={'eth'}><h4 style={{color:'black'}}>ETHEREUM</h4></MenuItem>
            
           </Select>
         </FormControl>
@@ -738,7 +738,7 @@ function pickplan({ onSetOrder, hn }) {
                       <TableRow>
                         <TableCell>{ethplan}</TableCell>
                         <TableCell>{ethhashval}</TableCell>
-                        <TableCell>{ethval}</TableCell>
+                        <TableCell>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')}</TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
@@ -754,13 +754,13 @@ function pickplan({ onSetOrder, hn }) {
                   }}
                 >
                   <h5>Total:</h5>
-                  <h5>{ethval}</h5>{' '}
+                  <h5>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ethval).replace(/\D00$/, '')}</h5>{' '}
                 </div>
               </div>
               <Divider />
               <FormControl className={classes.formControl}>
           <InputLabel id="demo-simple-select-label">
-          PAYMENT TYPE:
+          <h3 style={{color:'black'}}> PAYMENT TYPE:</h3>
           </InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -769,8 +769,9 @@ function pickplan({ onSetOrder, hn }) {
             onChange={handleChange22}
           >
             
-            <MenuItem value={'btc'}>BITCOIN</MenuItem>
-            <MenuItem value={'eth'}>ETHEREUM</MenuItem>
+            <MenuItem value={'btc'}><h4 style={{color:'black'}}>BITCOIN</h4></MenuItem>
+            <MenuItem value={'eth'}><h4 style={{color:'black'}}>ETHEREUM</h4></MenuItem>
+           
            
           </Select>
         </FormControl>
