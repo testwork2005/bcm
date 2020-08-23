@@ -282,7 +282,7 @@ function pickplan({ onSetOrder, hn }) {
                       onClick={() => {
                         setbtcplan('BTCGOLD');
                         setbtchashvalue('40TH/s');
-                        setbtcvalue('1,500');
+                        setbtcvalue(1500);
                         /** const plans = {
   
   "btc": [
@@ -323,7 +323,7 @@ function pickplan({ onSetOrder, hn }) {
                       onClick={() => {
                         setbtcplan('BTC-PLATINUM');
                         setbtchashvalue('200TH/s');
-                        setbtcvalue('7,500');
+                        setbtcvalue(7500);
 
                         obj['name'] = plans.btc[0].names[1];
                         obj['price'] = plans.btc[0].prices[1];
@@ -346,7 +346,7 @@ function pickplan({ onSetOrder, hn }) {
                       onClick={() => {
                         setbtcplan('BTC-DIAMOND');
                         setbtchashvalue('500TH/s');
-                        setbtcvalue('15,300');
+                        setbtcvalue(15300);
 
                         obj['name'] = plans.btc[0].names[2];
                         obj['price'] = plans.btc[0].prices[2];
@@ -377,7 +377,7 @@ function pickplan({ onSetOrder, hn }) {
                 <Divider />
                 <p
                   style={{ textAlign: 'center', margin: '3px auto' }}
-                >{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(btcval).replace(/\D00$/, '')}</p>
+                >{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number((btcval))).replace(/\D00$/, '')}</p>
                 <div
                   style={{ marginTop: '35px', marginBottom: '13px' }}
                 >
@@ -458,7 +458,7 @@ function pickplan({ onSetOrder, hn }) {
                       onClick={() => {
                         setethplan('ETH-GOLD');
                         setethhashvalue('62TH/s');
-                        setethvalue('1,999');
+                        setethvalue(1999);
 
                         obj['name'] = plans.eth[0].names[0];
                         obj['price'] = plans.eth[0].prices[0];
@@ -490,7 +490,7 @@ function pickplan({ onSetOrder, hn }) {
                       onClick={() => {
                         setethplan('ETH-PLATINUM');
                         setethhashvalue('240TH/s');
-                        setethvalue('7,999');
+                        setethvalue(7999);
                         obj['name'] = plans.eth[0].names[1];
                         obj['price'] = plans.eth[0].prices[1];
                         obj['hashpower'] = plans.eth[0].hashpower[1];
@@ -520,7 +520,7 @@ function pickplan({ onSetOrder, hn }) {
                       onClick={() => {
                         setethplan('ETH-DIAMOND');
                         setethhashvalue('540TH/s');
-                        setethvalue('15,999');
+                        setethvalue(15999);
 
                         obj['name'] = plans.eth[0].names[2];
 
