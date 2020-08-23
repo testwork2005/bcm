@@ -41,6 +41,7 @@ import Hashpower from './buystepper';
 import UHashpower from './upgrade';
 import Signout from '../../components/SignOut';
 import Nt from './notification';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
@@ -57,6 +58,10 @@ const useStyles = makeStyles(theme => ({
     float: 'right',
     color: 'yellow',
     float: 'right',
+  },
+  ver: {
+    width: '30px',
+    color: '#f0b90b',
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
@@ -186,26 +191,25 @@ function ResponsiveDrawer(props) {
   const [currentview, setview] = React.useState(0);
   const [color, setcolor] = React.useState('white');
   const [page, setpage] = React.useState('Dashboard');
-const [show,setshow]=React.useState('');
-const[showalert,setalert]=React.useState(true);
-const[not,setnot]=React.useState(0);
-React.useEffect(()=>{
-  var hi=0
-  if(!!props.authUser.isverified && props.authUser.isverified){
-    setalert(false)
-  }
-if(!!props.authUser.messages)
-{hi= Object.entries(props.authUser.messages).length;
-setnot(hi)}
-},[])
-const toggler=()=>{
-  if(show==="show"){
-    setshow('');
-setnot(0)
-  }
-  else
-  setshow('show')
-}
+  const [show, setshow] = React.useState('');
+  const [showalert, setalert] = React.useState(true);
+  const [not, setnot] = React.useState(0);
+  React.useEffect(() => {
+    var hi = 0;
+    if (!!props.authUser.isverified && props.authUser.isverified) {
+      setalert(false);
+    }
+    if (!!props.authUser.messages) {
+      hi = Object.entries(props.authUser.messages).length;
+      setnot(hi);
+    }
+  }, []);
+  const toggler = () => {
+    if (show === 'show') {
+      setshow('');
+      setnot(0);
+    } else setshow('show');
+  };
   const toggleview = () => {
     switch (currentview) {
       case 0:
@@ -241,7 +245,7 @@ setnot(0)
       case 1:
         return (
           <div>
-            <Dt style={{ margin: '0 auto' }} auth={props.authUser}  />
+            <Dt style={{ margin: '0 auto' }} auth={props.authUser} />
           </div>
         );
         break;
@@ -355,15 +359,20 @@ setnot(0)
           justifyContent: 'center',
           color: 'white',
         }}
-       
       >
         <a href="/">
-        <img
-          src={require('../../static/home-bg.png')}
-          width="100"
-          alt=""
-          style={{ margin: '0 auto' }}
-        /></a>
+          <img
+            src={require('../../static/home-bg.png')}
+            width="100"
+            alt=""
+            style={{ margin: '0 auto' }}
+          />
+        </a>
+        {!showalert && ( <div style={{display:'flex',color:'white',justifyContent:'center'}}>
+          <CheckCircleIcon className={classes.ver}/>
+          <p>Verified</p>
+        </div>)}
+      
       </div>
       <Divider />
       <List className={classes.list}>
@@ -495,13 +504,10 @@ setnot(0)
           <IconButton
             aria-label="show 11 new notifications"
             color="inherit"
-            onClick={()=>{
-              if(show==="show"){
+            onClick={() => {
+              if (show === 'show') {
                 setshow('');
-
-              }
-              else
-              setshow('show')
+              } else setshow('show');
             }}
           >
             <Badge badgeContent={not} color="secondary" edge="right">
@@ -546,33 +552,41 @@ setnot(0)
         </Hidden>
       </nav>
       <main className={classes.content}>
-        <div className={classes.toolbar}>
-          {' '}
-        
-        </div>
-        {showalert &&<div
-          onClick={() => {
-            setview(7);
-          }}
-        >
-          <Alert
-            severity="info"
-            style={{
-              marginTop: '20px',
-              backgroundColor: 'white',
-              color: 'black',
-              cursor: 'pointer',
+        <div className={classes.toolbar}> </div>
+        {showalert && (
+          <div
+            onClick={() => {
+              setview(7);
             }}
           >
-            to be verified <a style={{color:"#f0b90b"}}  onClick={() => {
-            setview(7);
-          }}>click here</a>  and upload KYC documents!
-          </Alert>{' '}
-        </div>}
+            <Alert
+              severity="info"
+              style={{
+                marginTop: '20px',
+                backgroundColor: 'white',
+                color: 'black',
+                cursor: 'pointer',
+              }}
+            >
+              to be verified{' '}
+              <a
+                style={{ color: '#f0b90b' }}
+                onClick={() => {
+                  setview(7);
+                }}
+              >
+                click here
+              </a>{' '}
+              and upload KYC documents!
+            </Alert>{' '}
+          </div>
+        )}
 
         <br />
-        <div className={`notcontainer ${show} `} ><Nt toggler={toggler} messages={props.authUser.messages} /></div>
-        
+        <div className={`notcontainer ${show} `}>
+          <Nt toggler={toggler} messages={props.authUser.messages} />
+        </div>
+
         {toggleview()}
       </main>
     </div>
@@ -595,7 +609,7 @@ const condition = authUser => !!authUser;
 export default compose(
   connect(mapStateToProps),
   withFirebase,
-  withAuthorization(condition),
-  
- // withEmailVerification,
+withAuthorization(condition),
+
+   withEmailVerification,
 )(ResponsiveDrawer);

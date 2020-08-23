@@ -12,6 +12,7 @@ import { compose } from 'recompose';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { withFirebase } from '../Firebase';
+import MuiAlert from '@material-ui/lab/Alert';
 const useStyles = makeStyles({
   table: {
     minWidth: 450,
@@ -35,7 +36,9 @@ const rows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 function SimpleTable(props) {
   const classes = useStyles();
   React.useEffect(()=>{
@@ -45,6 +48,18 @@ function SimpleTable(props) {
       },[])
   return (
     <div>
+      { props.authUser.ismining && <Alert
+              severity="error"
+              style={{
+                marginTop: '20px',
+              
+                color: 'white',
+                cursor: 'pointer',
+              }}
+            >
+              Mining stopped temporarily,you will be contacted by our management team
+            </Alert>
+            }
       <h4 style={{ textAlign: 'center' }}>ACTIVITIES</h4>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
@@ -78,6 +93,9 @@ function SimpleTable(props) {
           </TableBody>
         </Table>
       </TableContainer>
+
+     
+
     </div>
   );
 }
