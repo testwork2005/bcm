@@ -242,11 +242,11 @@ function upgrade({ onSetOrder }) {
   };
   const handleSliderChangeeth = (event, newValue) => {
     setethplan('ETH-UPGRADE');
-    setethhashvalue(`${Math.round((newValue + 1000) / 28)}TH/s`);
-    setethvalue(`${newValue + 1000}`);
+    setethhashvalue(`${Math.round((newValue) / 28)}TH/s`);
+    setethvalue(`${newValue }`);
     obj['name'] = 'ETH-UPGRADE';
     obj['price'] = `${newValue}`;
-    obj['hashpower'] = `${Math.round((newValue + 1000) / 28)}TH/s`;
+    obj['hashpower'] = `${Math.round((newValue ) / 28)}TH/s`;
     onSetOrder(obj);
     window.localStorage.setItem('order', JSON.stringify(obj));
     window.localStorage.setItem('order', JSON.stringify(obj));

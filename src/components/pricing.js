@@ -84,7 +84,7 @@ export default function pricing() {
     setValue(newValue);
   };
     const [input,Setval]= React.useState(15500)
-    const [input2,Setval2]= React.useState(16500)
+    const [input2,Setval2]= React.useState(5600)
     return (
         <div>
           <Review/>
@@ -425,13 +425,13 @@ export default function pricing() {
 						<h2 class="price__title">GOLD</h2>
             <small>starter</small>
 						<ul class="price__list">
-							<li><h3>62 TH/s</h3> </li>
+							<li><h3>25 TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$1,999</span>
+						<span class="price__value">$500</span>
 						
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
@@ -447,13 +447,13 @@ export default function pricing() {
           <h2 class="price__title">PLATINUM</h2>
             <small>best buy</small>
 						<ul class="price__list">
-							<li><h3>240 TH/s</h3> </li>
+							<li><h3>125 TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$7,999</span>
+						<span class="price__value">$2,500</span>
                         <div className="slidecontainer hide">
   <input type="range" min="20500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
@@ -468,13 +468,13 @@ export default function pricing() {
           <h2 class="price__title">DIAMOND</h2>
             <small>professional</small>
 						<ul class="price__list">
-							<li><h3>540 TH/s</h3> </li>
+							<li><h3>275 TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
 							<li><b>1 year</b></li>
 						</ul>
-						<span class="price__value">$15,999</span>
+						<span class="price__value">$5,500</span>
                         <div className="slidecontainer hide">
   <input type="range" min="15500" max="50000" value={input} className="slider" id="myRange" onInput={(e)=>{Setval(e.target.value)}}/>
 </div>
@@ -491,7 +491,7 @@ export default function pricing() {
 						<h2 class="price__title">CUSTOM</h2>
             <small>create a custom  eth plan</small>
 						<ul class="price__list">
-						<li><h3>{`${Math.round((Number(input2)+1000)/28)}` } TH/s</h3> </li>
+						<li><h3>{`${Math.round((Number(input2))/28)}` } TH/s</h3> </li>
 							<li><b>30 Months Ethereum Mining:</b> </li>
 							<li><b>SHA-256 Mining Algorithm</b></li>
 							<li>Maintenance Fees apply</li>
@@ -501,7 +501,7 @@ export default function pricing() {
 						<span class="price__value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(input2).replace(/\D00$/, '')}</span>
 				
                         <div className="slidecontainer">
-  <input type="range" min="16500" max="50000" value={input2} className="slider" id="myRange" onInput={(e)=>{Setval2(e.target.value)}}/>
+  <input type="range" min="5600" max="25000" value={input2} className="slider" id="myRange" onInput={(e)=>{Setval2(e.target.value)}}/>
 </div>
 <a class="btn btn--center" type="button" href="/account">Buy now</a>
 <div style={{margin:'15px auto'}}><small>highly rated by our verified users,recommended for pro miners</small> </div>

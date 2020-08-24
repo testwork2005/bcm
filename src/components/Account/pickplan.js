@@ -195,11 +195,11 @@ function pickplan({ onSetOrder, hn }) {
   };
   const handleSliderChangeeth = (event, newValue) => {
     setethplan('ETH-CUSTOM');
-    setethhashvalue(`${Math.round((newValue + 1000) / 28)}TH/s`);
+    setethhashvalue(`${Math.round((newValue ) / 28)}TH/s`);
     setethvalue(`${newValue + 1000}`);
     obj['name'] = plans.eth[0].names[3];
     obj['price'] = `${newValue}`;
-    obj['hashpower'] = `${Math.round((newValue + 1000) / 28)}TH/s`;
+    obj['hashpower'] = `${Math.round((newValue ) / 28)}TH/s`;
     onSetOrder(obj);
     window.localStorage.setItem('order', JSON.stringify(obj));
     window.localStorage.setItem('order', JSON.stringify(obj));
@@ -457,8 +457,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setethplan('ETH-GOLD');
-                        setethhashvalue('62TH/s');
-                        setethvalue(1999);
+                        setethhashvalue('25TH/s');
+                        setethvalue(500);
 
                         obj['name'] = plans.eth[0].names[0];
                         obj['price'] = plans.eth[0].prices[0];
@@ -489,8 +489,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setethplan('ETH-PLATINUM');
-                        setethhashvalue('240TH/s');
-                        setethvalue(7999);
+                        setethhashvalue('125TH/s');
+                        setethvalue(2500);
                         obj['name'] = plans.eth[0].names[1];
                         obj['price'] = plans.eth[0].prices[1];
                         obj['hashpower'] = plans.eth[0].hashpower[1];
@@ -519,8 +519,8 @@ function pickplan({ onSetOrder, hn }) {
                       className="pn-btn"
                       onClick={() => {
                         setethplan('ETH-DIAMOND');
-                        setethhashvalue('540TH/s');
-                        setethvalue(15999);
+                        setethhashvalue('275TH/s');
+                        setethvalue(5500);
 
                         obj['name'] = plans.eth[0].names[2];
 
@@ -567,14 +567,14 @@ function pickplan({ onSetOrder, hn }) {
                 >
                   <AirbnbSlider
                     className={classes.slider}
-                    defaultValue={16500}
+                    defaultValue={5600}
                     getAriaValueText={valuetext}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={50}
                     marks
-                    min={16500}
-                    max={50000}
+                    min={5600}
+                    max={25000}
                     ThumbComponent={AirbnbThumbComponent}
                     valueLabelDisplay="on"
                     onChange={handleSliderChangeeth}
