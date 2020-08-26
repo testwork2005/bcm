@@ -197,15 +197,23 @@ export default function about() {
         <i className="ti-close" />
       </button>
     </header>
-      <div className="bgg">
+      <div className="ebgg"  style={{
+            padding: '10px',
+           minHeight:'60vh'
+          }}
+        >
         
 
+          {/*
+          
         <div
           style={{
             padding: '10px',
             margin: '15px auto',
           }}
         >
+          
+          
           <video
             playsinline="playsinline"
             controls
@@ -217,13 +225,16 @@ export default function about() {
             <source src="img/homevid.mp4" type="video/mp4" />
           </video>
         </div>
-        <br />
+
         <h2 style={{ color: '#f0b90b' }}> EXPLORE ENIGMA</h2>
 
         <small>
           The evolution of one of the world’s largest cryptocurrency
           mining facilities
         </small>
+          <br />*/}
+          
+        
 
         <div
           style={{

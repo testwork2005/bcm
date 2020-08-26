@@ -239,12 +239,14 @@ export default function whymining() {
           <i className="ti-close" />
         </button>
       </header>
-      <div className="bgg" style={{ height: '60vh' }}>
-        <h2>Get to know</h2>
-        <h1>
-          <strong>a new idea of money.</strong>
+      <div className="wmbgg" style={{ height: '60vh' }}>
+        <h2 style={{fontSize:'40px'}}>Get to know</h2>
+        <h1 style={{fontSize:'60px'}}>
+         a new idea of money
         </h1>
-        <strong>join   Epic-Mining</strong>
+        <h3 style={{fontSize:'20px', margin:"15px auto"}}>
+        The powerful idea behind Bitcoin and mining.
+        </h3>
       </div>
 
       <div className={classes.root}>

@@ -162,7 +162,9 @@ code {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #f0b90b #f0b90b transparent transparent;
 }
-.bgg {
+.bgg,
+.csbgg,
+.wmbgg {
   display: flex;
   flex-direction: column;
   color: white;
@@ -173,6 +175,40 @@ code {
   justify-content: center;
   text-align: center;
 
+  position: relative;
+  margin-top: 80px;
+}
+.csbgg {
+  background-image: url('../src/static/csbgg.jpg');
+}
+.wmbgg {
+  background-image: url('../src/static/wmbgg.jpg');
+}
+.abgg {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-image: url('../src/static/abgg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  text-align: center;
+
+  position: relative;
+  margin-top: 80px;
+}
+.ebgg {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-image: url('../src/static/enig.jpg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  justify-content: flex-end;
+  text-align: center;
+  background-color: black;
   position: relative;
   margin-top: 80px;
 }
@@ -383,6 +419,6 @@ button:disabled {
 .llc {
   padding: 0 10%;
 }
-.ssl{
+.ssl {
   background-color: blue;
 }

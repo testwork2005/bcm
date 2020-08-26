@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -55,55 +55,53 @@ const useStyles = makeStyles({
   table: {
     minWidth: 450,
   },
+  fnt: {
+    fontFamiy: ' Noto Sans JP, sans-serif',
+    minWidth: '400px',
+  },
 });
- function CustomizedTables({firebase,authUser}) {
+function CustomizedTables({ firebase, authUser }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [input, setinput] = React.useState(0);
-  const [pendingstate,setuserorder]= React.useState([]);
-  const [approvedstate,setappuserorder]= React.useState([]);
- 
-  var userorders=[]
-  var pending=[]
-  var approved=[]
- var  userorders=[]
-  
-  function iterate(item) {
-   if(item.status=='pending'){
-  pending.push(item);
-   }
-   if(item.status=='approved'){
-    approved.push(item);
-    console.log('o')
-     }
-   
-  }
-  React.useEffect(()=>{
-   
-   firebase.withdrawals().once('value').then(function(snapshot) {
-      var orders =  snapshot.val() ;
-      if(!!orders){
-        for (const [key, value] of Object.entries(orders)) {
-          if(value.uid==authUser.uid){
-            userorders.push(value)
-          }
-        }
+  const [pendingstate, setuserorder] = React.useState([]);
+  const [approvedstate, setappuserorder] = React.useState([]);
 
-        userorders.forEach(iterate);
-        setuserorder(pending);
-        setappuserorder(approved)
-       
-         console.log(approved)
-      }
-      
-      
-      
-   
-      
-    });
-  
-  
-  },[])
+  var userorders = [];
+  var pending = [];
+  var approved = [];
+  var userorders = [];
+
+  function iterate(item) {
+    if (item.status == 'pending') {
+      pending.push(item);
+    }
+    if (item.status == 'approved') {
+      approved.push(item);
+      console.log('o');
+    }
+  }
+  React.useEffect(() => {
+    firebase
+      .withdrawals()
+      .once('value')
+      .then(function(snapshot) {
+        var orders = snapshot.val();
+        if (!!orders) {
+          for (const [key, value] of Object.entries(orders)) {
+            if (value.uid == authUser.uid) {
+              userorders.push(value);
+            }
+          }
+
+          userorders.forEach(iterate);
+          setuserorder(pending);
+          setappuserorder(approved);
+
+          console.log(approved);
+        }
+      });
+  }, []);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -114,54 +112,77 @@ const useStyles = makeStyles({
 
   return (
     <div>
-
-        <Button color='primary' variant="outlined" onClick={handleClickOpen}> New Withdrawal </Button>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Withdraw Funds</DialogTitle>
+      <Button
+        color="primary"
+        variant="outlined"
+        onClick={handleClickOpen}
+      >
+        {' '}
+        New Withdrawal{' '}
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">
+          {' '}
+          <h3>Withdraw Funds</h3>{' '}
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            All withdrawals go through a review process.this process takes 2-3 business days.if approved funds will be sent to your wallent on file
-          </DialogContentText>
+          <p>
+            All withdrawals go through a review process.this process
+            takes 2-3 business days.if approved funds will be sent to
+            your wallent on file
+          </p>
           <TextField
+            className={classes.fnt}
             autoFocus
             margin="dense"
             id="name"
             label="ENTER AMOUNT IN USD"
             type="number"
-           value={input}
-           onChange={(e)=>{
-setinput(e.target.value)
-           }}
+            value={input}
+            onChange={e => {
+              setinput(e.target.value);
+            }}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={()=>{handleClose()
+          <Button
+            onClick={() => {
+              handleClose();
 
-var uUid=uuidv4();
-var neworder = {
-  amount:Number(input),
-  date:Moment().toString(),
-  status:'pending',
-  uid:authUser.uid,
-  createdAt:firebase.serverValue.TIMESTAMP
-};
-if((Number(authUser.balance)>Number(input))||(Number(authUser.ethbalance)>Number(input))){
-  firebase
-  .withdrawals().child(uUid)
-  .set(neworder).then(()=>{
-    alert('order request created')
-  }).catch(err=>{alert(err)})
- 
-}
-else
-alert('insufficient balance')
-
- 
-          }} color="primary">
-           Approve
+              var uUid = uuidv4();
+              var neworder = {
+                amount: Number(input),
+                date: Moment().toString(),
+                status: 'pending',
+                uid: authUser.uid,
+                createdAt: firebase.serverValue.TIMESTAMP,
+              };
+              if (
+                Number(authUser.balance) > Number(input) ||
+                Number(authUser.ethbalance) > Number(input)
+              ) {
+                firebase
+                  .withdrawals()
+                  .child(uUid)
+                  .set(neworder)
+                  .then(() => {
+                    alert('order request created');
+                  })
+                  .catch(err => {
+                    alert(err);
+                  });
+              } else alert('insufficient balance');
+            }}
+            color="primary"
+          >
+            Approve
           </Button>
         </DialogActions>
       </Dialog>
@@ -184,16 +205,13 @@ alert('insufficient balance')
             </TableRow>
           </TableHead>
           <TableBody>
-          
-            {pendingstate && pendingstate.map((row) => (
-            <StyledTableRow >
-          
-              <StyledTableCell >{row.date}</StyledTableCell>
-              <StyledTableCell >{row.amount}</StyledTableCell>
-             
-            </StyledTableRow>
-        ))}
-           
+            {pendingstate &&
+              pendingstate.map(row => (
+                <StyledTableRow>
+                  <StyledTableCell>{row.date}</StyledTableCell>
+                  <StyledTableCell>{row.amount}</StyledTableCell>
+                </StyledTableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -205,42 +223,39 @@ alert('insufficient balance')
         My Approved Withdrawals
       </Typography>
       <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Date</StyledTableCell>
-            <StyledTableCell >Amount(USD)</StyledTableCell>
-           
-          
-          </TableRow>
-        </TableHead>
-        <TableBody>
-       
-        {approvedstate && approvedstate.map((row) => (
-            <StyledTableRow >
-          
-              <StyledTableCell >{row.date}</StyledTableCell>
-              <StyledTableCell >{row.amount}</StyledTableCell>
-             
-            </StyledTableRow>
-        ))}
-        
-        </TableBody>
-      </Table>
+        <Table
+          className={classes.table}
+          aria-label="customized table"
+        >
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Date</StyledTableCell>
+              <StyledTableCell>Amount(USD)</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {approvedstate &&
+              approvedstate.map(row => (
+                <StyledTableRow>
+                  <StyledTableCell>{row.date}</StyledTableCell>
+                  <StyledTableCell>{row.amount}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+          </TableBody>
+        </Table>
       </TableContainer>
-      
     </div>
   );
 }
 const mapStateToProps = state => ({
   authUser: state.sessionState.authUser,
-  order:state.orderState,
+  order: state.orderState,
 });
 const condition = authUser => !!authUser;
 
 export default compose(
   connect(mapStateToProps),
 
- //withAuthorization(condition),
+  //withAuthorization(condition),
   withFirebase,
 )(CustomizedTables);

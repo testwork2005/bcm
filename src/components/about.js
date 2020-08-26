@@ -231,15 +231,15 @@ export default function about() {
       </button>
     </header>
       <div
-        className="bgg"
+        className="abgg"
         style={{
           height: '60vh',
         }}
       >
         <br />
-        <h2>ONE OF THE WORLD'S LEADING</h2>
-        <h1>
-          <strong>HASH POWER PROVIDER</strong>
+        <h2    style={{fontSize:'40px'}}>ONE OF THE WORLD'S LEADING</h2>
+        <h1  style={{fontSize:'50px'}}>
+       HASH POWER PROVIDER
         </h1>
         <div
           style={{
@@ -248,7 +248,7 @@ export default function about() {
             backgroundColor: '#f0b90b',
           }}
         >
-          Watch Our Video Below
+         <p  style={{fontSize:'20px'}}> Watch Our Video Below</p>
         </div>
       </div>
       <Divider dark />
